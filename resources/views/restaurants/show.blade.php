@@ -10,6 +10,16 @@ href="{{ route('pos',$restaurant->id) }}"
 class="bg-hub inline-block border-2 border-white text-white py-2 px-4 rounded-xl uppercase mt-2 hover:text-black hover:border-black"
 >POS</a
 >
+<a
+href="{{ route('orders',$restaurant->id) }}"
+class="bg-hub inline-block border-2 border-white text-white py-2 px-4 rounded-xl uppercase mt-2 hover:text-black hover:border-black"
+>Orders</a
+>
+<a
+href="{{ route('inventory',$restaurant->id) }}"
+class="bg-hub inline-block border-2 border-white text-white py-2 px-4 rounded-xl uppercase mt-2 hover:text-black hover:border-black"
+>Inventory</a
+>
 
 <div class="mx-4">
     <x-card class="p-10">

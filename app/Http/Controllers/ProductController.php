@@ -55,6 +55,7 @@ class ProductController extends Controller
 
         $data->name = $request->input('name');
         $data->price = $request->input('price');
+        $data->status = $request->input('status');
         $data->restaurant_id = $request->input('restaurant_id');
         //If the form has a file attached then store the file in the db
         if($request->hasFile('picture')){

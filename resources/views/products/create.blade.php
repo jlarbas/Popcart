@@ -43,7 +43,20 @@
             <p class="text-orange-500 text-xs mt-1">{{ $message }}</p>
             @enderror
         </div>
-
+        <label
+                for="status"
+                class="inline-block text-lg mb-2"
+                >Status</label
+            >
+            <input
+                type="text"
+                class="border border-gray-200 rounded p-2 w-full"
+                name="status"
+                value="{{ old('status') }}"
+            />
+            @error('status')
+            <p class="text-orange-500 text-xs mt-1">{{ $message }}</p>
+            @enderror
         <div class="mb-6">
             <label>Select Restaurant</label>
             <select name="restaurant_id" >

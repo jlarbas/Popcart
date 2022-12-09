@@ -4,6 +4,7 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
         <link rel="icon" href="images/favicon.ico" />
         <link
             rel="stylesheet"
@@ -12,8 +13,12 @@
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
         />
+        <link href="{{asset('assets/style.css')}}" rel="stylesheet" type="text/css" >
+        @livewireStyles
         <script src="https://cdn.tailwindcss.com"></script>
         <script src="//unpkg.com/alpinejs" defer></script>
+        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        <script defer src="https://unpkg.com/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
         <script>
             tailwind.config = {
                 theme: {
@@ -82,6 +87,8 @@
         >
     </footer> --}}
     <x-flash-message />
+    @livewireScripts
+    
 </body>
 </html>
 

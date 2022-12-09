@@ -28,14 +28,25 @@ class Restaurant extends Model
     public function users(){
         return $this->hasMany(User::class);
     }
+    
     public function products(){
         return $this->hasMany(Product::class);
     }
+
     public function cart(){
         return $this->hasMany(Cart::class);
     }
+
     public function order(){
         return $this->hasMany(Order::class);
+    }
+
+    public function inventory(){
+        return $this->hasMany(Inventory::class);
+    }
+
+    public function inventorylist(){
+        return $this->hasMany(InventoryList::class);
     }
 
 

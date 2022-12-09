@@ -18,6 +18,7 @@ class RestaurantController extends Controller
     public function index()
     {
         return view('restaurants.index', [
+            
             'restaurants' => Restaurant::latest()->filter(request(['search']))->paginate(4)
         ]);
         
@@ -67,6 +68,7 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
+            
         return view('restaurants.show', compact('restaurant'));
     }
 

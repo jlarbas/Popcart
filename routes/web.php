@@ -1,10 +1,13 @@
 <?php
 
-use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\RestaurantController;
+use App\Http\Controllers\InventoryTicketController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,8 +39,25 @@ Route::resource('products',ProductController::class);
 
 //Cart
 Route::get('/restaurants/{restaurant:id}/pos',[CartController::class,'index'])->name('pos')->middleware('auth');
+
+
+
+
+//Orders
+Route::get('/restaurants/{restaurant:id}/orders',[OrderController::class,'index'])->name('orders')->middleware('auth');
+Route::get('/restaurants/orders/{order:id}/show',[OrderController::class,'show'])->name('displayOrder')->middleware('auth');
+
+//Inventory
+
+Route::get('restaurants/{restaurant:id}/inventory', [InventoryController::class, 'index'])->name('inventory')->middleware('auth');
+Route::get('restaurants/{inventory:id}/show', [InventoryController::class, 'show'])->name('displayInventory')->middleware('auth');
+Route::get('/inventory',[InventoryTicketController::class,'createList'])->name('createInventory')->middleware('auth');
+Route::get('/inventory/submit',[InventoryTicketController::class,'submitList'])->name('inventoryTicket')->middleware('auth');
+
+
 //Authentication
 Route::get('/login',[UserController::class,'login'])->name('login');
 Route::post('/logout',[UserController::class,'logout'])->name('logout')->middleware('auth');
 Route::post('/users/authenticate',[UserController::class,'authenticate'])->name('authenticate');
+
 

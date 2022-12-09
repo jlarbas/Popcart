@@ -22,13 +22,17 @@ class="relative h-72 bg-hub flex flex-col justify-center align-center text-cente
         <a
             href="{{ route('usersindex') }}"
             class="inline-block border-2 border-white text-white py-2 px-4 rounded-xl uppercase mt-2 hover:text-black hover:border-black"
-            >Employees</a
-        >
+            >Employees</a>
         <a
         href="{{ route('products.index') }}"
         class="inline-block border-2 border-white text-white py-2 px-4 rounded-xl uppercase mt-2 hover:text-black hover:border-black"
-        >Products</a
-    >
+        >Products
+    </a>
+    <a
+        href="{{ route('createInventory') }}"
+        class="inline-block border-2 border-white text-white py-2 px-4 rounded-xl uppercase mt-2 hover:text-black hover:border-black"
+        >Make Inventory
+    </a>
     
     </div>
     

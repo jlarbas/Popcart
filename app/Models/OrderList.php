@@ -11,17 +11,20 @@ class OrderList extends Model
 
     protected $fillable = [
         'order_id',
-        'product_id',
+        'product_name',
         'restaurant_id',
         'quantity',
         'price',
     ];
 
     public function restaurant(){
-        $this->hasMany(Restaurant::class);
+        return $this->hasMany(Restaurant::class);
     }
     public function order(){
-        $this->hasMany(Order::class);
+        return $this->belongsTo(Order::class);
+    }
+    public function product(){
+        return $this->hasMany(Product::class);
     }
 
 }

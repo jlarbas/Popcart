@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('order_lists', function (Blueprint $table) {
             $table->id();
             $table->foreignId('order_id');
-            $table->foreignId('product_id')->nullable();
+            $table->string('product_name');
             $table->foreignId('restaurant_id');
             $table->integer('quantity');
-            $table->integer('price');
+            $table->float('price',8,2);
             $table->timestamps();
         });
     }

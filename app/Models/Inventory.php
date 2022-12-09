@@ -2,24 +2,23 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
-class Order extends Model
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+class Inventory extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-       'status',
-       'total',
-       'restaurant_id'
+    'user_id',
+    'restaurant_id',
     ];
 
     public function restaurant(){
         return $this->belongsTo(Restaurant::class);
     }
-
-    public function orderlist(){
-        return $this->hasMany(OrderList::class);
+    public function inventorylist(){
+        return $this->hasMany(InventoryList::class);
     }
 }

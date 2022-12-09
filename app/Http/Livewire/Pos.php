@@ -17,19 +17,20 @@ class Pos extends Component
     public function render()
     {
         $this->cart = Cart::latest()->get();
+       
         return view('livewire.cart',[
-            'restaurant' => $this->restaurant,
+            // 'restaurant' => $this->restaurant,
             'cart' => $this->cart,
-            'product' => $this->product
+            // 'product' => $this->product
             
         ]);
     }
 
     
     public function mount($restaurant,$cart,$product){
-        $this->restaurant = $restaurant;
+        // $this->restaurant = $restaurant;
         $this->cart = $cart;
-        $this->product = $product;
+        // $this->product = $product;
     }
 
     public function addToCart($productId){
@@ -91,9 +92,9 @@ class Pos extends Component
             
         ]);
         foreach($this->cart as $cartItem){
-            $orederItems = OrderList::create([
+            OrderList::create([
                 'order_id'=> $order->id,
-                'product_id' => $cartItem->product_id,
+                'product_name' => $cartItem->product->name,
                 'restaurant_id' => $cartItem->restaurant_id,
                 'quantity' => $cartItem->quantity,
                 'price' => $cartItem->product->price * $cartItem->quantity

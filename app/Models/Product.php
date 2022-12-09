@@ -30,6 +30,9 @@ class Product extends Model
         return $this->hasMany(Cart::class);
     }
 
+    public function orderlist(){
+        return $this->belongsTo(OrderList::class);
+    }
     
 
 

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('restaurant_id');
             $table->string('status');
-            $table->string('total');
+            $table->float('total',8,2);
             $table->timestamps();
         });
     }
