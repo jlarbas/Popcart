@@ -1,12 +1,12 @@
 @extends('layout')
 @section('content')
 @include('partials._hero')
-<x-card class="p-10 rounded max-w-lg mx-auto mt-24">
+<x-card class="p-10 rounded max-w-lg mx-auto mt-24 border border-gray-400">
     <header class="text-center">
-        <h2 class="text-2xl font-bold uppercase mb-1">
-            Add a Product
+        <h2 class="text-2xl font-bold  mb-8">
+            Add Product
         </h2>
-        <p class="mb-4">Post a gig to find a developer</p>
+        
     </header>
 
     <form method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data">
@@ -19,7 +19,7 @@
             >
             <input
                 type="text"
-                class="border border-gray-200 rounded p-2 w-full"
+                class="border border-gray-400 rounded p-2 w-full"
                 name="name"
                 value="{{ old('name') }}"
             />
@@ -35,7 +35,7 @@
             >
             <input
                 type="text"
-                class="border border-gray-200 rounded p-2 w-full"
+                class="border border-gray-400 rounded p-2 w-full"
                 name="price"
                 
             />
@@ -50,16 +50,17 @@
             >
             <input
                 type="text"
-                class="border border-gray-200 rounded p-2 w-full"
+                class="border border-gray-400 rounded p-2 w-full"
                 name="status"
                 value="{{ old('status') }}"
             />
             @error('status')
-            <p class="text-orange-500 text-xs mt-1">{{ $message }}</p>
+            <p class="text-orange-500 text-xs mt-2">{{ $message }}</p>
             @enderror
-        <div class="mb-6">
+        <div class="mb-6 mt-8 text-lg mb-2">
             <label>Select Restaurant</label>
-            <select name="restaurant_id" >
+            <br>
+            <select name="restaurant_id" class="border border-gray-400 rounded p-2 px-20 ">
             @foreach($restaurants as $restaurant)
                 <option 
                     value="{{ $restaurant->id }}" 
@@ -74,7 +75,7 @@
             </label>
             <input
                 type="file"
-                class="border border-gray-200 rounded p-2 w-full"
+                class="border border-gray-200 rounded p-4 w-full"
                 name="picture"
             />
             @error('picture')
@@ -83,12 +84,12 @@
         </div>
         <div class="mb-6">
             <button
-                class="bg-hub text-white rounded py-2 px-4 hover:bg-black"
+                class="bg-hub text-white rounded py-2 px-4 hover:bg-orange-500"
             >
                 Create Product
             </button>
 
-            <a href="/" class="text-black ml-4"> Back </a>
+            <a href="/" class="bg-hub text-white rounded py-2 px-14 hover:bg-orange-500"> Back </a>
         </div>
     </form>
 </x-card>

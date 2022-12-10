@@ -33,21 +33,28 @@
        
         <title>Home Page</title>
     </head>
+    <body style="background-image: linear-gradient(to right, #F8DFB9 , #F4C9D7)">
     <body class="mb-48">
-        <nav class="flex justify-between items-center mb-4">
+    
+    <div class="bg-white">
+        <nav class="flex justify-between items-center mb-0">
+
+        <p class="font-bold  text-orange-400 text-4xl">
+             POP<span class="text-black">Cart</span> <p>
             <a href="{{ route('home') }}"
-                ><img class="w-24" src="{{ asset('images/logo.png') }}" alt="" class="logo"
-            /></a>
+                ><img class="w-24" src="{{ asset('images/logoCart.png') }}" alt="" class="logo"/>
+        
+        </a>
             <ul class="flex space-x-6 mr-6 text-lg">
                 @auth
                 <li>
-                    <span class="font-bold uppercase">Welcome {{ auth()->user()->name }}</span>
+                    <i class="fa-solid fa-user"></i><span class=""> {{ auth()->user()->name }}</span>
                 </li>
                 <li>
                     <form class="inline" method="POST" action="/logout">
                         @csrf
                         <button type="submit" class="hover:text-hub ">
-                            <i class="fa-solid fa-door-closed">Logout</i>
+                            <a><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
                     </form>
                 </li>
                 <li>
@@ -56,6 +63,8 @@
                         Dashboard</a
                     >
                 </li>
+
+        </div>
                 @else
                 <li>
                     {{-- <a href="{{ route('register') }}" class="hover:text-hub  "

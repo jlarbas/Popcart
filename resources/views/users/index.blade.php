@@ -6,7 +6,7 @@
 <div>
 
     <a href="{{ route('register') }}"
-    class="ml-4 bg-hub inline-block border-2 border-white text-white py-2 px-4 rounded-xl uppercase mt-2"
+    class="ml-4 bg-hub inline-block text-white py-2.5 px-4 rounded-md hover:bg-orange-500 mb-4"
     >Add Employee</a>
     
 </div>

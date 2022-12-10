@@ -1,26 +1,28 @@
 @props(['restaurant'])
 
-<div class="bg-gray-50 border border-gray-200 rounded p-6">
+
+
+
+
+<div class="bg-gray-50 border border-gray-100 rounded-lg shadow-lg p-6">
+
+
+
+
     <div class="flex">
         {{-- Shows the Picture in the database if not then default picture --}}
         <img
-            class="hidden w-48 mr-6 md:block"
+            class="hidden w-48 mr-6 md:block rounded-md border border-gray-400 rounded-lg"
             src="{{$restaurant->picture ? asset('storage/' . $restaurant->picture) : asset('/images/no-image.png')}}"
             alt="" />
         <div>
-            <h3 class="text-2xl">
-                <a href="{{route('restaurants.show', $restaurant->id)}}">{{ $restaurant->name }}</a>
+            <h3 class="text-lg font-bold mb-2">
+                <a href="{{route('restaurants.show', $restaurant->id)}}" class="hover:text-hub"> {{ $restaurant->name }}</a>
             </h3>
-            <div class="text-xl font-bold mb-4">{{ $restaurant->contact }}</div>
-            <ul class="flex">
-                <li
-                    class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs"
-                >
-                    {{$restaurant->status}}
-                </li>
-            <div class="text-lg mt-4">
-                <i class="fa-solid fa-location-dot"></i> {{ $restaurant->address}}
-            </div>
+            <div class="text-lg mb-2">{{ $restaurant->contact }}</div>
+            <i class="text-lg fa-solid fa-location-dot mb-2"></i> {{ $restaurant->address}}
+            <div class="text-lg  mb-2 text-orange-600 font-semibold">{{ $restaurant->status }}</div>
+            
         </div>
     </div>
 </div>

@@ -1,12 +1,12 @@
 @extends('layout')
 @section('content')
 @include('partials._hero')
-<x-card class="p-10 rounded max-w-lg mx-auto mt-24">
+<x-card class="p-10 rounded-lg max-w-lg mx-auto mt-24 border border-gray-100 shadow-lg">
     <header class="text-center">
-        <h2 class="text-2xl font-bold uppercase mb-1">
+        <h2 class="text-2xl font-bold mb-8">
             Create a Restaurant
         </h2>
-        <p class="mb-4">Post a gig to find a developer</p>
+       
     </header>
 
     <form method="POST" action="{{ route('restaurants.update',$restaurant->id) }}" enctype="multipart/form-data">
@@ -95,12 +95,12 @@
         </div>
         <div class="mb-6">
             <button
-                class="bg-laravel text-white rounded py-2 px-4 hover:bg-black"
-            >
+                class="bg-hub text-white rounded py-2 px-4 hover:bg-orange-600">
+            
                 Create Restaurant
             </button>
 
-            <a href="/" class="text-black ml-4"> Back </a>
+            <a href="/" class="bg-hub text-white rounded py-2 px-14 hover:bg-orange-500"> Back </a>
         </div>
     </form>
 </x-card>

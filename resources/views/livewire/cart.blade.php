@@ -1,11 +1,11 @@
-<div id="cart" class="grid grid-cols-3 gap-4 bg-yellow-300 h-max">
-    <div class="">
+<div id="cart" class="grid grid-cols-3 gap-4 h-max">
+    <div class="bg-gray-50 border border-gray-400 rounded p-6 ml-4">
         <div class="">
            <div class="">
                 <div class="col ml-5 mb-3">
-                    <input type="text" class="form-control" placeholder="Scan Barcode...">
+                    
                
-                
+               
                     {{-- <select name="restaurant_id" wire:model="restaurantId">
                         @foreach($restaurant as $restaurantData)
                             <option 
@@ -70,8 +70,8 @@
                             <div class="text-right mr-2">{{$totalPrice}}</div>
                         </div>
                         <div class="grid grid-cols-2 gap-4 w-96">
-                            <div class="text-center bg-green-500"><button type="button" wire:click="submitCart" class="btn btn-success">Submit</button></div>
-                            <div class="text-center bg-red-500"><button type="button" wire:click="cancelCart" class="btn btn-danger">Cancel</button></div>
+                            <div class="bg-hub text-white rounded py-2 px-4 hover:bg-orange-600"><button type="button" wire:click="submitCart" class="btn btn-success">Submit</button></div>
+                            <div class="bg-hub text-white rounded py-2 px-4 hover:bg-orange-600"><button type="button" wire:click="cancelCart" class="btn btn-danger">Cancel</button></div>
                         </div>
                     </div>
                 </div>
@@ -81,26 +81,25 @@
         
     </div>
     {{-- Menu Items --}}
-    <div class="col-span-2 bg-pink-300">
-        <div class="mb-3">
-            <input type="text" class="form-control" placeholder="Search Product">
-        </div>
+    <div class="col-span-2 bg-gray-50 border-2 border-gray-400 rounded p-6 mr-4">
+        
         <div class="grid grid-cols-5 gap-x-0 gap-y-2 mr-20 ml-5">
             @foreach($restaurant->products as $product)
             @if($product->status == 'available')
-            <div class="relative bg-red-200 h-32 w-32">
+            <div class=" border-2 border-gray-400 rounded p-4">
                 
                 <a href="#"  wire:click="addToCart({{$product->id}})">
                 <img
-                class="h-32 w-32 mr-6 mb-6"
+                class="h-32 w-32 mr-6 mb-6 border-2 content-center rounded-md"
                 src="{{$product->picture ? asset('storage/' . $product->picture) : asset('/images/no-image.png')}}"
                 alt=""
                 />
                 </a>
-                <div class="absolute bottom-0 left-0">
-                {{$product->name}}
-                {{$product->price}}
-                </div>
+                <p class ="text-xl">
+                {{$product->name}} <p>
+                <p class ="font-bold text-orange-600">
+                ₱{{$product->price}}<p>
+                
             </div>
             @endif
             @endforeach

@@ -1,12 +1,12 @@
 @extends('layout')
 @section('content')
 
-    <x-card class="p-10 rounded max-w-lg mx-auto mt-24">
+    <x-card class="p-10 rounded-lg max-w-lg mx-auto mt-24 border border-gray-100 shadow-lg">
         <header class="text-center">
-            <h2 class="text-2xl font-bold uppercase mb-1">
-                Register
+            <h2 class="text-2xl font-bold  mb-8">
+                Registers
             </h2>
-            <p class="mb-4">Create an account to post gigs</p>
+            
         </header>
 
         <form action="/users" method="POST">
@@ -17,7 +17,7 @@
                 </label>
                 <input
                     type="text"
-                    class="border border-gray-200 rounded p-2 w-full"
+                    class="border border-gray-400 rounded p-2 w-full"
                     name="name"
                 />
                 @error('name')
@@ -31,7 +31,7 @@
                 >
                 <input
                     type="email"
-                    class="border border-gray-200 rounded p-2 w-full"
+                    class="border border-gray-400 rounded p-2 w-full"
                     name="email"
                 />
                 @error('email')
@@ -45,7 +45,7 @@
                 </label>
                 <input
                     type="text"
-                    class="border border-gray-200 rounded p-2 w-full"
+                    class="border border-gray-400 rounded p-2 w-full"
                     name="contact"
                 />
                 @error('contact')
@@ -58,7 +58,7 @@
                 </label>
                 <input
                     type="text"
-                    class="border border-gray-200 rounded p-2 w-full"
+                    class="border border-gray-400 rounded p-2 w-full"
                     name="role"
                 />
                 @error('role')
@@ -71,7 +71,7 @@
                 </label>
                 <input
                     type="text"
-                    class="border border-gray-200 rounded p-2 w-full"
+                    class="border border-gray-400 rounded p-2 w-full"
                     name="status"
                 />
                 @error('status')
@@ -84,7 +84,7 @@
                 </label>
                 <input
                     type="text"
-                    class="border border-gray-200 rounded p-2 w-full"
+                    class="border border-gray-400 rounded p-2 w-full"
                     name="address"
                 />
                 @error('address')
@@ -97,7 +97,7 @@
                 </label>
                 <input
                     type="text"
-                    class="border border-gray-200 rounded p-2 w-full"
+                    class="border border-gray-400 rounded p-2 w-full"
                     name="schedule"
                 />
                 @error('schedule')
@@ -110,7 +110,7 @@
                 </label>
                 <input
                     type="file"
-                    class="border border-gray-200 rounded p-2 w-full"
+                    class="border border-gray-200 rounded p-4 w-full"
                     name="picture"
                 />
                 @error('picture')
@@ -126,7 +126,7 @@
                 </label>
                 <input
                     type="password"
-                    class="border border-gray-200 rounded p-2 w-full"
+                    class="border border-gray-400 rounded p-2 w-full"
                     name="password"
                 />
                 @error('password')
@@ -143,7 +143,7 @@
                 </label>
                 <input
                     type="password"
-                    class="border border-gray-200 rounded p-2 w-full"
+                    class="border border-gray-400 rounded p-2 w-full"
                     name="password_confirmation"
                 />
                 @error('password_confirmation')
@@ -154,7 +154,7 @@
             <div class="mb-6">
                 <button
                     type="submit"
-                    class="bg-hub text-white rounded py-2 px-4 hover:bg-black"
+                    class="bg-hub text-white rounded py-2 px-14 hover:bg-orange-500"
                 >
                    Create
                 </button>

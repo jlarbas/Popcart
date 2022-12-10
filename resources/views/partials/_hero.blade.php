@@ -15,9 +15,9 @@ class="relative h-72 bg-hub flex flex-col justify-center align-center text-cente
     </p>
     <div>
         <a
-            href="{{ route('restaurants.create') }}"
+            href="{{ route('restaurants.index') }}"
             class="inline-block border-2 border-white text-white py-2 px-4 rounded-xl uppercase mt-2 hover:text-black hover:border-black"
-            >Add a Restaurant</a
+            >Restaurant</a
         >
         <a
             href="{{ route('usersindex') }}"

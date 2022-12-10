@@ -1,12 +1,12 @@
 @extends('layout')
 @section('content')
 
-    <x-card class="p-10 rounded max-w-lg mx-auto mt-24">
+    <x-card class="p-10 rounded-lg max-w-lg mx-auto mt-24 border border-gray-100 shadow-lg">
         <header class="text-center">
-            <h2 class="text-2xl font-bold uppercase mb-1">
+            <h2 class="text-2xl font-bold  mb-8">
                 Edit
             </h2>
-            <p class="mb-4">Create an account to post gigs</p>
+            
         </header>
 
         <form action="{{ route('updateuser',$user->id) }}" method="POST" enctype="multipart/form-data">
@@ -18,7 +18,7 @@
                 </label>
                 <input
                     type="text"
-                    class="border border-gray-200 rounded p-2 w-full"
+                    class="border border-gray-400 rounded p-2 w-full"
                     name="name"
                     value="{{ $user->name }}"
                 />
@@ -33,7 +33,7 @@
                 >
                 <input
                     type="email"
-                    class="border border-gray-200 rounded p-2 w-full"
+                    class="border border-gray-400 rounded p-2 w-full"
                     name="email"
                     value="{{ $user->email }}"
                 />
@@ -48,7 +48,7 @@
                 </label>
                 <input
                     type="text"
-                    class="border border-gray-200 rounded p-2 w-full"
+                    class="border border-gray-400 rounded p-2 w-full"
                     name="contact"
                     value="{{ $user->contact }}"
                 />
@@ -62,7 +62,7 @@
                 </label>
                 <input
                     type="text"
-                    class="border border-gray-200 rounded p-2 w-full"
+                    class="border border-gray-400 rounded p-2 w-full"
                     name="role"
                     value="{{ $user->role }}"
                 />
@@ -76,7 +76,7 @@
                 </label>
                 <input
                     type="text"
-                    class="border border-gray-200 rounded p-2 w-full"
+                    class="border border-gray-400 rounded p-2 w-full"
                     name="status"
                     value="{{ $user->status }}"
                 />
@@ -90,7 +90,7 @@
                 </label>
                 <input
                     type="text"
-                    class="border border-gray-200 rounded p-2 w-full"
+                    class="border border-gray-400 rounded p-2 w-full"
                     name="address"
                     value="{{ $user->address }}"
                 />
@@ -104,7 +104,7 @@
                 </label>
                 <input
                     type="text"
-                    class="border border-gray-200 rounded p-2 w-full"
+                    class="border border-gray-400 rounded p-2 w-full"
                     name="schedule"
                     value="{{ $user->schedule }}"
                 />
@@ -118,7 +118,7 @@
                 </label>
                 <input
                     type="file"
-                    class="border border-gray-200 rounded p-2 w-full"
+                    class="border border-gray-200 rounded p-4 w-full"
                     name="picture"
                 />
                 @error('picture')
@@ -134,7 +134,7 @@
                 </label>
                 <input
                     type="password"
-                    class="border border-gray-200 rounded p-2 w-full"
+                    class="border border-gray-400 rounded p-2 w-full"
                     name="password"
                     value="{{ $user->password }}"
                 />
@@ -152,7 +152,7 @@
                 </label>
                 <input
                     type="password"
-                    class="border border-gray-200 rounded p-2 w-full"
+                    class="border border-gray-400 rounded p-2 w-full"
                     name="password_confirmation"
                     value="{{ $user->password }}"
                 />
@@ -166,7 +166,7 @@
                     type="submit"
                     class="bg-hub text-white rounded py-2 px-4 hover:bg-black"
                 >
-                   Create
+                   Save Changes
                 </button>
             </div>
         </form>

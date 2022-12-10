@@ -16,9 +16,10 @@
         </div>
         <form method="POST" wire:submit.prevent="submitTicket" enctype="multipart/form-data">
         @csrf
-        <div class="mb-6">
-            <label>Select Restaurant</label>
-            <select name="restaurantData" wire:model="restaurantData">
+        <div class="mb-6 mt-8 text-lg mb-8">
+            <label>Select Restaurant</label><br>
+
+            <select name="restaurantData" wire:model="restaurantData" class="border border-gray-400 rounded p-2 px-20">
             @foreach($restaurant as $restaurantData)
             <option value="">--Please choose an option--</option>
                 <option 
@@ -27,6 +28,6 @@
             @endforeach
             </select>
         </div>
-        <button type="button" wire:click="submitTicket">Submit </button>
+        <button type="button" wire:click="submitTicket" class="bg-hub text-white rounded py-2 px-14 hover:bg-orange-500">Create </button>
         </form>
 </div>

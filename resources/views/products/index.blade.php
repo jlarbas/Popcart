@@ -4,8 +4,8 @@
 @include('partials._search')
 <a
 href="{{ route('products.create') }}"
-class="bg-hub inline-block border-2 border-white text-white py-2 px-4 rounded-xl uppercase mt-2 hover:text-black hover:border-black"
->Add a Product</a
+class="ml-4 bg-hub inline-block text-white py-2.5 px-4 rounded-md hover:bg-orange-500 mb-8"
+>Add Product</a
 >
 <div class="lg:grid lg:grid-cols-2 gap-4 space-y-4 md:space-y-0 mx-4">
 

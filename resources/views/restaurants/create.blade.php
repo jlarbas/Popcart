@@ -1,12 +1,12 @@
 @extends('layout')
 @section('content')
 @include('partials._hero')
-<x-card class="p-10 rounded max-w-lg mx-auto mt-24">
+<x-card class="p-10 rounded-lg max-w-lg mx-auto mt-24 border border-gray-100 shadow-lg">
     <header class="text-center">
-        <h2 class="text-2xl font-bold uppercase mb-1">
+        <h2 class="text-2xl font-bold mb-8">
             Create a Restaurant
         </h2>
-        <p class="mb-4">Post a gig to find a developer</p>
+        
     </header>
 
     <form method="POST" action="{{ route('restaurants.store') }}" enctype="multipart/form-data">
@@ -19,7 +19,7 @@
             >
             <input
                 type="text"
-                class="border border-gray-200 rounded p-2 w-full"
+                class="border border-gray-400 rounded p-2 w-full"
                 name="name"
                 value="{{ old('name') }}"
             />
@@ -35,7 +35,7 @@
             >
             <input
                 type="text"
-                class="border border-gray-200 rounded p-2 w-full"
+                class="border border-gray-400 rounded p-2 w-full"
                 name="status"
                 
             />
@@ -52,10 +52,10 @@
             >
             <input
                 type="text"
-                class="border border-gray-200 rounded p-2 w-full"
+                class="border border-gray-400 rounded p-2 w-full"
                 name="address"
                 value="{{ old('address') }}"
-                placeholder="Example: Remote, Boston MA, etc"
+                placeholder=""
             />
             @error('address')
             <p class="text-orange-500 text-xs mt-1">{{ $message }}</p>
@@ -70,7 +70,7 @@
             >
             <input
                 type="text"
-                class="border border-gray-200 rounded p-2 w-full"
+                class="border border-gray-400 rounded p-2 w-full"
                 name="contact"
                 value="{{ old('contact') }}"
             />
@@ -81,11 +81,11 @@
 
         <div class="mb-6">
             <label for="picture" class="inline-block text-lg mb-2">
-                Logo
+                Restaurant Photo
             </label>
             <input
                 type="file"
-                class="border border-gray-200 rounded p-2 w-full"
+                class="border border-gray-200 rounded p-4 w-full"
                 name="picture"
             />
             @error('picture')
@@ -94,12 +94,17 @@
         </div>
         <div class="mb-6">
             <button
-                class="bg-hub text-white rounded py-2 px-4 hover:bg-black"
+                class="bg-hub text-white rounded py-2 px-4 hover:bg-orange-500"
             >
                 Create Restaurant
             </button>
 
-            <a href="/" class="text-black ml-4"> Back </a>
+            <button
+            <a href="/" class="bg-hub text-white rounded py-2 px-14 hover:bg-orange-500"> Back </a>
+           
+            </button>
+
+            
         </div>
     </form>
 </x-card>

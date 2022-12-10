@@ -2,62 +2,69 @@
 @section('content')
 @include('partials._hero')
 
-<a href="/" class="inline-block text-black ml-4 mb-4"
+<a href="/" class="inline-block text-black ml-4 mb-8 mt-8"
 ><i class="fa-solid fa-arrow-left"></i> Back
 </a>
 <a
 href="{{ route('pos',$restaurant->id) }}"
-class="bg-hub inline-block border-2 border-white text-white py-2 px-4 rounded-xl uppercase mt-2 hover:text-black hover:border-black"
+class="bg-hub text-white rounded-lg py-2.5 px-14 hover:bg-orange-500"
 >POS</a
 >
 <a
 href="{{ route('orders',$restaurant->id) }}"
-class="bg-hub inline-block border-2 border-white text-white py-2 px-4 rounded-xl uppercase mt-2 hover:text-black hover:border-black"
+class="bg-hub text-white rounded-lg py-2.5 px-14 hover:bg-orange-500"
 >Orders</a
 >
 <a
 href="{{ route('inventory',$restaurant->id) }}"
-class="bg-hub inline-block border-2 border-white text-white py-2 px-4 rounded-xl uppercase mt-2 hover:text-black hover:border-black"
+class="bg-hub text-white rounded-lg py-2.5 px-14 hover:bg-orange-500"
 >Inventory</a
 >
 
 <div class="mx-4">
-    <x-card class="p-10">
-        <div
-            class="flex flex-col items-center justify-center text-center"
-        >
-                <img
-                    class="w-48 mr-6 mb-6"
-                    src="{{ asset('images/no-image.png') }}"
-                    alt=""
-                />
+    <x-card class="p-10  bg-white border border-gray-100 rounded mt-10 border border-gray-100 rounded-lg shadow-lg">
 
-            <h3 class="text-2xl mb-2">{{ $restaurant->name}}</h3>
+
+        <div
+            class="">
+
             <x-listing-card :restaurant="$restaurant"/>
-                            </div>
-                    </div>
-            </div>
+                            
     </x-card>
+
+
     @foreach($restaurant->products as $product)
-    <p>{{$product->name}}
-    {{$product->price}}
+   <div class="inline-block flex bg-white border border-gray-400 py-2 w-48 px-2 mt-2 mb-2 md:block rounded shadow-lg">
     <img
-                    class="w-48 mr-6 mb-6"
+                     class="hidden w-48 h-48 mr-6 md:block border border-gray-400 rounded"
                     src="{{$product->picture ? asset('storage/' . $product->picture) : asset('/images/no-image.png')}}"
                     alt=""
-                /></p>
+                />
+    <p class ="font-bold text-lg mb-2">{{$product->name}}</p>
+    <p class ="font-bold text-orange-600 text-lg mb-2">₱{{$product->price}}</p>
+    </div>
+
+
+    
     @endforeach
-    <x-card class="mt-4 p-2 flex space-x-6">
+    <x-card class="mt-4 p-2 flex space-x-6 border-none">
         <a href="{{ route('restaurants.edit',$restaurant->id)}}">
-        <i class="fa-solid fa-pencil"> Edit </i>
+        <i class="not-italic bg-hub text-white rounded py-2 px-14 hover:bg-orange-500"> Edit </i>
         </a>
         <form method="POST" action="{{ route('restaurants.destroy', $restaurant->id) }}" >
             @csrf
             @method('DELETE')
-            <button class="text-red-500"><i class="fa-solid fa-trash">DELETE</i>
+            <button class="text-red-500"><i class="not-italic bg-hub text-white rounded py-2 px-14 hover:bg-orange-500">Delete</i>
         </form>
     </x-card>
 
+
 </div>
+</div>
+                    </div>
+            </div>
+
+
+     <div>       
 
 @endsection

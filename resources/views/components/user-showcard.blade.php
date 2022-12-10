@@ -1,6 +1,6 @@
 @props(['user'])
 
-<div class="bg-gray-50 border border-gray-200 rounded p-6">
+<div class="bg-gray-50 border border-gray-400 rounded p-6">
     <div class="flex">
         {{-- Shows the Picture in the database if not then default picture --}}
         <img
