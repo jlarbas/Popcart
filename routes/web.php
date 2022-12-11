@@ -21,7 +21,7 @@ use App\Http\Controllers\InventoryTicketController;
 */
 
 //Restaurants
-
+Route::get('/staff/restaurants', [RestaurantController::class,'staff'])->name('staffIndex')->middleware('auth');
 Route::get('/', [RestaurantController::class,'index'])->name('home')->middleware('auth');
 //Route::get('/index/{restaurant}',[RestaurantController::class,'show'])->name('restaurants');
 Route::resource('restaurants',RestaurantController::class)->middleware('auth');

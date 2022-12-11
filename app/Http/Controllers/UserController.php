@@ -106,16 +106,16 @@ class UserController extends Controller
             $type = auth()->user()->role; 
             switch ($type) {
                 case 'management':
-                    return redirect('/register')->with('message','Logged In');
+                    return redirect('/')->with('message','Logged In');
                     break;
                 case 'staff':
                     $request->session()->regenerate();
-                    return redirect('/')->with('message','Logged In');
+                    return redirect()->route('staffIndex')->with('message','Logged In');
                     break; 
-                // case 'customer':
-                //     $request->session()->regenerate();
-                //     return redirect('/')->with('message','Logged In');
-                //     break;
+                case 'customer':
+                    $request->session()->regenerate();
+                    return redirect()->route('staffIndex')->with('message','Logged In');
+                    break;
                 default:
                 return redirect('/');
                     break;

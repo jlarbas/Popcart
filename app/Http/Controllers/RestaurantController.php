@@ -123,6 +123,13 @@ class RestaurantController extends Controller
         return redirect()->route('home')->with('message','Restaurant deleted successfully!');
     }
 
-
+    public function staff()
+    {
+        return view('restaurants.staff', [
+            
+            'restaurants' => Restaurant::latest()->filter(request(['search']))->paginate(4)
+        ]);
+        
+    }
    
 }

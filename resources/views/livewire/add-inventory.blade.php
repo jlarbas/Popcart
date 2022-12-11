@@ -2,7 +2,7 @@
     <form method="POST" wire:submit.prevent="storeInventory" enctype="multipart/form-data">
         
         @csrf
-        <div class="mb-6">
+        <div class="mb-6 ml-2">
             <label
                 for="item_name"
                 class="inline-block text-lg mb-2"
@@ -33,6 +33,8 @@
             @error('quantity')
             <p class="text-orange-500 text-xs mt-1">{{ $message }}</p>
             @enderror
+        </div>
+        <div class="mb-6">
             <label
                 for="price"
                 class="inline-block text-lg mb-2"
@@ -63,6 +65,8 @@
             @error('measurement')
             <p class="text-orange-500 text-xs mt-1">{{ $message }}</p>
             @enderror
+        </div>
+        <div class="mb-6">
             <label
                 for="item_code"
                 class="inline-block text-lg mb-2"
@@ -92,6 +96,8 @@
             @error('quantity_used')
             <p class="text-orange-500 text-xs mt-1">{{ $message }}</p>
             @enderror
+        </div>
+        <div class="mb-6">
             <label
                 for="date_consumed"
                 class="inline-block text-lg mb-2"

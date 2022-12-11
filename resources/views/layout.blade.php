@@ -35,7 +35,7 @@
     </head>
     <body style="background-image: linear-gradient(to right, #F8DFB9 , #F4C9D7)">
     <body class="mb-48">
-    
+    @if(auth()->user()->role != "customer")
     <div class="bg-white">
         <nav class="flex justify-between items-center mb-0">
 
@@ -45,6 +45,7 @@
         </a>
             <ul class="flex space-x-6 mr-6 text-lg">
                 @auth
+                
                 <li>
                     <i class="fa-solid fa-user"></i><span class=""> {{ auth()->user()->name }}</span>
                 </li>
@@ -77,9 +78,11 @@
                     >
                   
                 </li>
+                
                 @endauth
             </ul>
         </nav>
+        @endif
         <main>
         @yield('content')
         </main>
@@ -92,6 +95,7 @@
             class="absolute top-1/3 right-10 bg-black text-white py-2 px-5"
             >Post Job</a
         >
+    
     </footer> --}}
     <x-flash-message />
     @livewireScripts

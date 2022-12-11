@@ -3,13 +3,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<<<<<<< HEAD
-        <link rel="stylesheet" href="{{asset('assets/style.css')}}">
-        <title>Receipt example</title>
-=======
         <link href="{{asset('assets/style.css')}}" rel="stylesheet" type="text/css" >
         <title>Receipt</title>
->>>>>>> d2e3763674dc0f412a41265de6cda0eedd48266b
     </head>
     <body style="background-image: linear-gradient(to right, #F8DFB9 , #F4C9D7)">
 
