@@ -101,20 +101,38 @@
     >Inventory</a>
 
     <div class="mx-4">
-        <x-card class="p-10  bg-white border border-gray-100 rounded mt-10 border border-gray-100 rounded-lg shadow-lg">
-                <x-listing-showcard :restaurant="$restaurant"/>   
+        <x-card class="p-10  bg-white border border-gray-100 rounded mt-10 border border-gray-100 rounded-lg shadow-lg mb-8">
+                <x-listing-showcard :restaurant="$restaurant"/>  
+                
+           
+          <div class="flex">
+                <div class="text-white rounded py-4 px-4 bg-gradient-to-r from-orange-500 to-orange-400 mr-2 ml-2 mb-2 text-left w-80">
+                <p class="mb-4 text-lg font-semibold">₱{{$data}} </p>
+                <p>Daily Sales </p> </div>
+
+                <div class="text-white rounded py-4 px-4 bg-gradient-to-r from-orange-500 to-orange-400 mr-2 ml-2 mb-2 text-left w-80">
+                <p class="mb-4 text-lg font-semibold">₱{{$data}} </p>
+                <p>Weekly Sales </p> </div>
+            </div>
+
+       
+
+
+
+                
+
+
         </x-card>
-        <h3>Daily Sales: {{$data}}</h3>
-        <h3>Weekly Sales: {{$data}}</h3>
+        
         @foreach($restaurant->products as $product)
-            <div class="inline-block flex bg-white border border-gray-400 py-2 w-48 px-2 mt-2 mb-2 md:block rounded shadow-lg">
+            <div class="inline-block flex bg-white Z py-2 w-48 px-2 mt-2 mb-2 md:block rounded shadow-lg">
                 <img
                                 class="hidden w-48 h-48 mr-6 md:block border border-gray-400 rounded"
                                 src="{{$product->picture ? asset('storage/' . $product->picture) : asset('/images/no-image.png')}}"
                                 alt=""
                             />
-                <p class ="font-bold text-lg mb-2">{{$product->name}}</p>
-                <p class ="font-bold text-orange-600 text-lg mb-2">₱{{$product->price}}</p>
+                <p class ="font-semibold text-lg  mt-2">{{$product->name}}</p>
+                <p class ="font-semibold text-orange-600 text-lg">₱{{$product->price}}</p>
                 <input data-id="{{$product->id}}" 
                 class="toggle-class" 
                 type="checkbox" 
@@ -122,7 +140,7 @@
                 data-offstyle="danger" 
                 data-toggle="toggle" 
                 data-on="Active" 
-                data-off="InActive" {{ $product->isAvailable ? 'checked' : '' }}>
+                data-off="InActive" {{ $product->isAvailable ? 'checked' : '' }}> Availability
         @endforeach
         </div>
     </div>       

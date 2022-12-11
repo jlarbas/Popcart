@@ -39,7 +39,7 @@
     <div class="bg-white">
         <nav class="flex justify-between items-center mb-0">
             <a href="{{ route('home') }}"
-                ><img class="w-24" src="{{ asset('images/logoCart.png') }}" alt="" class="logo"/>
+                ><img class="w-20 border-2 border-orange-400 shadow-lg rounded-full mt-2 mb-2 ml-2 mr-2"  src="{{ asset('images/logoCart.png') }}" alt="" class="logo"/>
         </a>
             <ul class="flex space-x-6 mr-6 text-lg">
                 @auth
