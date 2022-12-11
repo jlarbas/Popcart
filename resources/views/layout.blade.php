@@ -35,17 +35,15 @@
     </head>
     <body style="background-image: linear-gradient(to right, #F8DFB9 , #F4C9D7)">
     <body class="mb-48">
-    @if(auth()->user()->role != "customer")
+        
     <div class="bg-white">
         <nav class="flex justify-between items-center mb-0">
-
-    
             <a href="{{ route('home') }}"
                 ><img class="w-24" src="{{ asset('images/logoCart.png') }}" alt="" class="logo"/>
         </a>
             <ul class="flex space-x-6 mr-6 text-lg">
                 @auth
-                
+                @if(auth()->user()->role != "customer")
                 <li>
                     <i class="fa-solid fa-user"></i><span class=""> {{ auth()->user()->name }}</span>
                 </li>
@@ -56,14 +54,10 @@
                             <a><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
                     </form>
                 </li>
-                <li>
-                    <a href="/listings/manage" class="hover:text-hub "
-                        ><i class="fa-solid fa-gear"></i>
-                        Dashboard</a
-                    >
-                </li>
-
+                
+                
         </div>
+        @endif
                 @else
                 <li>
                     {{-- <a href="{{ route('register') }}" class="hover:text-hub  "
@@ -82,7 +76,7 @@
                 @endauth
             </ul>
         </nav>
-        @endif
+        
         <main>
         @yield('content')
         </main>
