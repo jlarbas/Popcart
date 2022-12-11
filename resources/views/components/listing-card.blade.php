@@ -20,7 +20,7 @@
                 <a href="{{route('restaurants.show', $restaurant->id)}}" class="hover:text-hub"> {{ $restaurant->name }}</a>
             </h3>
            
-            
+            <i class="text-lg fa-solid fa-location-dot mb-2"></i> {{ $restaurant->address}}
             <div class="text-lg  mb-2 text-orange-600 font-semibold">{{ $restaurant->status }}</div>
             
         </div>

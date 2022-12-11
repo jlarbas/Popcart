@@ -3,22 +3,30 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="style.css">
-        <title>Receipt example</title>
+        <link href="{{asset('assets/style.css')}}" rel="stylesheet" type="text/css" >
+        <title>Receipt</title>
     </head>
-    <body>
+    <body style="background-image: linear-gradient(to right, #F8DFB9 , #F4C9D7)">
+
+
+    
+
+    
 <div class="ticket">
-    <img src="./logo.png" alt="Logo">
-    <p class="centered">RECEIPT No. {{$order->id}}
-        <br>Address line 1
-        <br>Address line 2</p>
+
+<div class="content">
+    <img  class="" src="{{ asset('images/logoCartSmall.png') }}" alt="">
+    <p class="LogoName"> POP Cart </p>
+    <p class="centered">Receipt No. {{$order->id}}
+        
+        <br>Address line 2</p><br>
+</div">
     <table>
         <thead>
             <tr>
-                <th class="description">Description</th>
-                <th class="quantity">Q.</th>
-                
-                <th class="price">$$</th>
+                <th>Name</th>
+                <th>Qty</th>
+                <th>Price</th>
             </tr>
         </thead>
         <tbody>
@@ -34,8 +42,13 @@
     </table>
     <p class="centered">Thanks for your purchase!
         
+    
 </div>
+</div><br>
 <button id="btnPrint" class="hidden-print">Print</button>
+
+
+
 <script >
 const $btnPrint = document.querySelector("#btnPrint");
 $btnPrint.addEventListener("click", () => {
@@ -44,3 +57,4 @@ window.print();
 </script>
 </body>
 </html>
+

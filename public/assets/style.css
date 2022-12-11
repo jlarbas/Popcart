@@ -39,13 +39,119 @@ img {
     max-width: inherit;
     width: inherit;
 } */
-.ticket {
-    width: 155px;
-    max-width: 155px;
-}
+
 @media print {
     .hidden-print,
     .hidden-print * {
         display: none !important;
     }
 }
+
+.ticket {
+    border-radius: 10px;
+    background-color: white;
+    text-align: center;
+    width:58mm;
+    margin: auto;
+    margin-top: 5%;
+    
+    
+  }
+
+  .content {
+    border-radius: 10px;
+    background-color: white;
+    text-align: center;
+    padding: 15px;
+    margin: auto;
+  }
+
+.logoName{
+    font-weight: bold;
+}
+
+
+
+table {
+  
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  margin: .5em 0 .75em;
+}
+
+table tr {
+    
+  background-color: #f8f8f8;
+  border: 1px solid white;
+  padding: .35em;
+}
+
+table th,
+table td {
+  
+  padding: .625em;
+  text-align: center;
+  font-size: .85em
+}
+
+table th {
+  font-size: .60em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  
+  
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+}
+
+
+#btnPrint {
+    background-color: #ff8400; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 10px;
+    margin: auto;
+    margin-left: 625px;
+}
+

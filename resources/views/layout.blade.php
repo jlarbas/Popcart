@@ -39,11 +39,13 @@
     <div class="bg-white">
         <nav class="flex justify-between items-center mb-0">
 
-        <p class="font-bold  text-orange-400 text-4xl">
-             POP<span class="text-black">Cart</span> <p>
+    
             <a href="{{ route('home') }}"
                 ><img class="w-24" src="{{ asset('images/logoCart.png') }}" alt="" class="logo"/>
         
+
+
+                
         </a>
             <ul class="flex space-x-6 mr-6 text-lg">
                 @auth
