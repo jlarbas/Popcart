@@ -85,7 +85,7 @@
         
         <div class="grid grid-cols-5 gap-x-0 gap-y-2 mr-20 ml-5">
             @foreach($restaurant->products as $product)
-            @if($product->status == 'available')
+            @if($product->isAvailable == 1)
             <div class=" border-2 border-gray-400 rounded p-4">
                 
                 <a href="#"  wire:click="addToCart({{$product->id}})">

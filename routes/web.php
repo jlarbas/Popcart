@@ -21,6 +21,7 @@ use App\Http\Controllers\InventoryTicketController;
 */
 
 //Restaurants
+
 Route::get('/', [RestaurantController::class,'index'])->name('home')->middleware('auth');
 //Route::get('/index/{restaurant}',[RestaurantController::class,'show'])->name('restaurants');
 Route::resource('restaurants',RestaurantController::class)->middleware('auth');
@@ -35,6 +36,7 @@ Route::put('/users/{user}',[UserController::class,'update'])->name('updateuser')
 Route::get('/users/{user}/edit',[UserController::class,'edit'])->name('edituser')->middleware('auth');
 
 //Products
+Route::get('/changeStatus',[ProductController::class,'changeStatus'])->name('changeStatus');    
 Route::resource('products',ProductController::class);
 
 //Cart

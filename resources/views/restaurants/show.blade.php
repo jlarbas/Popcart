@@ -13,8 +13,9 @@
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
         />
-        <link href="{{asset('assets/style.css')}}" rel="stylesheet" type="text/css" >
-        
+
+        <link href="{{asset('assets/style.css')}}" rel="stylesheet" type="text/css" >  
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script>
         <script src="https://cdn.tailwindcss.com"></script>
         <script src="//unpkg.com/alpinejs" defer></script>
         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -125,6 +126,14 @@
                         />
             <p class ="font-bold text-lg mb-2">{{$product->name}}</p>
             <p class ="font-bold text-orange-600 text-lg mb-2">₱{{$product->price}}</p>
+            <input data-id="{{$product->id}}" 
+            class="toggle-class" 
+            type="checkbox" 
+            data-onstyle="success" 
+            data-offstyle="danger" 
+            data-toggle="toggle" 
+            data-on="Active" 
+            data-off="InActive" {{ $product->isAvailable ? 'checked' : '' }}>
             </div>
 
 
@@ -159,5 +168,23 @@
         
         
     </body>
-    </html>        
-        
+    <script>
+        $(function() {
+          $('.toggle-class').change(function() {
+              var isAvailable = $(this).prop('checked') == true ? 1 : 0; 
+              var product_id = $(this).data('id'); 
+               
+              $.ajax({
+                  type: "GET",
+                  dataType: "json",
+                  url: '/changeStatus',
+                  data: {'isAvailable': isAvailable, 'product_id': product_id},
+                  success: function(data){
+                    console.log(data.success)
+                  }
+              });
+          })
+        })
+      </script>  
+    </html>      
+

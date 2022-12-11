@@ -33,12 +33,10 @@
                 class="inline-block text-lg mb-2"
                 >Status</label
             >
-            <input
-                type="text"
-                class="border border-gray-400 rounded p-2 w-full"
-                name="status"
-                
-            />
+            <select name="status" class="border border-gray-400 rounded p-2 px-20 ">
+                <option value="open" > Open </option>
+                <option value="closed" >Closed </option>
+        </select>
             @error('status')
             <p class="text-orange-500 text-xs mt-1">{{ $message }}</p>
             @enderror

@@ -55,7 +55,7 @@ class ProductController extends Controller
 
         $data->name = $request->input('name');
         $data->price = $request->input('price');
-        $data->status = $request->input('status');
+        $data->isAvailable = 1;
         $data->restaurant_id = $request->input('restaurant_id');
         //If the form has a file attached then store the file in the db
         if($request->hasFile('picture')){
@@ -128,5 +128,14 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function changeStatus(Request $request)
+    {
+        $product = Product::find($request->product_id);
+        $product->isAvailable = $request->isAvailable;
+        $product->save();
+  
+        return response()->json(['success'=>'Status change successfully.']);
     }
 }

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('restaurant_id')->nullable();
             $table->string('name');
-            $table->string('status');
+            $table->boolean('isAvailable');
             $table->float('price',8,2);
             $table->string('picture')->nullable();
             $table->timestamps();

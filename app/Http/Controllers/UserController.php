@@ -28,36 +28,41 @@ class UserController extends Controller
 
     public function store(Request $request){
         
-        $form = $request->validate([
+        $request->validate([
             'name' => ['required','min:3'],
             'email' => ['required','email', Rule::unique('users','email')],
-            'role' => 'required',
-            'contact' =>'required',
-            'status' =>'required',
-            'address' =>'required',
-            'schedule' =>'required',
-            'restaurant_id' =>'nullable',
             'password' => 'required|confirmed|min:6'
         ]);
         
+        $data = new User();
+        $data->name = $request->input('name');
+        $data->email = $request->input('email');
+        $data->restaurant_id = $request->input('restaurant_id');
+        $data->contact = $request->input('contact');
+        $data->role = $request->input('role');
+        $data->status = $request->input('status');
+        $data->address = $request->input('address');
+        $data->schedule = $request->input('schedule');
+        $data->password =  bcrypt($request->input('password'));
         //Hash Password
-        $form['password'] = bcrypt($form['password']);
-
         if($request->hasFile('picture')){
-            $form['picture'] = $request->file('picture')->store('users','public');
+            $data->picture = $request->file('picture')->store('users','public');
         }
         //Creates the User
-        User::create($form);
+        $data->save();
 
         //Log in the user
         // auth()->login($user);
 
-        return redirect('/')->with('message','User created and logged in!');
+        
+        
+
+        return redirect('/')->with('message','User created!');
     }
 
     public function edit(User $user){
         $restaurants = Restaurant::all();
-        return view('users.edit', ['user' => $user,'restaurant' => $restaurants]);
+        return view('users.edit', ['user' => $user,'restaurants' => $restaurants]);
     }
 
     public function update(Request $request, User $user){
@@ -98,11 +103,30 @@ class UserController extends Controller
 
         if(auth()->attempt($form)){
             $request->session()->regenerate();
-            return redirect('/')->with('message','Logged In');
+            $type = auth()->user()->role; 
+            switch ($type) {
+                case 'management':
+                    return redirect('/register')->with('message','Logged In');
+                    break;
+                case 'staff':
+                    $request->session()->regenerate();
+                    return redirect('/')->with('message','Logged In');
+                    break; 
+                // case 'customer':
+                //     $request->session()->regenerate();
+                //     return redirect('/')->with('message','Logged In');
+                //     break;
+                default:
+                return redirect('/');
+                    break;
+            }
+            
         }else{
             return back()->withErrors(['email'=>'Invalid email'])->onlyInput('email ');
         }
-    }
+            
+        }
+   
 
     public function logout(Request $request){
         auth()->logout();

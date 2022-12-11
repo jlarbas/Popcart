@@ -123,5 +123,6 @@ class RestaurantController extends Controller
         return redirect()->route('home')->with('message','Restaurant deleted successfully!');
     }
 
+
    
 }
