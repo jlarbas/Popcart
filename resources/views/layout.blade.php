@@ -42,10 +42,6 @@
     
             <a href="{{ route('home') }}"
                 ><img class="w-24" src="{{ asset('images/logoCart.png') }}" alt="" class="logo"/>
-        
-
-
-                
         </a>
             <ul class="flex space-x-6 mr-6 text-lg">
                 @auth

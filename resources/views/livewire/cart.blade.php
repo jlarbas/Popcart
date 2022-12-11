@@ -85,15 +85,8 @@
         
         <div class="grid grid-cols-5 gap-x-0 gap-y-2 mr-20 ml-5">
             @foreach($restaurant->products as $product)
-<<<<<<< HEAD
             @if($product->isAvailable == 1)
             <div class=" border-2 border-gray-400 rounded p-4">
-=======
-            @if($product->status == 'available')
-
-            <div class="bg-white border-2 border-black-200 shadow-lg rounded-lg">
-            <div class="border-1 border-gray-400 rounded p-4">
->>>>>>> d2e3763674dc0f412a41265de6cda0eedd48266b
                 
                 <a href="#"  wire:click="addToCart({{$product->id}})">
                 <img
