@@ -31,18 +31,16 @@ Route::get('restaurants/{restaurant:id}/products', [RestaurantController::class,
 Route::get('/users', [UserController::class,'index'])->name('usersindex')->middleware('auth');
 Route::get('/users/{user}',[UserController::class,'show'])->name('showuser')->middleware('auth');
 Route::get('/register',[UserController::class,'create'])->name('register');
-Route::post('/users',[UserController::class,'store']);
+Route::post('/users',[UserController::class,'store'])->middleware('auth');;
 Route::put('/users/{user}',[UserController::class,'update'])->name('updateuser')->middleware('auth');
 Route::get('/users/{user}/edit',[UserController::class,'edit'])->name('edituser')->middleware('auth');
 
 //Products
 Route::get('/changeStatus',[ProductController::class,'changeStatus'])->name('changeStatus');    
-Route::resource('products',ProductController::class);
+Route::resource('products',ProductController::class)->middleware('auth');;
 
 //Cart
 Route::get('/restaurants/{restaurant:id}/pos',[CartController::class,'index'])->name('pos')->middleware('auth');
-
-
 
 
 //Orders
@@ -56,9 +54,8 @@ Route::get('restaurants/{inventory:id}/show', [InventoryController::class, 'show
 Route::get('/inventory',[InventoryTicketController::class,'createList'])->name('createInventory')->middleware('auth');
 Route::get('/inventory/submit',[InventoryTicketController::class,'submitList'])->name('inventoryTicket')->middleware('auth');
 
-
 //Authentication
-Route::get('/login',[UserController::class,'login'])->name('login');
+Route::get('/login',[UserController::class,'login'])->name('login')->middleware('guest');;
 Route::post('/logout',[UserController::class,'logout'])->name('logout')->middleware('auth');
 Route::post('/users/authenticate',[UserController::class,'authenticate'])->name('authenticate');
 
