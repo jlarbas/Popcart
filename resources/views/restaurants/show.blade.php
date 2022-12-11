@@ -104,6 +104,8 @@
         <x-card class="p-10  bg-white border border-gray-100 rounded mt-10 border border-gray-100 rounded-lg shadow-lg">
                 <x-listing-showcard :restaurant="$restaurant"/>   
         </x-card>
+        <h3>Daily Sales: {{$data}}</h3>
+        <h3>Weekly Sales: {{$data}}</h3>
         @foreach($restaurant->products as $product)
             <div class="inline-block flex bg-white border border-gray-400 py-2 w-48 px-2 mt-2 mb-2 md:block rounded shadow-lg">
                 <img

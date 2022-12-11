@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 
@@ -69,8 +71,12 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
-           
-        return view('restaurants.show', compact('restaurant'));
+        $data = Order::where('restaurant_id',$restaurant->id)->whereDate('created_at', Carbon::today())
+                   ->sum('total');
+        $week = Order::where('restaurant_id',$restaurant->id)->whereDate('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
+        ->sum('total');
+        
+        return view('restaurants.show', compact('restaurant','data','week'));
     }
 
     /**
@@ -131,5 +137,9 @@ class RestaurantController extends Controller
         ]);
         
     }
+
+    public function day(){
+        
+      }
    
 }
