@@ -18,7 +18,9 @@
                 <a href="{{route('showuser', $user->id)}}">{{ $user->name }}</a>
             </h3>       
             <div class="text-lg  mb-2">
-                <h3>Restaurant:</h3> {{ $user->restaurant->name}}
+                
+                <h3>Role:</h3> {{ $user->role}}
+                
             
             </div>
         </div>
