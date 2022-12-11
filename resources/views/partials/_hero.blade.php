@@ -8,10 +8,10 @@ class="relative h-72 bg-hub flex flex-col justify-center align-center text-cente
 
 <div class="z-10">
     <h1 class="text-6xl font-bold uppercase text-white">
-        Nav<span class="text-black">Bar</span>
+        POP<span class="text-black">Cart</span>
     </h1>
     <p class="text-2xl text-gray-200 font-bold my-4">
-        This is Navbar 
+        
     </p>
     <div>
         <a

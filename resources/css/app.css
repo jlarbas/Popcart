@@ -1,6 +1,12 @@
 .header {
-    
     background: white;
     color: white;
-    
+
+  }
+  
+.ticket {
+    border: 5px outset red;
+    background-color: rgb(234, 0, 255);
+    text-align: center;
+
   }

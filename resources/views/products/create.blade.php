@@ -1,9 +1,9 @@
 @extends('layout')
 @section('content')
 @include('partials._hero')
-<x-card class="p-10 rounded max-w-lg mx-auto mt-24 border border-gray-400">
+<x-card class="p-10 rounded-lg max-w-lg mx-auto mt-24 border border-gray-100 shadow-l">
     <header class="text-center">
-        <h2 class="text-2xl font-bold  mb-8">
+        <h2 class="text-2xl font-semibold  mb-8">
             Add Product
         </h2>
         
