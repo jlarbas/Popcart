@@ -8,11 +8,11 @@
             src="{{$product->picture ? asset('storage/' . $product->picture) : asset('/images/no-image.png')}}"
             alt="" />
         <div>
-            <h3 class="text-lg mb-2 font-bold hover:text-hub">
+            <h3 class="text-lg font-semibold hover:text-hub">
                 <a href="{{route('products.edit', $product->id)}}">{{ $product->name }}</a>
             </h3>
-            <div class="text-lg mb-2 font-bold text-orange-600">₱{{ $product->price }}</div>
-            <div class="text-lg mb-2">{{ $product->restaurant->name }}</div>
+            <div class="text-lg font-bold text-orange-600">₱{{ $product->price }}</div>
+            <div class="text-lg">{{ $product->restaurant->name }}</div>
         </div>
     </div>
 </div>

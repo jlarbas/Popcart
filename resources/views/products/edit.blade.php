@@ -3,7 +3,7 @@
 @include('partials._hero')
 <x-card class="p-10 rounded-lg max-w-lg mx-auto mt-24 border border-gray-100 shadow-lg">
     <header class="text-center">
-        <h2 class="text-2xl font-bold mb-8">
+        <h2 class="text-2xl font-semibold mb-8">
             Edit Product
         </h2>
         
