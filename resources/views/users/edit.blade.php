@@ -63,6 +63,7 @@
                 <select name="role" class="border border-gray-400 rounded p-2 px-20 ">
                 
                     <option value="management" > Management </option>
+                    <option value="staff" > Staff </option>
                     <option value="customer" > Customer </option>
                 </select>
                 @error('role')

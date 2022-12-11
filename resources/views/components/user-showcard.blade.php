@@ -12,9 +12,13 @@
                 {{-- <a href="{{route('users', $user->id)}}">{{ $user->name }}</a> --}}
                 <a href="{{route('showuser', $user->id)}}">{{ $user->name }}</a>
             </h3>
-            <div class="text-xl font-bold mb-4">{{ $user->email }}</div>
-            <div class="text-xl font-bold mb-4">{{ $user->role }}</div>
-            <div class="text-xl font-bold mb-4">{{ $user->schedule }}</div>
+            <div class="text-xl  mb-4">{{ $user->email }}</div>
+            <div class="text-xl  mb-4">{{ $user->restaurant->name }}</div>
+            <div class="text-xl  mb-4">{{ $user->role }}</div>
+            <div class="text-xl  mb-4">{{ $user->status }}</div>
+            <div class="text-xl  mb-4">{{ $user->contact }}</div>
+            <div class="text-xl  mb-4">{{ $user->address }}</div>
+            <div class="text-xl  mb-4">{{ $user->schedule }}</div>
 
 
             <ul class="flex">

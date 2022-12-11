@@ -17,7 +17,8 @@
                 />
 
             <h3 class="text-2xl mb-2">{{ $user->name}}</h3>
-            <x-user-card :user="$user"/>
+            
+            <x-user-showcard :user="$user"/>
                             </div>
                     </div>
             </div>

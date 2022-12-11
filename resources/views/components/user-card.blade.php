@@ -16,13 +16,10 @@
             <h3 class="text-lg mb-2 font-bold hover:text-hub">
                 {{-- <a href="{{route('users', $user->id)}}" >{{ $user->name }}</a> --}}
                 <a href="{{route('showuser', $user->id)}}">{{ $user->name }}</a>
-            </h3>
-            <div class="text-lg  mb-2">Email: {{ $user->email }}</div>
-            <div class="text-lg  mb-2">Role: {{ $user->role }}</div>
-            <div class="text-lg  mb-2">Schedule: {{ $user->schedule }}</div>           
+            </h3>       
             <div class="text-lg  mb-2">
-                <i class="fa-solid fa-location-dot mb-2"></i> {{ $user->address}}
-            <div class="text-lg  mb-2 text-orange-600 font-semibold">{{ $user->status }}</div>
+                <h3>Restaurant:</h3> {{ $user->restaurant->name}}
+            
             </div>
         </div>
     </div>
