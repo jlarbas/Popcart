@@ -9,26 +9,29 @@
             alt="" />
         <div>
             <h3 class="text-2xl">
-                {{-- <a href="{{route('users', $user->id)}}">{{ $user->name }}</a> --}}
+                {{-- <a class="font-semibold" href="{{route('users', $user->id)}}">{{ $user->name }}</a> --}}
                 <a href="{{route('showuser', $user->id)}}">{{ $user->name }}</a>
             </h3>
-            <div class="text-xl  mb-4">{{ $user->email }}</div>
-            <div class="text-xl  mb-4">{{ $user->restaurant->name }}</div>
-            <div class="text-xl  mb-4">{{ $user->role }}</div>
-            <div class="text-xl  mb-4">{{ $user->status }}</div>
-            <div class="text-xl  mb-4">{{ $user->contact }}</div>
-            <div class="text-xl  mb-4">{{ $user->address }}</div>
-            <div class="text-xl  mb-4">{{ $user->schedule }}</div>
+            <div class="text-lg  mb-2"> Email {{ $user->email }}</div>
+            <div class="text-lg  mb-2">Restaurant: {{ $user->restaurant->name }}</div>
+            <div class="text-lg  mb-2 capitalize">{{ $user->role }}</div>
+            <div class="text-lg  mb-2">{{ $user->contact }}</div>
+            <div class="text-lg  mb-2">{{ $user->address }}</div>
+            <div class="text-lg  mb-2">Schedule: {{ $user->schedule }}</div>
 
 
             <ul class="flex">
+             
+            <div class="text-lg">
+                <i class="fa-solid fa-location-dot mb-2"></i> {{ $user->address}}
+
+
                 <li
-                    class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs"
+                    class="text-orange-600 capitalize font-semibold"
                 >
                     {{$user->status}}
                 </li>
-            <div class="text-lg mt-4">
-                <i class="fa-solid fa-location-dot"></i> {{ $user->address}}
+
             </div>
         </div>
     </div>

@@ -13,13 +13,14 @@
             src="{{$user->picture ? asset('storage/'.$user->picture) : asset('/images/no-image.png')}}"
             alt="" />
         <div>
-            <h3 class="text-lg mb-2 font-bold hover:text-hub">
+            <h3 class="text-lg mb-2 font-semibold hover:text-hub">
                 {{-- <a href="{{route('users', $user->id)}}" >{{ $user->name }}</a> --}}
                 <a href="{{route('showuser', $user->id)}}">{{ $user->name }}</a>
             </h3>       
             <div class="text-lg  mb-2">
                 
-                <h3>Role:</h3> {{ $user->role}}
+                <h3 class="capitalize">Role: {{ $user->role}} </h3> 
+                
                 
             
             </div>

@@ -3,7 +3,7 @@
 
     <x-card class="p-10 rounded-lg max-w-lg mx-auto mt-24 border border-gray-100 shadow-lg">
         <header class="text-center">
-            <h2 class="text-2xl font-bold  mb-8">
+            <h2 class="text-2xl font-semibold  mb-8">
                 Edit
             </h2>
             
@@ -174,7 +174,7 @@
             <div class="mb-6">
                 <button
                     type="submit"
-                    class="bg-hub text-white rounded py-2 px-4 hover:bg-black"
+                    class="bg-hub text-white rounded py-2 px-4 hover:bg-orange-600"
                 >
                    Save Changes
                 </button>
