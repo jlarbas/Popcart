@@ -1,9 +1,7 @@
 @extends('layout')
 
 @section('content')
-    
 
-    
     <div>
         @foreach($restaurant->inventory as $data)
          <div>

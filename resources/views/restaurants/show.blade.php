@@ -115,13 +115,6 @@
                 <p>Weekly Sales </p> </div>
             </div>
 
-       
-
-
-
-                
-
-
         </x-card>
         
         @foreach($restaurant->products as $product)
