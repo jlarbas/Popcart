@@ -32,7 +32,7 @@
                 for="status"
                 class="inline-block text-lg mb-2"
                 >Status</label
-            >
+            ><br>
             <select name="status" class="border border-gray-400 rounded p-2 px-20 ">
                 <option value="open" > Open </option>
                 <option value="closed" >Closed </option>

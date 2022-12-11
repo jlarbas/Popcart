@@ -1,15 +1,16 @@
 @extends('layout')
 @section('content')
 
-    <x-card class="p-10 rounded max-w-lg mx-auto mt-24">
+<div class="mb-8">
+    <x-card class="p-10 rounded-lg max-w-lg mx-auto mt-24 border border-gray-200 shadow-lg mt-8">
         <header class="text-center">
-            <h2 class="text-2xl font-bold uppercase mb-1">
+            <h2 class="text-2xl font-semibold  mb-1">
                 Login
             </h2>
-            <p class="mb-4">Login into an account to post gigs</p>
+            
         </header>
 
-        <form action="{{ route('authenticate') }}" method="POST">
+        <form action="{{ route('authenticate') }}" method="POST" class="mb-8">
             @csrf
             <div class="mb-6">
                 <label for="email" class="inline-block text-lg mb-2"
@@ -48,12 +49,12 @@
             <div class="mb-6">
                 <button
                     type="submit"
-                    class="bg-hub text-white rounded py-2 px-4 hover:bg-black"
+                    class="bg-hub text-white rounded py-2 px-14 hover:bg-orange-500"
                 >
                     Login
                 </button>
             </div>
-
+            </div>
         </form>
     </x-card>
 

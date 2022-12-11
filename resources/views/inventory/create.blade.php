@@ -6,7 +6,7 @@
         <h2 class="text-2xl font-bold  mb-8">
             Add Record
         </h2>
-        <button onclick="Livewire.emit('openModal', 'add-inventory')">Create Inventory Item</button>
+        <button class="text-lg hover:text-orange-600" onclick="Livewire.emit('openModal', 'add-inventory')">Create Inventory Item</button>
       @livewire('livewire-ui-modal')
         
     </header>
