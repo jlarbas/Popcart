@@ -14,6 +14,7 @@
 <div class="grid grid-cols-5 gap-x-2 gap-y-2 mr-5 ml-5 mt-5">
 
         @foreach ($restaurant->order as $orderData)
+        @if($orderData->status == "pending")
          <div class="p-10 rounded-lg  mx-auto border border-gray-400">
             <a href="{{ route('displayOrder',$orderData->id) }}" class="hover:text-hub font-semibold"> Order
              {{ $orderData->id }}</a>
@@ -23,7 +24,7 @@
          </div>
      
          
-         
+         @endif
         @endforeach
     </div>
     </div>

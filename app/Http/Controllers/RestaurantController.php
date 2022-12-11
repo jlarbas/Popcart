@@ -20,6 +20,7 @@ class RestaurantController extends Controller
      */
     public function index()
     {
+        // dd(auth()->user()->role);
         return view('restaurants.index', [
             
             'restaurants' => Restaurant::latest()->filter(request(['search']))->paginate(4)
@@ -130,16 +131,13 @@ class RestaurantController extends Controller
     }
 
     public function staff()
-    {
+    {   
+       
         return view('restaurants.staff', [
             
             'restaurants' => Restaurant::latest()->filter(request(['search']))->paginate(4)
         ]);
         
     }
-
-    public function day(){
-        
-      }
    
 }

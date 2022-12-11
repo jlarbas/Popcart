@@ -3,13 +3,13 @@
 @include('partials._hero')
 @include('partials._search')
 
-
+@if(auth()->user()->role == "management")
 <a
             href="{{ route('restaurants.create') }}"
             class="ml-4 bg-hub inline-block text-white py-2.5 px-4 rounded-md hover:bg-orange-500 mb-8"
             >Add Restaurant</a
         >
-        
+@endif
 
 <div class="lg:grid lg:grid-cols-2 gap-4 space-y-4 md:space-y-0 mx-4">
     
