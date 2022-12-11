@@ -1,6 +1,6 @@
 @props(['restaurant'])
 
-<div class="rounded p-6 mb-8">
+<div class="rounded p-6">
     <div class="flex">
         {{-- Shows the Picture in the database if not then default picture --}}
         <img
