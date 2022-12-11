@@ -33,29 +33,11 @@ class Pos extends Component
         // $this->product = $product;
     }
 
-    public function addToCart($productId){
-        
-        $restaurantId = DB::table('products')->where('id',$productId)->value('restaurant_id');
-        
-        if(Cart::where('product_id',$productId)->exists()){
-            dd('temporary error message');
-        }else{
-        Cart::create([
-            'user_id' => auth()->user()->id,
-            'product_id' => $productId,
-            'restaurant_id' => $restaurantId,
-            'quantity' => $this->quantityCount,
-            
-        ]);
-        }
-    }
-
     public function decrementQuantity(int $cartId){
         $data = Cart::where('id',$cartId);
-        if($data){
-            
+        
+        if($data->quantity > 0){
             $data->decrement('quantity');  
-            
         }
         else{
             return back()->with('message','Failed to perform action!');
@@ -72,6 +54,31 @@ class Pos extends Component
             return back()->with('message','Failed to perform action!');
         }
     }
+    
+    public function addToCart($productId){
+        
+        $restaurantId = DB::table('products')->where('id',$productId)->value('restaurant_id');
+        
+        if(Cart::where('product_id',$productId)->exists()){
+                $data = Cart::where('product_id',$productId);
+            if($data){
+                $data->increment('quantity');
+            }
+            else{
+                return back()->with('message','Failed to perform action!');
+            }
+        }else{
+        Cart::create([
+            'user_id' => auth()->user()->id,
+            'product_id' => $productId,
+            'restaurant_id' => $restaurantId,
+            'quantity' => $this->quantityCount,
+            
+        ]);
+        }
+    }
+
+    
 
     public function destroyQuantity(int $cartId){
         Cart::where('id',$cartId)->delete();

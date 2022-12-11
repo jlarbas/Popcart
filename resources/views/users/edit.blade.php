@@ -60,12 +60,11 @@
                 <label for="role" class="inline-block text-lg mb-2">
                     Role
                 </label>
-                <input
-                    type="text"
-                    class="border border-gray-400 rounded p-2 w-full"
-                    name="role"
-                    value="{{ $user->role }}"
-                />
+                <select name="role" class="border border-gray-400 rounded p-2 px-20 ">
+                
+                    <option value="management" > Management </option>
+                    <option value="customer" > Customer </option>
+                </select>
                 @error('role')
                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                 @enderror
@@ -74,16 +73,26 @@
                 <label for="status" class="inline-block text-lg mb-2">
                     Status
                 </label>
-                <input
-                    type="text"
-                    class="border border-gray-400 rounded p-2 w-full"
-                    name="status"
-                    value="{{ $user->status }}"
-                />
+                <select name="status" class="border border-gray-400 rounded p-2 px-20 ">
+                
+                    <option value="open" > Active </option>
+                    <option value="closed" > Inactive </option>
+                </select>
                 @error('status')
                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                 @enderror
             </div>  
+            <div class="mb-6 mt-8 text-lg mb-2">
+                <label>Select Restaurant</label>
+                <br>
+                <select name="restaurant_id" class="border border-gray-400 rounded p-2 px-20 ">
+                @foreach($restaurants as $data)
+                    <option 
+                        value="{{ $data->id }}" 
+                    >{{ $data->name }}</option>
+                @endforeach
+                </select>
+            </div>
             <div class="mb-6">
                 <label for="address" class="inline-block text-lg mb-2">
                     Address

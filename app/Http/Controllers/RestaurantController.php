@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
 
 
 class RestaurantController extends Controller
@@ -68,7 +69,7 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
-            
+           
         return view('restaurants.show', compact('restaurant'));
     }
 
@@ -121,4 +122,6 @@ class RestaurantController extends Controller
         $restaurant->delete();
         return redirect()->route('home')->with('message','Restaurant deleted successfully!');
     }
+
+   
 }

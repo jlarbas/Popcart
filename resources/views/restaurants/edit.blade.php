@@ -4,7 +4,7 @@
 <x-card class="p-10 rounded-lg max-w-lg mx-auto mt-24 border border-gray-100 shadow-lg">
     <header class="text-center">
         <h2 class="text-2xl font-bold mb-8">
-            Create a Restaurant
+            Edit your Restaurant's Details
         </h2>
        
     </header>
@@ -34,12 +34,13 @@
                 class="inline-block text-lg mb-2"
                 >Status</label
             >
-            <input
-                type="text"
-                class="border border-gray-200 rounded p-2 w-full"
-                name="status"
-                value="{{ $restaurant->status }}"
-            />
+            <label>Select Restaurant</label>
+            <br>
+            <select name="status" class="border border-gray-400 rounded p-2 px-20 ">
+                
+                <option value="open" > Open </option>
+                <option value="closed" > Closed </option>
+            </select>
             @error('status')
             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
             @enderror
@@ -97,7 +98,7 @@
             <button
                 class="bg-hub text-white rounded py-2 px-4 hover:bg-orange-600">
             
-                Create Restaurant
+                Save Changes
             </button>
 
             <a href="/" class="bg-hub text-white rounded py-2 px-14 hover:bg-orange-500"> Back </a>

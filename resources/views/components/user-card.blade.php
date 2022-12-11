@@ -10,7 +10,7 @@
         {{-- Shows the Picture in the database if not then default picture --}}
         <img
             class="hidden w-48 h-48 mr-6 md:block rounded-lg border border-gray-400  "
-            src="{{$user->picture ? asset('storage/' . $user->picture) : asset('/images/no-image.png')}}"
+            src="{{$user->picture ? asset('storage/'.$user->picture) : asset('/images/no-image.png')}}"
             alt="" />
         <div>
             <h3 class="text-lg mb-2 font-bold hover:text-hub">

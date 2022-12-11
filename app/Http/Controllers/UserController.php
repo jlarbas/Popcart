@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -21,10 +22,12 @@ class UserController extends Controller
 
     //Register Form
     public function create(){
-        return view('users.register');
+        $restaurants = Restaurant::all();
+        return view('users.register',['restaurants'=>$restaurants]);
     }
 
     public function store(Request $request){
+        
         $form = $request->validate([
             'name' => ['required','min:3'],
             'email' => ['required','email', Rule::unique('users','email')],
@@ -33,9 +36,10 @@ class UserController extends Controller
             'status' =>'required',
             'address' =>'required',
             'schedule' =>'required',
+            'restaurant_id' =>'nullable',
             'password' => 'required|confirmed|min:6'
         ]);
-
+        
         //Hash Password
         $form['password'] = bcrypt($form['password']);
 
@@ -43,7 +47,7 @@ class UserController extends Controller
             $form['picture'] = $request->file('picture')->store('users','public');
         }
         //Creates the User
-        $user = User::create($form);
+        User::create($form);
 
         //Log in the user
         // auth()->login($user);
@@ -52,7 +56,8 @@ class UserController extends Controller
     }
 
     public function edit(User $user){
-        return view('users.edit', ['user' => $user]);
+        $restaurants = Restaurant::all();
+        return view('users.edit', ['user' => $user,'restaurant' => $restaurants]);
     }
 
     public function update(Request $request, User $user){

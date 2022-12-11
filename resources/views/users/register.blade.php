@@ -1,12 +1,12 @@
 @extends('layout')
 @section('content')
 
-    <x-card class="p-10 rounded-lg max-w-lg mx-auto mt-24 border border-gray-100 shadow-lg">
+    <x-card class="p-10 rounded max-w-lg mx-auto mt-24">
         <header class="text-center">
-            <h2 class="text-2xl font-bold  mb-8">
-                Registers
+            <h2 class="text-2xl font-bold uppercase mb-1">
+                Register
             </h2>
-            
+            <p class="mb-4">Create an account to post gigs</p>
         </header>
 
         <form action="/users" method="POST">
@@ -17,7 +17,7 @@
                 </label>
                 <input
                     type="text"
-                    class="border border-gray-400 rounded p-2 w-full"
+                    class="border border-gray-200 rounded p-2 w-full"
                     name="name"
                 />
                 @error('name')
@@ -31,7 +31,7 @@
                 >
                 <input
                     type="email"
-                    class="border border-gray-400 rounded p-2 w-full"
+                    class="border border-gray-200 rounded p-2 w-full"
                     name="email"
                 />
                 @error('email')
@@ -45,7 +45,7 @@
                 </label>
                 <input
                     type="text"
-                    class="border border-gray-400 rounded p-2 w-full"
+                    class="border border-gray-200 rounded p-2 w-full"
                     name="contact"
                 />
                 @error('contact')
@@ -56,11 +56,12 @@
                 <label for="role" class="inline-block text-lg mb-2">
                     Role
                 </label>
-                <input
-                    type="text"
-                    class="border border-gray-400 rounded p-2 w-full"
-                    name="role"
-                />
+                <select name="role" class="border border-gray-400 rounded p-2 px-20 ">
+                    
+                    <option value="management" > Management   </option>
+                    <option value="staff" > Staff   </option>
+                    <option value="customer" >Customer </option>
+            </select>
                 @error('role')
                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                 @enderror
@@ -69,11 +70,10 @@
                 <label for="status" class="inline-block text-lg mb-2">
                     Status
                 </label>
-                <input
-                    type="text"
-                    class="border border-gray-400 rounded p-2 w-full"
-                    name="status"
-                />
+                <select name="status" class="border border-gray-400 rounded p-2 px-20 ">
+                        <option value="active" > Active </option>
+                        <option value="inactive" >Inactive </option>
+                </select>
                 @error('status')
                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                 @enderror
@@ -84,7 +84,7 @@
                 </label>
                 <input
                     type="text"
-                    class="border border-gray-400 rounded p-2 w-full"
+                    class="border border-gray-200 rounded p-2 w-full"
                     name="address"
                 />
                 @error('address')
@@ -97,12 +97,24 @@
                 </label>
                 <input
                     type="text"
-                    class="border border-gray-400 rounded p-2 w-full"
+                    class="border border-gray-200 rounded p-2 w-full"
                     name="schedule"
                 />
                 @error('schedule')
                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                 @enderror
+            </div>
+            <div class="mb-6 mt-8 text-lg mb-2">
+                <label>Select Restaurant</label>
+                <br>
+                <select name="restaurant_id" class="border border-gray-400 rounded p-2 px-20 ">
+                @foreach($restaurants as $restaurant)
+                <option value="">--Please choose an option--</option>
+                    <option 
+                        value="{{ $restaurant->id }}" 
+                    >{{ $restaurant->name }}</option>
+                @endforeach
+                </select>
             </div>
             <div class="mb-6">
                 <label for="picture" class="inline-block text-lg mb-2">
@@ -110,7 +122,7 @@
                 </label>
                 <input
                     type="file"
-                    class="border border-gray-200 rounded p-4 w-full"
+                    class="border border-gray-200 rounded p-2 w-full"
                     name="picture"
                 />
                 @error('picture')
@@ -126,7 +138,7 @@
                 </label>
                 <input
                     type="password"
-                    class="border border-gray-400 rounded p-2 w-full"
+                    class="border border-gray-200 rounded p-2 w-full"
                     name="password"
                 />
                 @error('password')
@@ -143,7 +155,7 @@
                 </label>
                 <input
                     type="password"
-                    class="border border-gray-400 rounded p-2 w-full"
+                    class="border border-gray-200 rounded p-2 w-full"
                     name="password_confirmation"
                 />
                 @error('password_confirmation')
@@ -154,7 +166,7 @@
             <div class="mb-6">
                 <button
                     type="submit"
-                    class="bg-hub text-white rounded py-2 px-14 hover:bg-orange-500"
+                    class="bg-hub text-white rounded py-2 px-4 hover:bg-black"
                 >
                    Create
                 </button>

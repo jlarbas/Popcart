@@ -16,7 +16,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('restaurant')->nullable();
+            $table->foreignId('restaurant_id')->nullable();
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('role');
             $table->string('status');
             $table->string('address');
-            $table->string('schedule')->nullable();
+            $table->string('schedule');
             $table->string('picture')->nullable();
             $table->string('password');
             $table->rememberToken();

@@ -30,7 +30,7 @@ Route::get('restaurants/{restaurant:id}/products', [RestaurantController::class,
 Route::get('/users', [UserController::class,'index'])->name('usersindex')->middleware('auth');
 Route::get('/users/{user}',[UserController::class,'show'])->name('showuser')->middleware('auth');
 Route::get('/register',[UserController::class,'create'])->name('register');
-Route::post('/users',[UserController::class,'store'])->name('createuser');
+Route::post('/users',[UserController::class,'store']);
 Route::put('/users/{user}',[UserController::class,'update'])->name('updateuser')->middleware('auth');
 Route::get('/users/{user}/edit',[UserController::class,'edit'])->name('edituser')->middleware('auth');
 

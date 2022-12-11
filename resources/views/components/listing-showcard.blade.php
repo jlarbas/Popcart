@@ -9,7 +9,7 @@
             alt="" />
         <div>
             <h3 class="text-2xl">
-                <a href="{{route('restaurants', $restaurant->id)}}">{{ $restaurant->name }}</a>
+                <a href="{{route('restaurants.show', $restaurant->id)}}">{{ $restaurant->name }}</a>
             </h3>
             <div class="text-xl font-bold mb-4">{{ $restaurant->contact }}</div>
             <ul class="flex">
