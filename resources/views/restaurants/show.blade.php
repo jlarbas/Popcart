@@ -117,6 +117,7 @@
 
         </x-card>
         
+        <div class="grid grid-cols-5 gap-x-0 gap-y-2 mr-10 ml-10 mt-10">
         @foreach($restaurant->products as $product)
             <div class="inline-block flex bg-white Z py-2 w-48 px-2 mt-2 mb-2 md:block rounded shadow-lg">
                 <img
@@ -134,9 +135,11 @@
                 data-toggle="toggle" 
                 data-on="Active" 
                 data-off="InActive" {{ $product->isAvailable ? 'checked' : '' }}> Availability
+                </div>  
         @endforeach
         </div>
-    </div>       
+    </div>    <br> <br>
+       
         </main>
     <x-flash-message />
 </body>

@@ -83,10 +83,11 @@
     {{-- Menu Items --}}
     <div class="col-span-2 bg-gray-50 border border-gray-100 shadow-lg rounded-lg p-6 mr-4 mt-8">
         
-        <div class="grid grid-cols-5 gap-x-0 gap-y-2 mr-20 ml-5">
+        <div class="grid grid-cols-5 gap-x-2 gap-y-1 mr-5 ml-5">
+            
             @foreach($restaurant->products as $product)
             @if($product->isAvailable == 1)
-            <div class="rounded p-4 border border-gray-200 shadow-lg">
+            <div class="rounded p-4 border border-orange-200 shadow-lg">
                 
                 <a href="#"  wire:click="addToCart({{$product->id}})">
                 <img
@@ -101,7 +102,7 @@
                 ₱{{$product->price}}<p>
                     
             </div>   
-            </div>
+            
             @endif
             @endforeach
           </div>
