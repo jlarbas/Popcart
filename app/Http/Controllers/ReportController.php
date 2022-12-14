@@ -24,7 +24,8 @@ class ReportController extends Controller
     {
         $start = Carbon::now()->subWeek()->startOfWeek();
         $end = Carbon::now()->subWeek()->endOfWeek();
-
+        $med = Carbon::now()->subDays(7);
+        $high = Carbon::now()->subDays(30);
         //Sales Queries//
         //Daily Sales//
         $data = Order::where('restaurant_id',$restaurant->id)->whereDate('created_at', Carbon::today())
@@ -44,7 +45,8 @@ class ReportController extends Controller
         DB::raw('(sum(order_lists.price)) AS sales'),
         ])
         ->get();
-        
+
+        //Daily Total Sales and Count
         $day = OrderList::where('restaurant_id', $restaurant->id)
         ->whereDate('created_at', Carbon::today())
         ->groupBy('product_name')
@@ -56,13 +58,38 @@ class ReportController extends Controller
         ])
         ->get();
 
+        $meddata = OrderList::where('restaurant_id', $restaurant->id)
+        ->whereDate('created_at', $med)
+        ->groupBy('product_name')
+        ->select([
+        'order_lists.id',
+        'order_lists.product_name',
+        DB::raw('sum(order_lists.quantity) AS purchases'),
+        DB::raw('(sum(order_lists.price)) AS sales'),
+        ])
+        ->get();
+        
+        $highdata = OrderList::where('restaurant_id', $restaurant->id)
+        ->whereDate('created_at', $high)
+        ->groupBy('product_name')
+        ->select([
+        'order_lists.id',
+        'order_lists.product_name',
+        DB::raw('sum(order_lists.quantity) AS purchases'),
+        DB::raw('(sum(order_lists.price)) AS sales'),
+        ])
+        ->get();
+       
+
         return view('reports.show', compact(
             'restaurant',
             'data',
             'week',
             'products',
             'day',
-            'lastweek'
+            'lastweek',
+            'meddata',
+            'highdata'
         ));
     }
 

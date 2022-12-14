@@ -116,9 +116,22 @@
                     <p>Product Name: {{$data->product_name}} </p> 
                 </div>
                 @endforeach
-            
-            
-
+                
+                <table style="width:100%">
+                    <tr>
+                      <th colspan="3">Daily</th>
+                      
+                    </tr>
+                    @foreach($day as $data)
+                    <tr>
+                        <td width="33%">{{$data->product_name}}</td>
+                      <td width="33%">{{$data->purchases}}</td>
+                      <td width="33%">{{$data->sales}}</td>
+                      
+                    </tr>
+                    @endforeach
+                  </table>
+                  
         </x-card>
         @if(auth()->user()->role_id == 2)
         <div class="grid grid-cols-5 gap-x-0 gap-y-2 mr-10 ml-10 mt-10">
