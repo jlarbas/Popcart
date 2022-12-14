@@ -1,17 +1,23 @@
 @props(['user'])
 
-<div class="bg-gray-50 border border-gray-400 rounded p-6">
+{{-- User Details--}}
+
+
+<div class="rounded p-6">
     <div class="flex">
         {{-- Shows the Picture in the database if not then default picture --}}
         <img
-            class="hidden w-48 h-48 mr-6 md:block"
+            class="hidden w-48 h-48 mr-6 md:block rounded-full mb-4"
             src="{{$user->picture ? asset('storage/' . $user->picture) : asset('/images/no-image.png')}}"
             alt="" />
-        <div>
+    </div>
+
             <h3 class="text-2xl">
                 {{-- <a class="font-semibold" href="{{route('users', $user->id)}}">{{ $user->name }}</a> --}}
                 <a href="{{route('showuser', $user->id)}}">{{ $user->name }}</a>
             </h3>
+        <div>
+            
             <div class="text-lg  mb-2"> Email {{ $user->email }}</div>
             @if($user->restaurant_id == 0)
             <div class="text-lg  mb-2">Not assisgned to a restaurant</div>
@@ -36,7 +42,4 @@
                     {{$user->status}}
                 </li>
 
-            </div>
-        </div>
-    </div>
-</div>
+            

@@ -9,13 +9,13 @@
         <input
             type="text"
             name="search"
-            class="h-14 w-full pl-10 pr-20 rounded-lg z-0 focus:shadow focus:outline-none"
-            placeholder="Search..."
+            class="h-14 w-full pl-10 pr-20 rounded-lg z-0 shadow-md focus:outline-none"
+            placeholder="Search Restaurant"
         />
         <div class="absolute top-2 right-2">
             <button
                 type="submit"
-                class="h-10 w-20 text-white rounded-lg bg-orange-500 hover:bg-orange-600"
+                class="h-10 w-20 text-white rounded-lg bg-hub hover:bg-orange-500"
             >
                 Search
             </button>

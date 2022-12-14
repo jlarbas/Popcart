@@ -25,13 +25,19 @@
                     extend: {
                         colors: {
                            hub: "#ff8400",
+                           gray1: "#f2f2f2", 
+                           pink1: "#f4c9d7"
                         },
                     },
                 },
             };
         </script>
        
-        <title>Home Page</title>
+        <title>Pop Cart</title>
+        <link rel="icon" type="image/x-icon" href="{{ asset('images/icon.png') }}">
+
+       
+
     </head>
     <body style="background-image: linear-gradient(to right, #F8DFB9 , #F4C9D7)">
     <body class="mb-48">

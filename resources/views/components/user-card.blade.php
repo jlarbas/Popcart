@@ -1,29 +1,29 @@
 @props(['user'])
 
-<div class="bg-gray-50 border border-gray-100  p-6 rounded-lg shadow-lg">
+<div class=" rounded-lg shadow-lg p-6  ml-4 grid grid-auto-fit hover:bg-orange-200">
+ 
 
+<a href="{{route('showuser', $user->id)}}">
 
-
-
-
-    <div class="flex">
+    <div class="grid grid-auto-fit">
+        
         {{-- Shows the Picture in the database if not then default picture --}}
         <img
-            class="hidden w-48 h-48 mr-6 md:block rounded-lg border border-gray-400  "
+            class="hidden md:block rounded-full border border-gray-400 grid grid-auto-fit "
             src="{{$user->picture ? asset('storage/'.$user->picture) : asset('/images/no-image.png')}}"
             alt="" />
         <div>
-            <h3 class="text-lg mb-2 font-semibold hover:text-hub">
-                {{-- <a href="{{route('users', $user->id)}}" >{{ $user->name }}</a> --}}
-                <a href="{{route('showuser', $user->id)}}">{{ $user->name }}</a>
-            </h3>       
-            <div class="text-lg  mb-2">
-                
-                <h3 class="capitalize">Role: {{ $user->role}} </h3> 
-                
+        
+                <h3 class="text-base font-semibold mt-2 text-center">
+                {{ $user->name }}
+                </h3> 
+                 
+        
+                <h3 class="capitalize">{{ $user->role}} </h3> 
+</a>
                 
             
-            </div>
+           
         </div>
     </div>
 </div>
