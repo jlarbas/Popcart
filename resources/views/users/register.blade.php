@@ -54,16 +54,18 @@
                 @enderror
             </div>
             <div class="mb-6">
-                <label for="role" class="inline-block text-lg mb-2">
+                <label for="role_id" class="inline-block text-lg mb-2">
                     Role
                 </label><br>
-                <select name="role" class="border border-gray-400 rounded p-2 px-20 ">
-                    
-                    <option value="management" > Management   </option>
-                    <option value="staff" > Staff   </option>
-                    <option value="customer" >Customer </option>
-            </select>
-                @error('role')
+                <select name="role_id" class="border border-gray-400 rounded p-2 px-20 ">
+                    <option value="">--Please choose an option--</option>
+                    @foreach($roles as $role)
+                    <option 
+                        value="{{ $role->id }}" 
+                    >{{ $role->name }}</option>
+                @endforeach
+                </select>
+                @error('role_id')
                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                 @enderror
             </div>
@@ -109,12 +111,10 @@
                 <label>Select Restaurant</label>
                 <br>
                 <select name="restaurant_id" class="border border-gray-400 rounded p-2 px-20 ">
-                @foreach($restaurants as $restaurant)
-                <option value="">--Please choose an option--</option>
-                    <option 
-                        value="{{ $restaurant->id }}" 
-                    >{{ $restaurant->name }}</option>
-                @endforeach
+                    <option value="">--Please choose an option--</option>
+                    @foreach($restaurants as $restaurant)
+                        <option value="{{ $restaurant->id }}" >{{ $restaurant->name }}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="mb-6">

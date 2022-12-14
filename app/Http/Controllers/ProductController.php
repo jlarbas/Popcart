@@ -17,7 +17,7 @@ class ProductController extends Controller
     {
         //
          return view('products.index', [
-            'products' => Product::latest()->filter(request(['search']))->paginate(4)
+            'products' => Product::latest()->filter(request(['search_product']))->paginate(4)
         ]);
     }
 
@@ -29,6 +29,7 @@ class ProductController extends Controller
     public function create()
     {
         //
+        
         $restaurants = Restaurant::all();
         return view('products.create',['restaurants'=>$restaurants]);
     }

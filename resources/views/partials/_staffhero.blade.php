@@ -16,25 +16,15 @@ class="relative h-72 bg-gradient-to-r from-orange-500 to-orange-300 flex flex-co
     <div>
         
         <a
-            href="{{ route('restaurants.index') }}"
+            href="{{ route('staffIndex') }}"
             class="inline-block border-2 border-white text-white py-2 px-4 rounded-xl uppercase mt-2 hover:text-black hover:border-black"
             >Restaurant</a
         >
         <a
-            href="{{ route('usersindex') }}"
+            href="{{ route('createInventory') }}"
             class="inline-block border-2 border-white text-white py-2 px-4 rounded-xl uppercase mt-2 hover:text-black hover:border-black"
-            >Employees</a>
-        <a
-        href="{{ route('products.index') }}"
-        class="inline-block border-2 border-white text-white py-2 px-4 rounded-xl uppercase mt-2 hover:text-black hover:border-black"
-        >Products
-    </a>
-    
-    <a
-        href="{{ route('createInventory') }}"
-        class="inline-block border-2 border-white text-white py-2 px-4 rounded-xl uppercase mt-2 hover:text-black hover:border-black"
-        >Inventory
-    </a>
+            >Inventory
+        </a>
     
     </div>
     

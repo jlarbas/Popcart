@@ -35,9 +35,12 @@ class Pos extends Component
 
     public function decrementQuantity(int $cartId){
         $data = Cart::where('id',$cartId);
-        
-        if($data->quantity > 0){
-            $data->decrement('quantity');  
+        // $quant = $data->decrement('quantity');
+        // dd($quant);
+        if($data){
+           
+            $data->decrement('quantity');
+           
         }
         else{
             return back()->with('message','Failed to perform action!');
@@ -47,7 +50,9 @@ class Pos extends Component
 
     public function incrementQuantity(int $cartId){
         $data = Cart::where('id',$cartId);
+        
         if($data){
+            
             $data->increment('quantity');
         }
         else{
@@ -78,8 +83,6 @@ class Pos extends Component
         }
     }
 
-    
-
     public function destroyQuantity(int $cartId){
         Cart::where('id',$cartId)->delete();
     }
@@ -92,12 +95,13 @@ class Pos extends Component
             $temp = $cartItem->restaurant_id;
         }
         $order = Order::create([
-            
+            'user_id' => auth()->user()->id,
             'status' => $pending,
             'total' => $this->totalPrice,
             'restaurant_id' => $temp
             
         ]);
+
         foreach($this->cart as $cartItem){
             OrderList::create([
                 'order_id'=> $order->id,

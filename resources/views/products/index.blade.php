@@ -1,7 +1,7 @@
 @extends('layout')
 @section('content')
 @include('partials._hero')
-@include('partials._search')
+@include('partials._search_products')
 <a
 href="{{ route('products.create') }}"
 class="ml-4 bg-hub inline-block text-white py-2.5 px-4 rounded-md hover:bg-orange-500 mb-8"

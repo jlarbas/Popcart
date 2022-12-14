@@ -7,7 +7,7 @@
         <title>Receipt</title>
     </head>
     <body style="background-image: linear-gradient(to right, #F8DFB9 , #F4C9D7)">
-
+<a href="{{ route('orders',$dummy) }}">Back</a>
 
     
 
@@ -17,9 +17,10 @@
 <div class="content">
     <img  class="" src="{{ asset('images/logoCartSmall.png') }}" alt="">
     <p class="LogoName"> POP Cart </p>
-    <p class="centered">Receipt No. {{$order->id}}
-        
-        <br>Address line 2</p><br>
+    <p class="centered">Receipt No. {{$order->id}}</p>
+    <p class="centered">{{$name->name}}</p>
+    <p class="centered">Cashier: {{auth()->user()->name}}</p>
+    <p>Address line 2</p>
 </div>
     <table>
         <thead>
@@ -48,37 +49,24 @@
             </tr>
         </tbody>
     </table>
+    <p class="centered">Thanks for your purchase!
         
     
 </div>
 </div><br>
+<button id="btnPrint" class="hidden-print">Print</button>
 
-<form method="POST" action="{{ route('payment',$order->id) }}" enctype="multipart/form-data">
-    @csrf
-    @method('PUT')
-    <div class="mb-6">
-        <label
-            for="payment"
-            class="inline-block text-lg mb-2"
-            >Payment Amount</label
-        >
-        <input
-            type="text"
-            class="border border-gray-200 rounded p-2 w-full"
-            name="payment"
-            
-        />
-        @error('payment')
-        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-        @enderror
-    </div>
-    <div class="mb-6">
-        <button
-            class="bg-hub text-white rounded py-2 px-4 hover:bg-orange-600">
-            Confirm
-        </button>
-    </div>
-</form>
+
+
+
+<script >
+const $btnPrint = document.querySelector("#btnPrint");
+$btnPrint.addEventListener("click", () => {
+window.print();
+});
+
+
+</script>
 </body>
 </html>
 

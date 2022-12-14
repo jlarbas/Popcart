@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\OrderList;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 
@@ -20,14 +21,14 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        // dd(auth()->user()->role);
+       
         return view('restaurants.index', [
             
             'restaurants' => Restaurant::latest()->filter(request(['search']))->paginate(4)
         ]);
         
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -72,12 +73,41 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
+        
         $data = Order::where('restaurant_id',$restaurant->id)->whereDate('created_at', Carbon::today())
                    ->sum('total');
-        $week = Order::where('restaurant_id',$restaurant->id)->whereDate('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
-        ->sum('total');
-        
-        return view('restaurants.show', compact('restaurant','data','week'));
+         
+   
+        $week = Order::whereBetween('created_at', [Carbon::now()->startOfWeek(Carbon::SUNDAY), Carbon::now()->endOfWeek(Carbon::SATURDAY)])->sum('total');
+
+        $products = OrderList::where('restaurant_id', $restaurant->id)
+        ->groupBy('product_name')
+        ->select([
+        'order_lists.id',
+        'order_lists.product_name',
+        DB::raw('sum(order_lists.quantity) AS purchases'),
+        DB::raw('(sum(order_lists.price)) AS sales'),
+        ])
+        ->get();
+       
+        $day = OrderList::where('restaurant_id', $restaurant->id)
+        ->whereDate('created_at', Carbon::today())
+        ->groupBy('product_name')
+        ->select([
+        'order_lists.id',
+        'order_lists.product_name',
+        DB::raw('sum(order_lists.quantity) AS purchases'),
+        DB::raw('(sum(order_lists.price)) AS sales'),
+        ])
+        ->get();
+
+        return view('restaurants.show', compact(
+            'restaurant',
+            'data',
+            'week',
+            'products',
+            'day'
+        ));
     }
 
     /**
@@ -125,7 +155,7 @@ class RestaurantController extends Controller
      */
     public function destroy(Restaurant $restaurant)
     {
-        //
+        dd('delete');
         $restaurant->delete();
         return redirect()->route('home')->with('message','Restaurant deleted successfully!');
     }
@@ -139,5 +169,7 @@ class RestaurantController extends Controller
         ]);
         
     }
+
+
    
 }

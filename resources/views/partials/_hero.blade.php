@@ -20,6 +20,7 @@ class="relative h-72 bg-gradient-to-r from-orange-500 to-orange-300 flex flex-co
             class="inline-block border-2 border-white text-white py-2 px-4 rounded-xl uppercase mt-2 hover:text-black hover:border-black"
             >Restaurant</a
         >
+        @if(auth()->user()->role_id == 1)
         <a
             href="{{ route('usersindex') }}"
             class="inline-block border-2 border-white text-white py-2 px-4 rounded-xl uppercase mt-2 hover:text-black hover:border-black"
@@ -27,9 +28,12 @@ class="relative h-72 bg-gradient-to-r from-orange-500 to-orange-300 flex flex-co
         <a
         href="{{ route('products.index') }}"
         class="inline-block border-2 border-white text-white py-2 px-4 rounded-xl uppercase mt-2 hover:text-black hover:border-black"
-        >Products
-    </a>
-    
+        >Products</a>
+        <a
+        href="{{ route('reports') }}"
+        class="inline-block border-2 border-white text-white py-2 px-4 rounded-xl uppercase mt-2 hover:text-black hover:border-black"
+        >Reports</a>
+    @endif
     <a
         href="{{ route('createInventory') }}"
         class="inline-block border-2 border-white text-white py-2 px-4 rounded-xl uppercase mt-2 hover:text-black hover:border-black"

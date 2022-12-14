@@ -40,7 +40,10 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{$cartItem->product->name}}</td>
                                     
                                     <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                        <span class="btn btn1 mr-2" wire.loading.attr="disabled" wire:click="decrementQuantity({{$cartItem->id}})"><i class="fa fa-minus"></i></span>
+
+                                        
+                                        <span class="btn btn1 mr-2" wire.loading.attr="disabled" wire:click="decrementQuantity({{$cartItem->id}})"><i class="fa fa-minus fill-gray-500"></i></span>
+                                       
                                         {{$cartItem->quantity}}
                                         <span class="btn btn1 ml-2" wire.loading.attr="disabled" wire:click="incrementQuantity({{$cartItem->id}})"><i class="fa fa-plus"></i></span>
                                     </td>

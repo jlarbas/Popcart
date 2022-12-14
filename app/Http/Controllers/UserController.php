@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\User;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
@@ -22,8 +23,9 @@ class UserController extends Controller
 
     //Register Form
     public function create(){
+        $roles = Role::all();
         $restaurants = Restaurant::all();
-        return view('users.register',['restaurants'=>$restaurants]);
+        return view('users.register',['restaurants'=>$restaurants,'roles'=>$roles]);
     }
 
     public function store(Request $request){
@@ -31,7 +33,8 @@ class UserController extends Controller
         $request->validate([
             'name' => ['required','min:3'],
             'email' => ['required','email', Rule::unique('users','email')],
-            'password' => 'required|confirmed|min:6'
+            'password' => 'required|confirmed|min:6',
+            'contact' => ['required','max:11'],
         ]);
         
         $data = new User();
@@ -39,7 +42,7 @@ class UserController extends Controller
         $data->email = $request->input('email');
         $data->restaurant_id = $request->input('restaurant_id');
         $data->contact = $request->input('contact');
-        $data->role = $request->input('role');
+        $data->role_id = $request->input('role_id');
         $data->status = $request->input('status');
         $data->address = $request->input('address');
         $data->schedule = $request->input('schedule');
@@ -54,9 +57,6 @@ class UserController extends Controller
         //Log in the user
         // auth()->login($user);
 
-        
-        
-
         return redirect('/')->with('message','User created!');
     }
 
@@ -70,7 +70,7 @@ class UserController extends Controller
             'name' => ['required','min:3'],
             'email' => ['required','email'],
             'role' => 'required',
-            'contact' =>'required',
+            'contact' =>['required','max:11'],
             'status' =>'required',
             'address' =>'required',
             'schedule' =>'required',
@@ -102,17 +102,21 @@ class UserController extends Controller
         ]);
 
         if(auth()->attempt($form)){
-            $request->session()->regenerate();
-            $type = auth()->user()->role; 
+            
+            $type = auth()->user()->role_id; 
             switch ($type) {
-                case 'management':
+                case 1:
+                   
+                    $request->session()->regenerate();
                     return redirect('/')->with('message','Logged In');
                     break;
-                case 'staff':
+                case 2:
+                    
                     $request->session()->regenerate();
                     return redirect()->route('staffIndex')->with('message','Logged In');
                     break; 
-                case 'customer':
+                case 3:
+                    dd('page 3');
                     $request->session()->regenerate();
                     return redirect()->route('staffIndex')->with('message','Logged In');
                     break;

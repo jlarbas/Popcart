@@ -13,15 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('restaurant_id');
-            $table->foreignId('user_id');
-            $table->string('status');
-            $table->float('total',8,2);
-            $table->float('payment',8,2)->nullable();
-            $table->float('change',8,2)->nullable();
-            $table->float('vat',8,2)->nullable();
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -33,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('roles');
     }
 };

@@ -10,14 +10,14 @@ class Product extends Model
     use HasFactory;
 
     public function scopeFilter($query,array $filters){
-        if($filters['search'] ?? false){
-            $query->where('name', 'like', '%' . request('search') . '%');
+        if($filters['search_product'] ?? false){
+            $query->where('name', 'like', '%' . request('search_product') . '%');
         }
     }
 
     protected $fillable = [
         'name',
-        'status',
+        'isAvailable',
         'price',
         'picture',
         'restaurant_id'
@@ -29,10 +29,6 @@ class Product extends Model
 
     public function carts(){
         return $this->hasMany(Cart::class);
-    }
-
-    public function orderlist(){
-        return $this->belongsTo(OrderList::class);
     }
     
 

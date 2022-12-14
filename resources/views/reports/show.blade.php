@@ -82,68 +82,46 @@
     
     <main>
     @include('partials._hero')
-    <a href="/" class="inline-block text-black ml-4 mb-8 mt-8"
-    ><i class="fa-solid fa-arrow-left"></i> Back
-    </a>
-    <a
-    href="{{ route('pos',$restaurant->id) }}"
-    class="bg-hub text-white rounded-lg py-2.5 px-14 hover:bg-orange-500"
-    >POS</a
-    >
-    @if(auth()->user()->role_id == 2)
-    <a
-    href="{{ route('orders',$restaurant->id) }}"
-    class="bg-hub text-white rounded-lg py-2.5 px-14 hover:bg-orange-500"
-    >Orders</a
-    >
-    @endif
-    <a
-    href="{{ route('inventory',$restaurant->id) }}"
-    class="bg-hub text-white rounded-lg py-2.5 px-14 hover:bg-orange-500"
-    >Inventory</a>
 
     <div class="mx-4">
         <x-card class="p-10  bg-white border border-gray-100 rounded mt-10 border border-gray-100 rounded-lg shadow-lg mb-8">
-                <x-listing-showcard :restaurant="$restaurant"/>  
             
-           @if(auth()->user()->role_id == 1)
+            <a href="{{ route('history',$restaurant->id) }}">Purchase History</a>
+
+            <x-listing-showcard :restaurant="$restaurant"/>  
+            
+           
           <div class="flex">
                 <div class="text-white rounded py-4 px-4 bg-gradient-to-r from-orange-500 to-orange-400 mr-2 ml-2 mb-2 text-left w-80">
-                <p class="mb-4 text-lg font-semibold">₱{{$data}} </p>
-                <p>Daily Sales </p> </div>
+                    <p class="mb-4 text-lg font-semibold">₱{{$data}} </p>
+                    <p>Daily Sales </p> 
+                </div>
 
                 <div class="text-white rounded py-4 px-4 bg-gradient-to-r from-orange-500 to-orange-400 mr-2 ml-2 mb-2 text-left w-80">
-                <p class="mb-4 text-lg font-semibold">₱{{$week}} </p>
-                <p>Weekly Sales </p> </div>
-                <div class="bg-red-500">
-                   
+                    <p class="mb-4 text-lg font-semibold">₱{{$week}} </p>
+                    <p>This Week's Sales </p> 
                 </div>
-            </div>
+                <div class="text-white rounded py-4 px-4 bg-gradient-to-r from-orange-500 to-orange-400 mr-2 ml-2 mb-2 text-left w-80">
+                    <p class="mb-4 text-lg font-semibold">₱{{$lastweek}} </p>
+                    <p>Last Week's Sales </p> 
+                </div>
+            </div>    
+                
+           
+            <div class="flex">
+                @foreach($products as $data)
+                <div class="text-white rounded py-4 px-4 bg-gradient-to-r from-orange-500 to-orange-400 mr-2 ml-2 mb-2 text-left w-80">
+                    <p class="mb-4 text-lg font-semibold">Total Purchases: {{$data->purchases}} </p>
+                    <p class="mb-4 text-lg font-semibold">Total Sales: {{$data->sales}} </p>
+                    <p>Product Name: {{$data->product_name}} </p> 
+                </div>
+                @endforeach
             
-            @endif
+            
+
         </x-card>
         @if(auth()->user()->role_id == 2)
         <div class="grid grid-cols-5 gap-x-0 gap-y-2 mr-10 ml-10 mt-10">
-        @foreach($restaurant->products as $product)
-            <div class="inline-block flex bg-white Z py-2 w-48 px-2 mt-2 mb-2 md:block rounded shadow-lg">
-                <img
-                                class="hidden w-48 h-48 mr-6 md:block border border-gray-400 rounded"
-                                src="{{$product->picture ? asset('storage/' . $product->picture) : asset('/images/no-image.png')}}"
-                                alt=""
-                            />
-                <p class ="font-semibold text-lg  mt-2">{{$product->name}}</p>
-                <p class ="font-semibold text-orange-600 text-lg">₱{{$product->price}}</p>
-                <input data-id="{{$product->id}}" 
-                class="toggle-class" 
-                type="checkbox" 
-                data-onstyle="success" 
-                data-offstyle="danger" 
-                data-toggle="toggle" 
-                data-on="Active" 
-                data-off="InActive" {{ $product->isAvailable ? 'checked' : '' }}> Availability
-                </div>  
-               
-        @endforeach
             
         </div>
         @endif
@@ -152,23 +130,5 @@
         </main>
     <x-flash-message />
 </body>
-<script>
-    $(function() {
-        $('.toggle-class').change(function() {
-            var isAvailable = $(this).prop('checked') == true ? 1 : 0; 
-            var product_id = $(this).data('id'); 
-            
-            $.ajax({
-                type: "GET",
-                dataType: "json",
-                url: '/changeStatus',
-                data: {'isAvailable': isAvailable, 'product_id': product_id},
-                success: function(data){
-                console.log(data.success)
-                }
-            });
-        })
-    })
-</script>  
 </html>      
 

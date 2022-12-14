@@ -12,7 +12,11 @@ class Order extends Model
     protected $fillable = [
        'status',
        'total',
-       'restaurant_id'
+       'restaurant_id',
+       'user_id',
+       'payment',
+       'change',
+       'vat',
     ];
 
     public function restaurant(){

@@ -22,7 +22,7 @@ class User extends Authenticatable
         'restaurant',
         'email',
         'contact',
-        'role',
+        'role_id',
         'status',
         'address',
         'schedule',
@@ -57,6 +57,10 @@ class User extends Authenticatable
     
     public function restaurant(){
         return $this->belongsTo(Restaurant::class);
+    }
+
+    public function order(){
+        return $this->hasMany(Order::class);
     }
 
     public function cart(){

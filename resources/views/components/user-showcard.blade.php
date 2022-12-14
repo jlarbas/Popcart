@@ -13,7 +13,11 @@
                 <a href="{{route('showuser', $user->id)}}">{{ $user->name }}</a>
             </h3>
             <div class="text-lg  mb-2"> Email {{ $user->email }}</div>
+            @if($user->restaurant_id == 0)
+            <div class="text-lg  mb-2">Not assisgned to a restaurant</div>
+            @else
             <div class="text-lg  mb-2">Restaurant: {{ $user->restaurant->name }}</div>
+            @endif
             <div class="text-lg  mb-2 capitalize">{{ $user->role }}</div>
             <div class="text-lg  mb-2">{{ $user->contact }}</div>
             <div class="text-lg  mb-2">{{ $user->address }}</div>
