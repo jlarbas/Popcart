@@ -19,7 +19,7 @@ class="ml-4 bg-hub inline-block text-white py-3 px-4 rounded-xl hover:bg-orange-
 
 
 
-<div class="lg:grid lg:grid-cols-5 gap-4 space-y-4 md:space-y-0 mx-4 grid grid-auto-fit">
+<div class="lg:grid lg:grid-cols-4 gap-4 space-y-4 md:space-y-0 mt-8 mx-40">
 
 @if(count($products) == 0)
 <h1>No products Found. Add your first product </h1>

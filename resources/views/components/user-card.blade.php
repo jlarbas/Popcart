@@ -1,6 +1,6 @@
 @props(['user'])
 
-<div class=" rounded-lg shadow-lg p-6  ml-4 grid grid-auto-fit hover:bg-orange-200">
+<div class=" rounded-lg shadow-lg p-6 border border-orange-200  ml-4 grid grid-auto-fit hover:bg-orange-200">
  
 
 <a href="{{route('showuser', $user->id)}}">
@@ -19,7 +19,7 @@
                 </h3> 
                  
         
-                <h3 class="capitalize">{{ $user->role}} </h3> 
+                <h3 class="capitalize">..{{ $user->role}} </h3> 
 </a>
                 
             

@@ -1,6 +1,6 @@
 @props(['restaurant'])
 
-<div class=" rounded-lg shadow-lg p-6  ml-4 grid grid-auto-fit hover:bg-orange-200">
+<div class="rounded-lg shadow-lg p-6  border border-orange-200 ml-4 grid grid-auto-fit hover:bg-orange-200">
 
 
 <a href="{{route('restaurants.show', $restaurant->id)}}">
@@ -8,7 +8,7 @@
     <div class="grid grid-auto-fit">
         {{-- Shows the Picture in the database if not then default picture --}}
         <img
-            class="hidden md:block rounded-md border border-gray-400 rounded-lg grid grid-auto-fit"
+            class="hidden w-40  mr-6 md:block border border-gray-400 rounded-lg mb-2"
             src="{{$restaurant->picture ? asset('storage/' . $restaurant->picture) : asset('/images/no-image.png')}}"
             alt="" />
         <div>

@@ -20,8 +20,8 @@
 <br>
 
 
-<div class="lg:grid lg:grid-cols-5 gap-4 space-y-4 md:space-y-0 mx-4 grid grid-auto-fit">
-
+<div class="lg:grid lg:grid-cols-4 gap-4 space-y-4 md:space-y-0 mt-8 mx-40">
+    
 @if(count($users) == 0)
 <h1>No Listings Found</h1>
 @endif

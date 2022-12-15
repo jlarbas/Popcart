@@ -23,7 +23,7 @@
 <br>
 
 
-<div class="lg:grid lg:grid-cols-5 gap-4 space-y-4 md:space-y-0 mx-4 grid grid-auto-fit">
+<div class="lg:grid lg:grid-cols-4 gap-4 space-y-4 md:space-y-0 mt-8 mx-40">
     
 @if(count($restaurants) == 0)
 <h1>No Restaurants Found. Add your first restaurant </h1>
