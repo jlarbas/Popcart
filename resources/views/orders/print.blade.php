@@ -55,21 +55,9 @@
 
 <button id="btnPrint" class="hidden-print">Print</button>
 
-<a href="/">  
-               <div class="">
-                   <button type="button" 
-                   id="btn-reverse"
-                   wire:click="cancelCart" 
-                   class="hidden-print">Back</button></div>     
-               </div>
-               </a>
-<br><br>
+<a href="{{ route('orders',$order->restaurant_id) }}"> Back</a>
+</div>     
 </div>
-
-
-
-
-
 <script >
 const $btnPrint = document.querySelector("#btnPrint");
 $btnPrint.addEventListener("click", () => {
