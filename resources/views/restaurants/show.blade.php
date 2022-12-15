@@ -51,7 +51,7 @@
                 <li>
                     <form class="inline" method="POST" action="/logout">
                         @csrf
-                        <button type="submit" class="hover:text-hub text-base ">
+                        <button type="submit" class="hover:text-hub ">
                             <a><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
                     </form>
                 </li>
@@ -123,14 +123,14 @@
         </div>  
            @if(auth()->user()->role_id == 1)
           
-          <div class="flex mt-8">
+          <div class="grid grid-cols-2 gap-x-0 gap-y-2  mt-8">
 
           
-                <div class="text-white rounded py-4 px-4 bg-gradient-to-r from-orange-500 to-orange-400 mr-2 ml-2 mb-2 text-left w-80">
+                <div class="text-hub border border-hub shadow-lg rounded-xl py-4 px-4 bg-orange-100 mr-2 ml-2 mb-2 text-left w-100">
                 <p class="mb-4 text-lg font-semibold">₱{{$data}} </p>
                 <p>Daily Sales </p> </div>
 
-                <div class="text-white rounded py-4 px-4 bg-gradient-to-r from-orange-500 to-orange-400 mr-2 ml-2 mb-2 text-left w-80">
+                <div class="text-hub border border-hub shadow-lg rounded-xl py-4 px-4 bg-orange-100 mr-2 ml-2 mb-2 text-left w-100">
                 <p class="mb-4 text-lg font-semibold">₱{{$week}} </p>
                 <p>Weekly Sales </p> </div>
                 <div class="bg-red-500">

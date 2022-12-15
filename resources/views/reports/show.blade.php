@@ -85,7 +85,9 @@
     <div class="mx-4">
         <x-card class="p-10  bg-gray1 border border-gray-100 rounded mr-10 ml-10 mt-10 border border-gray-100 rounded-lg shadow-lg mb-10">
             
-            <a href="{{ route('history',$restaurant->id) }}">Purchase History</a>
+            <a href="{{ route('history',$restaurant->id) }}"
+            class="ml-4 bg-hub inline-block text-white py-3 px-4 rounded-xl hover:bg-orange-500 mb-2 mt-4"
+            >Purchase History</a>
 
             <x-listing-showcard :restaurant="$restaurant"/>  
             

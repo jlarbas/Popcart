@@ -16,8 +16,7 @@
 <a
             href="{{ route('restaurants.create') }}"
             class="ml-4 bg-hub inline-block text-white py-3 px-4 rounded-xl hover:bg-orange-500 mb-2 mt-4"
-            >Add Restaurant</a
-        >
+            >Add Restaurant</a>
 
         </div>
 <br>
