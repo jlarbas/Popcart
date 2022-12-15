@@ -118,22 +118,12 @@ class ReportController extends Controller
             return $q->whereDate('created_at',$request->date);
         },function($q) use ($today){
             return $q->whereDate('created_at',$today);
-        })
+        })->where('restaurant_id',$restaurant->id)
         ->get();
        
         
         return view('reports.sale',compact('order'));
     }
 
-    public function fetchHistory(Request $request,Restaurant $restaurant){
-        
-        $id = $restaurant->id;
-
-        $order = Order::where('restaurant_id',$id)
-        ->whereDate('created_at',Carbon::parse($request->date)->format('Y-m-d H:i'))
-        ->get();
-        dd($order);
-        return view('reports.history',compact('id','order'));
-        
-    }
+    
 }
