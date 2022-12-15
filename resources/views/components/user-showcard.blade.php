@@ -27,7 +27,7 @@
             <div class="text-base  mb-2">Restaurant {{ $user->restaurant->name }}</div>
             @endif
             <div class="text-base  mb-2 capitalize">{{ $user->role }}</div>
-            <div class="text-base  mb-2">Contact{{ $user->contact }}</div>
+            <div class="text-base  mb-2">Contact {{ $user->contact }}</div>
             <div class="text-base  mb-2">{{ $user->address }}</div>
             <div class="text-base  mb-2">{{ $user->schedule }}</div>
 
