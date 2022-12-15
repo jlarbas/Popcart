@@ -32,7 +32,9 @@
         };
     </script>
     
-    <title>Home Page</title>
+    <title>POP Cart</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/icon.png') }}">
+    
 </head>
 <body style="background-image: linear-gradient(to right, #F8DFB9 , #F4C9D7)">
     <div class="bg-white">
@@ -81,33 +83,58 @@
         </nav>
     
     <main>
+
+   
+
     @include('partials._hero')
-    <a href="/" class="inline-block text-black ml-4 mb-8 mt-8"
-    ><i class="fa-solid fa-arrow-left"></i> Back
-    </a>
+
+    <div class="p-10  bg-white mt-10 ml-14 mr-14 
+    border border-white rounded-t-xl shadow-lg ">
+    
+
     <a
     href="{{ route('pos',$restaurant->id) }}"
-    class="bg-hub text-white rounded-lg py-2.5 px-14 hover:bg-orange-500"
+    class="border border-hub bg-white text-hub rounded-xl py-3 px-14 hover:text-white hover:bg-orange-500 text-center"
     >POS</a
     >
     @if(auth()->user()->role_id == 2)
     <a
     href="{{ route('orders',$restaurant->id) }}"
-    class="bg-hub text-white rounded-lg py-2.5 px-14 hover:bg-orange-500"
+    class="border border-hub bg-white text-hub rounded-xl py-3 px-12 hover:text-white hover:bg-orange-500 text-center"
     >Orders</a
     >
     @endif
     <a
     href="{{ route('inventory',$restaurant->id) }}"
-    class="bg-hub text-white rounded-lg py-2.5 px-14 hover:bg-orange-500"
+    class="border border-hub bg-white text-hub rounded-xl py-3 px-10 hover:text-white hover:bg-orange-500 text-center"
     >Inventory</a>
 
+    </div>
+
     <div class="mx-4">
-        <x-card class="p-10  bg-white border border-gray-100 rounded mt-10 border border-gray-100 rounded-lg shadow-lg mb-8">
-                <x-listing-showcard :restaurant="$restaurant"/>  
+        
+        <x-card class="p-10  bg-white border border-gray-100 rounded  ml-10 mr-10 mb-8 border border-gray-100 rounded-b-2xl shadow-lg ">
+                
+        
+        <div class="grid grid-cols-2 flex bg-gradient-to-l from-red-300 to-white rounded-xl shadow-lg">
+
+        <x-listing-showcard :restaurant="$restaurant"/>  
+             
+
+        <img class="h-full w-full opacity-50  rounded-r-xl"  
+    src="{{ asset('images/WP4.png') }}"/>
+        
+        
+
+  
+
             
+        </div>  
            @if(auth()->user()->role_id == 1)
-          <div class="flex">
+          
+          <div class="flex mt-8">
+
+          
                 <div class="text-white rounded py-4 px-4 bg-gradient-to-r from-orange-500 to-orange-400 mr-2 ml-2 mb-2 text-left w-80">
                 <p class="mb-4 text-lg font-semibold">₱{{$data}} </p>
                 <p>Daily Sales </p> </div>
@@ -121,11 +148,16 @@
             </div>
             
             @endif
-        </x-card>
+        
         @if(auth()->user()->role_id == 2)
+
+
         <div class="grid grid-cols-5 gap-x-0 gap-y-2 mr-10 ml-10 mt-10">
+
+
+        
         @foreach($restaurant->products as $product)
-            <div class="inline-block flex bg-white Z py-2 w-48 px-2 mt-2 mb-2 md:block rounded shadow-lg">
+            <div class="border-2 border-orange-200  inline-block flex bg-white Z py-2 w-48 px-2 mt-2 mb-2 md:block rounded shadow-lg">
                 <img
                                 class="hidden w-48 h-48 mr-6 md:block border border-gray-400 rounded"
                                 src="{{$product->picture ? asset('storage/' . $product->picture) : asset('/images/no-image.png')}}"
@@ -148,10 +180,17 @@
         </div>
         @endif
     </div>    
-       
+    </x-card>
+
+
+
         </main>
     <x-flash-message />
 </body>
+
+
+
+
 <script>
     $(function() {
         $('.toggle-class').change(function() {

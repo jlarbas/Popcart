@@ -11,17 +11,18 @@
 
     
 
+
     
 <div class="ticket">
 
 <div class="content">
     <img  class="" src="{{ asset('images/logoCartSmall.png') }}" alt="">
-    <p class="LogoName"> POP Cart </p>
-    <p class="centered">Receipt No. {{$order->id}}</p>
-    <p class="centered">{{$name->name}}</p>
-    <p class="centered">Cashier: {{auth()->user()->name}}</p>
-    <p>Address line 2</p>
-</div>
+    <p  class="LogoName"> POP Cart </p>
+    <p id="text1" class="centered">Receipt No. {{$order->id}}</p>
+    <p id="text1"class="centered">{{$name->name}}</p>
+    <p id="text1"class="centered">Cashier: {{auth()->user()->name}}</p>
+    <p id="text1" >Address line 2</p><br>
+
     <table>
         <thead>
             <tr>
@@ -38,7 +39,8 @@
                 <td class="price">{{$data->price}}</td>
             </tr>
             @endforeach
-            <tr>
+            <table>
+            <tr><br>
                  <td class="description">Cash:{{$order->payment}}</td>
                  <td class="description">Total:{{$order->total}}</td>
                  
@@ -48,13 +50,23 @@
                  <td class="price">VAT:{{$order->vat}}</td>
             </tr>
         </tbody>
-    </table>
-    <p class="centered">Thanks for your purchase!
-        
+    </table><br>
+    <p class="centered">Thank you for your purchase!</p>
     
+
+<button id="btn-confirm" class="hidden-print">Print</button>
+
+<a href="/">  
+               <div class="">
+                   <button type="button" 
+                   id="btn-reverse"
+                   wire:click="cancelCart" 
+                   class="btn btn-danger">Cancel</button></div>     
+               </div>
+               </a>
+<br><br>
 </div>
-</div><br>
-<button id="btnPrint" class="hidden-print">Print</button>
+
 
 
 

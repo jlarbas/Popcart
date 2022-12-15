@@ -1,10 +1,10 @@
 @extends('layout')
 @section('content')
 @include('partials._hero')
-<x-card class="p-10 rounded-lg max-w-lg mx-auto mt-24 border border-gray-100 shadow-lg">
+<x-card class="p-10 bg-gray1 rounded-lg max-w-lg mx-auto mt-24 border border-gray-100 shadow-lg">
 <header class="text-center">
         <a href="{{ route('home') }}"
-                ><img class="w-40  mt-2 mb-2 ml-4 mr-2 ml-28 mt-8"  src="{{ asset('images/logoCart3.png') }}" alt="" class="logo"/>
+                ><img class="w-40  mt-2 mb-2 ml-4 mr-2 ml-28 mt-8"  src="{{ asset('images/logoCart4.png') }}" alt="" class="logo"/>
         </a><br>
 
 
