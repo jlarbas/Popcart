@@ -119,6 +119,7 @@ class ReportController extends Controller
         },function($q) use ($today){
             return $q->whereDate('created_at',$today);
         })->where('restaurant_id',$restaurant->id)
+        ->where('status','completed')
         ->get();
        
         
