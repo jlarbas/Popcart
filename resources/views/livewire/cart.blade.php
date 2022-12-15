@@ -73,7 +73,7 @@
                         </thead>
                         
                         
-                        <tbody>
+                        <tbody wire:poll.750ms>
 
                             @foreach($cart as $cartItem)
                             

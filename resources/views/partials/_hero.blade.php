@@ -32,11 +32,7 @@ justify-center align-center text-center space-y-4">
         class="ml-1 mr-1 inline-block border-2 border-white text-white py-2 px-4 rounded-xl uppercase mt-2 hover:text-orange-400 hover:border-orange-400"
         >Reports</a>
     @endif
-    <a
-        href="{{ route('createInventory') }}"
-        class="ml-1 mr-1 inline-block border-2 border-white text-white py-2 px-4 rounded-xl uppercase mt-2 hover:text-orange-400 hover:border-orange-400"
-        >Inventory
-    </a>
+    
     
     </div>
     

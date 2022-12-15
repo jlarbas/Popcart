@@ -48,9 +48,7 @@ class UserController extends Controller
         $data->schedule = $request->input('schedule');
         $data->password =  bcrypt($request->input('password'));
         //Hash Password
-        if($request->hasFile('picture')){
-            $data->picture = $request->file('picture')->store('users','public');
-        }
+        
         //Creates the User
         $data->save();
 

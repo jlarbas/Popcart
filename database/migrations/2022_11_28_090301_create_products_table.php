@@ -18,8 +18,6 @@ return new class extends Migration
             $table->foreignId('restaurant_id')->nullable();
             $table->string('name');
             $table->boolean('isAvailable');
-            $table->boolean('isStock');
-            $table->integer('stock');
             $table->float('price',8,2);
             $table->string('picture')->nullable();
             $table->timestamps();

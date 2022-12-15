@@ -86,8 +86,8 @@
                 </label>
                 <select name="status" class="border border-gray-400 rounded-xl hover:border-orange-500 p-4 w-full ">
                 
-                    <option class="text-center" value="open" > Active </option>
-                    <option class="text-center" value="closed" > Inactive </option>
+                    <option class="text-center" value="active" > Active </option>
+                    <option class="text-center" value="inactive" > Inactive </option>
                 </select>
                 @error('status')
                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>

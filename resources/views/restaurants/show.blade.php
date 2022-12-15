@@ -41,9 +41,8 @@
         <nav class="flex justify-between items-center mb-0">
 
     
-            <a href="{{ route('home') }}"
-                ><img class="w-24" src="{{ asset('images/logoCart.png') }}" alt="" class="logo"/> 
-            </a>
+            <img class="w-24" src="{{ asset('images/logoCart.png') }}" alt="" class="logo"/> 
+            
             <ul class="flex space-x-6 mr-6 text-lg">
                 @auth
                 <li>
@@ -104,10 +103,7 @@
     >Orders</a
     >
     @endif
-    <a
-    href="{{ route('inventory',$restaurant->id) }}"
-    class="border border-hub bg-white text-hub rounded-xl py-3 px-10 hover:text-white hover:bg-orange-500 text-center"
-    >Inventory</a>
+    
 
     </div>
 
