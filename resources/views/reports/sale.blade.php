@@ -26,23 +26,26 @@
                 extend: {
                     colors: {
                         hub: "#ff8400",
+                           gray1: "#f2f2f2", 
+                           pink1: "#f4c9d7"
                     },
                 },
             },
         };
     </script>
     
-    <title>Home Page</title>
+    <title>Pop Cart</title>
+        <link rel="icon" type="image/x-icon" href="{{ asset('images/icon.png') }}">
+
+
 </head>
 <body style="background-image: linear-gradient(to right, #F8DFB9 , #F4C9D7)">
     <div class="bg-white">
         <nav class="flex justify-between items-center mb-0">
 
-            {{-- Not Working  --}}
-            {{-- <a href="{{ route('home') }}"
-                ><img class="w-24" src="{{ asset('images/logoCart.png') }}" alt="" class="logo"/> 
-            </a> --}}
-            <ul class="flex space-x-6 mr-6 text-lg">
+        <img class="w-24" src="{{ asset('images/logoCart.png') }}" alt="" class="logo"/>
+            
+            <ul class="flex space-x-6 mr-6 text-base">
                 @auth
                 <li>
                     <i class="fa-solid fa-user"></i><span class=""> {{ auth()->user()->name }}</span>
@@ -50,16 +53,11 @@
                 <li>
                     <form class="inline" method="POST" action="/logout">
                         @csrf
-                        <button type="submit" class="hover:text-hub ">
+                        <button type="submit" class="hover:text-hub text-base">
                             <a><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
                     </form>
                 </li>
-                <li>
-                    <a href="/listings/manage" class="hover:text-hub "
-                        ><i class="fa-solid fa-gear"></i>
-                        Dashboard</a
-                    >
-                </li>
+             
 
                     </div>
                 @else
@@ -82,7 +80,9 @@
     
     <main>
     @include('partials._hero')
-    <x-card class="p-10  bg-white border border-gray-100 rounded mt-10 border border-gray-100 rounded-lg shadow-lg mb-8">
+
+    
+    <x-card class="p-10 bg-gray1 grid grid-cols-1 grid grid-auto-fit ml-40 mr-40 mt-20 mb-20 shadow-xl rounded-xl">
     
     <div class="">
         <form method="GET" action="" >
@@ -94,31 +94,39 @@
         ><br>
         <input
             type="date"
-            class="border border-gray-400 rounded p-2 mb-4"
+            class="border border-gray-400 rounded-xl hover:border-orange-500 p-4 w-2/6"
             name="date"
         /><br>
         @error('date')
         <p class="text-orange-500 text-xs mt-1">{{ $message }}</p>
         @enderror
-        <div class="mb-6">
+        <div class="mt-2 mb-6">
             <button
-                class="bg-hub text-white rounded py-2 px-4 hover:bg-orange-500"
+                class="bg-hub text-white rounded-xl py-3 px-3 hover:bg-orange-500 w-2/6"
             >
                 Search
             </button>
         </div>
     </form>
-        <div>
-            <h1>Sales</h1>
+
+    <h1 class="text-xl font-semibold">Sales</h1> <br>
+
+    <div class="grid grid-cols-5 gap-x-2 gap-y-2">
+      
             @foreach($order as $data)
-            <div>
-            <a href="{{ route('displayPurchases',$data->id) }}"><p>Order Number: {{ $data->id }}
-            Total: {{ $data->total }}
-            Date & Time: {{ $data->created_at }}</p></a>
+            <div class="p-10 rounded-lg  mx-auto border border-gray-400 hover:bg-orange-200"> 
+            <a href="{{ route('displayPurchases',$data->id) }}">
+
+            
+            <p class="font-semibold">Order #: {{ $data->id }}</p>
+            <p class="text-sm">Total: {{ $data->total }}</p>
+            <p class="text-sm">Date & Time: {{ $data->created_at }}</p></a>
             </div>
             @endforeach
         </div>
+
     </div>
+
     </x-card>   
     </main>
     <x-flash-message />

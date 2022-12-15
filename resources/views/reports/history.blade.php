@@ -32,7 +32,9 @@
         };
     </script>
     
-    <title>Home Page</title>
+    <title>Pop Cart</title>
+        <link rel="icon" type="image/x-icon" href="{{ asset('images/icon.png') }}">
+        
 </head>
 <body style="background-image: linear-gradient(to right, #F8DFB9 , #F4C9D7)">
     <div class="bg-white">
@@ -42,7 +44,7 @@
             <a href="{{ route('home') }}"
                 ><img class="w-24" src="{{ asset('images/logoCart.png') }}" alt="" class="logo"/> 
             </a>
-            <ul class="flex space-x-6 mr-6 text-lg">
+            <ul class="flex space-x-6 mr-6 text-base ">
                 @auth
                 <li>
                     <i class="fa-solid fa-user"></i><span class=""> {{ auth()->user()->name }}</span>
@@ -50,16 +52,11 @@
                 <li>
                     <form class="inline" method="POST" action="/logout">
                         @csrf
-                        <button type="submit" class="hover:text-hub ">
+                        <button type="submit" class="hover:text-hub text-base ">
                             <a><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
                     </form>
                 </li>
-                <li>
-                    <a href="/listings/manage" class="hover:text-hub "
-                        ><i class="fa-solid fa-gear"></i>
-                        Dashboard</a
-                    >
-                </li>
+               
 
                     </div>
                 @else
