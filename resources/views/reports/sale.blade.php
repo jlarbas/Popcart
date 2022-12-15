@@ -85,7 +85,7 @@
     <x-card class="p-10  bg-white border border-gray-100 rounded mt-10 border border-gray-100 rounded-lg shadow-lg mb-8">
     
     <div class="">
-        <form method="GET" action="{{ route('fetch',$id) }}" enctype="multipart/form-data">
+        <form method="GET" action="" >
             @csrf
         <label
             for="date"
@@ -97,7 +97,7 @@
             class="border border-gray-400 rounded p-2 mb-4"
             name="date"
         /><br>
-        @error('date_consumed')
+        @error('date')
         <p class="text-orange-500 text-xs mt-1">{{ $message }}</p>
         @enderror
         <div class="mb-6">
@@ -109,12 +109,12 @@
         </div>
     </form>
         <div>
-            <h1>Sales Today</h1>
+            <h1>Sales</h1>
             @foreach($order as $data)
             <div>
-            <p>Order Number: {{ $data->id }}
+            <a href="{{ route('displayPurchases',$data->id) }}"><p>Order Number: {{ $data->id }}
             Total: {{ $data->total }}
-            Date & Time: {{ $data->created_at }}</p>
+            Date & Time: {{ $data->created_at }}</p></a>
             </div>
             @endforeach
         </div>
