@@ -37,11 +37,15 @@
 <body style="background-image: linear-gradient(to right, #F8DFB9 , #F4C9D7)">
     <div class="bg-white">
         <nav class="flex justify-between items-center mb-0">
-
-    
+            @if(auth()->user()->role_id == 1)
             <a href="{{ route('home') }}"
-                ><img class="w-24" src="{{ asset('images/logoCart.png') }}" alt="" class="logo"/> 
+                ><img class="w-20 border-2 border-orange-400 shadow-lg rounded-full mt-2 mb-2 ml-2 mr-2"  src="{{ asset('images/logoCart.png') }}" alt="" class="logo"/>
             </a>
+            @else
+            <a href="{{ route('staffIndex') }}"
+                ><img class="w-20 border-2 border-orange-400 shadow-lg rounded-full mt-2 mb-2 ml-2 mr-2"  src="{{ asset('images/logoCart.png') }}" alt="" class="logo"/>
+            </a>
+            @endif
             <ul class="flex space-x-6 mr-6 text-lg">
                 @auth
                 <li>
@@ -81,7 +85,12 @@
         </nav>
     
     <main>
-    @include('partials._hero')
+        @if(auth()->user()->role_id == 1)
+        @include('partials._hero')
+        @else
+        @include('partials._staffhero')
+        @endif
+    
     <a href="/" class="inline-block text-black ml-4 mb-8 mt-8"
     ><i class="fa-solid fa-arrow-left"></i> Back
     </a>
@@ -101,7 +110,7 @@
     href="{{ route('inventory',$restaurant->id) }}"
     class="bg-hub text-white rounded-lg py-2.5 px-14 hover:bg-orange-500"
     >Inventory</a>
-
+    <a href="{{ route('history',$restaurant->id) }}">Purchase History</a>
     <div class="mx-4">
         <x-card class="p-10  bg-white border border-gray-100 rounded mt-10 border border-gray-100 rounded-lg shadow-lg mb-8">
                 <x-listing-showcard :restaurant="$restaurant"/>  

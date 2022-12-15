@@ -47,6 +47,7 @@ Route::get('/restaurants/{restaurant:id}/pos',[CartController::class,'index'])->
 //Orders
 Route::get('/restaurants/{restaurant:id}/orders',[OrderController::class,'index'])->name('orders')->middleware('auth');
 Route::get('/restaurants/{restaurant}/orders/{order}',[OrderController::class,'show'])->name('displayOrder')->middleware('auth');
+
 Route::get('/orders/{order}/print',[OrderController::class,'print'])->name('printOrder')->middleware('auth');
 Route::delete('/restaurants/{restaurant}/orders/{order}',[OrderController::class,'destroyOrder'])->name('deleteorder')->middleware('auth');
 Route::put('/orders/{order}/update',[OrderController::class,'update'])->name('payment')->middleware('auth');
@@ -59,9 +60,10 @@ Route::get('/inventory/submit',[InventoryTicketController::class,'submitList'])-
 
 //Reports
 Route::get('/reports/index', [ReportController::class,'index'])->name('reports')->middleware('auth');
+Route::get('/orders/{order}/display',[ReportController::class,'display'])->name('displayPurchases')->middleware('auth');
 Route::get('/restaurants/{restaurant:id}/reports', [ReportController::class,'show'])->name('showReport')->middleware('auth');
-Route::get('/restaurants/{restaurant:id}/reports/purchaseHistory', [ReportController::class,'purchaseHistory'])->name('history')->middleware('auth');
-Route::get('/reports/fetch', [ReportController::class,'fetchHistory'])->name('fetch')->middleware('auth');
+Route::get('/restaurants/{restaurant}/orders-history', [ReportController::class,'purchaseHistory'])->name('history')->middleware('auth');
+
 
 //Authentication
 Route::get('/login',[UserController::class,'login'])->name('login')->middleware('guest');;

@@ -13,8 +13,12 @@
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
         />
+        <link href-"https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" >
         <link href="{{asset('assets/style.css')}}" rel="stylesheet" type="text/css" >
         @livewireStyles
+        <script src="https://code.jquery.com/jquery-3.6.2.min.js" integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
+        <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.tailwindcss.com"></script>
         <script src="//unpkg.com/alpinejs" defer></script>
         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -38,9 +42,9 @@
         
     <div class="bg-white">
         <nav class="flex justify-between items-center mb-0">
-            <a href="{{ route('home') }}"
-                ><img class="w-20 border-2 border-orange-400 shadow-lg rounded-full mt-2 mb-2 ml-2 mr-2"  src="{{ asset('images/logoCart.png') }}" alt="" class="logo"/>
-        </a>
+           
+            <img class="w-20 border-2 border-orange-400 shadow-lg rounded-full mt-2 mb-2 ml-2 mr-2"  src="{{ asset('images/logoCart.png') }}" alt="" class="logo"/>
+            
             <ul class="flex space-x-6 mr-6 text-lg">
                 @auth
                 @if(auth()->user()->role != "customer")
@@ -95,6 +99,11 @@
     @livewireScripts
     
 </body>
+<script>
+    $(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+</script>
 </html>
 
     

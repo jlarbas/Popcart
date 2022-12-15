@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\Order;
+use App\Models\Product;
 use App\Models\OrderList;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
@@ -13,11 +14,16 @@ class ReportController extends Controller
 {
     
     //
-    public function index(){
+    public function index(Restaurant $restaurant){
         return view('reports.index', [
+            
             'restaurants' => Restaurant::latest()->filter(request(['search']))->paginate(4)
         ]);
         
+    }
+
+    public function display(Order $order){
+        return view ('reports.display',compact('order'));
     }
 
     public function show(Restaurant $restaurant)
@@ -28,12 +34,18 @@ class ReportController extends Controller
         $high = Carbon::now()->subDays(30);
         //Sales Queries//
         //Daily Sales//
-        $data = Order::where('restaurant_id',$restaurant->id)->whereDate('created_at', Carbon::today())
-                   ->sum('total');
+        $data = Order::where('restaurant_id',$restaurant->id)
+        ->whereDate('created_at', Carbon::today())
+        ->sum('total');
+        
         //Weekly Sales//
-        $week = Order::whereBetween('created_at', [Carbon::now()->startOfWeek(Carbon::SUNDAY), Carbon::now()->endOfWeek(Carbon::SATURDAY)])->sum('total');
+        $week = Order::where('restaurant_id',$restaurant->id)
+        ->whereBetween('created_at', [Carbon::now()->startOfWeek(Carbon::SUNDAY), Carbon::now()->endOfWeek(Carbon::SATURDAY)])
+        ->sum('total');
         //Last Week Sales//
-        $lastweek = Order::whereBetween('created_at', [$start, $end])->sum('total');
+        $lastweek = Order::where('restaurant_id',$restaurant->id)
+        ->whereBetween('created_at', [$start, $end])
+        ->sum('total');
 
         //Total Sales and Count of Product Purchase//
         $products = OrderList::where('restaurant_id', $restaurant->id)
@@ -59,7 +71,7 @@ class ReportController extends Controller
         ->get();
 
         $meddata = OrderList::where('restaurant_id', $restaurant->id)
-        ->whereDate('created_at', $med)
+        ->whereDate('created_at','>=', $med)
         ->groupBy('product_name')
         ->select([
         'order_lists.id',
@@ -70,7 +82,7 @@ class ReportController extends Controller
         ->get();
         
         $highdata = OrderList::where('restaurant_id', $restaurant->id)
-        ->whereDate('created_at', $high)
+        ->whereDate('created_at','>=', $high)
         ->groupBy('product_name')
         ->select([
         'order_lists.id',
@@ -93,21 +105,30 @@ class ReportController extends Controller
         ));
     }
 
-    public function purchaseHistory(Restaurant $restaurant,Order $order){
+    public function purchaseHistory(Request $request, Restaurant $restaurant){
         $id = $restaurant->id;
-
-        $order = Order::where('restaurant_id',$restaurant->id)
-        ->whereDate('created_at', Carbon::today())
-        ->get();
+        $today = Carbon::today()->format('Y-m-d');
         
-        return view('reports.sale',compact('id','order'));
+        // $order = Order::when($request->date != null, function($q) use($request){
+        //     return $q->whereDate('created_at',$request->date);
+        // })
+        // ->whereDate('created_at', $today)
+        // ->get();
+        $order = Order::when($request->date != null, function($q) use($request){
+            return $q->whereDate('created_at',$request->date);
+        },function($q) use ($today){
+            return $q->whereDate('created_at',$today);
+        })
+        ->get();
+       
+        
+        return view('reports.sale',compact('order'));
     }
 
     public function fetchHistory(Request $request,Restaurant $restaurant){
         
         $id = $restaurant->id;
-        
-       
+
         $order = Order::where('restaurant_id',$id)
         ->whereDate('created_at',Carbon::parse($request->date)->format('Y-m-d H:i'))
         ->get();

@@ -86,7 +86,7 @@
     <div class="mx-4">
         <x-card class="p-10  bg-white border border-gray-100 rounded mt-10 border border-gray-100 rounded-lg shadow-lg mb-8">
             
-            <a href="{{ route('history',$restaurant->id) }}">Purchase History</a>
+            
 
             <x-listing-showcard :restaurant="$restaurant"/>  
             
@@ -117,27 +117,53 @@
                 </div>
                 @endforeach
                 
-                <table style="width:100%">
-                    <tr>
-                      <th colspan="3">Daily</th>
-                      
-                    </tr>
-                    @foreach($day as $data)
-                    <tr>
-                        <td width="33%">{{$data->product_name}}</td>
-                      <td width="33%">{{$data->purchases}}</td>
-                      <td width="33%">{{$data->sales}}</td>
-                      
-                    </tr>
-                    @endforeach
-                  </table>
+                
                   
         </x-card>
-        @if(auth()->user()->role_id == 2)
-        <div class="grid grid-cols-5 gap-x-0 gap-y-2 mr-10 ml-10 mt-10">
-            
-        </div>
-        @endif
+        <table style="width:100%">
+            <tr>
+              <th colspan="3">Daily</th>
+            </tr>
+            @if(count($day) == 0)
+            <tr>
+                <td colspan="3">No Sales yet Today</td>
+            </tr>
+            @endif
+            @foreach($day as $data)
+            <tr>
+                <td width="33%">{{$data->product_name}}</td>
+              <td width="33%">{{$data->purchases}}</td>
+              <td width="33%">{{$data->sales}}</td>
+              
+            </tr>
+            @endforeach
+          </table>
+          <table style="width:100%">
+            <tr>
+              <th colspan="3">Last 7 Days</th>
+            </tr>
+            @foreach($meddata as $data)
+            <tr>
+                <td width="33%">{{$data->product_name}}</td>
+              <td width="33%">{{$data->purchases}}</td>
+              <td width="33%">{{$data->sales}}</td>
+              
+            </tr>
+            @endforeach
+          </table>
+          <table style="width:100%">
+            <tr>
+              <th colspan="3">Last 30 Days</th>
+            </tr>
+            @foreach($highdata as $data)
+            <tr>
+                <td width="33%">{{$data->product_name}}</td>
+              <td width="33%">{{$data->purchases}}</td>
+              <td width="33%">{{$data->sales}}</td>
+              
+            </tr>
+            @endforeach
+          </table>
     </div>    
        
         </main>

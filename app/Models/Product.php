@@ -20,6 +20,8 @@ class Product extends Model
         'isAvailable',
         'price',
         'picture',
+        'isStock',
+        'stock',
         'restaurant_id'
     ];
 

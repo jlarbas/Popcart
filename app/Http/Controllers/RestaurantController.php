@@ -76,8 +76,6 @@ class RestaurantController extends Controller
         
         $data = Order::where('restaurant_id',$restaurant->id)->whereDate('created_at', Carbon::today())
                    ->sum('total');
-         
-   
         $week = Order::whereBetween('created_at', [Carbon::now()->startOfWeek(Carbon::SUNDAY), Carbon::now()->endOfWeek(Carbon::SATURDAY)])->sum('total');
 
         $products = OrderList::where('restaurant_id', $restaurant->id)
