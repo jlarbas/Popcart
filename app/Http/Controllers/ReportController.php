@@ -106,7 +106,7 @@ class ReportController extends Controller
     }
 
     public function purchaseHistory(Request $request, Restaurant $restaurant){
-        $id = $restaurant->id;
+        
         $today = Carbon::today()->format('Y-m-d');
         
         // $order = Order::when($request->date != null, function($q) use($request){

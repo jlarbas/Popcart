@@ -116,11 +116,19 @@
                     <p>Product Name: {{$data->product_name}} </p> 
                 </div>
                 @endforeach
+            </div>
                 
               
                   
         </x-card>
-        <table style="width:100%">
+        
+        <select class="pull-left form-control input-lg" id="dropsearchselect" name="dropsearch">Select Search</option>
+        <option value="today">Today</option>
+        <option value="week">Last 7 Days</option>
+        <option value="month">Last 30 Days</option>
+        </select>    
+        <div id="today">
+        <table style="width:100%" >
             <tr>
               <th colspan="3">Daily</th>
               
@@ -134,7 +142,9 @@
             </tr>
             @endforeach
           </table>
-          <table style="width:100%">
+        </div>
+        <div id="week">
+          <table style="width:100%" id="week">
             <tr>
               <th colspan="3">Last 7 days</th>
               
@@ -148,7 +158,9 @@
             </tr>
             @endforeach
           </table>
-          <table style="width:100%">
+        </div>
+          <div id="month">
+          <table style="width:100%" id="month">
             <tr>
               <th colspan="3">Last 30 days</th>
               
@@ -162,10 +174,36 @@
             </tr>
             @endforeach
           </table>
+          </div>
     </div>    
        
         </main>
     <x-flash-message />
 </body>
+<script>
+    
+    $("#week").hide();
+    $("#month").hide();
+    $(function () {
+        
+    $("#dropsearchselect").change(function () {
+    if ($(this).val() == "today") {
+        $("#today").show();
+        $("#week").hide();
+        $("#month").hide();
+    }
+    else if ($(this).val() == "week") {
+        $("#week").show();
+        $("#today").hide();
+        $("#month").hide();
+    }else if ($(this).val() == "month") {
+        $("#month").show();
+        $("#week").hide();
+        $("#today").hide();
+    }
+
+});
+});
+</script>
 </html>      
 
