@@ -49,9 +49,9 @@
     <div class="bg-white">
         <nav class="flex justify-between items-center mb-0">
            
-            <img class="w-20 border-2 border-orange-400 shadow-lg rounded-full mt-2 mb-2 ml-2 mr-2"  src="{{ asset('images/logoCart.png') }}" alt="" class="logo"/>
+            <img class="w-16 border-2 border-orange-400 shadow-lg rounded-full mt-2 mb-2 ml-2 mr-2"  src="{{ asset('images/logoCart.png') }}" alt="" class="logo"/>
             
-            <ul class="flex space-x-6 mr-6 text-lg">
+            <ul class="flex space-x-6 mr-6 text-base">
                 @auth
                 @if(auth()->user()->role != "customer")
                 <li>
@@ -60,7 +60,7 @@
                 <li>
                     <form class="inline" method="POST" action="/logout">
                         @csrf
-                        <button type="submit" class="hover:text-hub ">
+                        <button type="submit" class="hover:text-hub text-base ">
                             <a><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
                     </form>
                 </li>

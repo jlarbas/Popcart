@@ -11,13 +11,15 @@
 
 
             <h2 class="text-xl font-semibold  mb-12">
-                Add Product
+                Add Record
             </h2>
             
      
 
         
-        <button class="border border-hub bg-white text-hub rounded-xl py-3.5 px-4 hover:text-white hover:bg-orange-500 text-center w-full" 
+        <button class="border border-hub bg-white text-hub rounded-xl py-3.5 px-4 hover:text-white hover:bg-orange-400 
+        text-center w-full" 
+
         onclick="Livewire.emit('openModal', 'add-inventory')">
         Create Inventory Item</button>
          @livewire('livewire-ui-modal')

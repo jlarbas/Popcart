@@ -153,18 +153,24 @@
                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                 @enderror
             </div>
+
+
+
+
+
+            
             <div class="mb-6">
                 <label
                     for="password"
                     class="inline-block text-lg mb-2">
-                 Please re-enter password
+                 
                 </label>
                 <input
                     placeholder="Password"
                     type="password"
                     class="border border-gray-400 rounded-xl hover:border-orange-500 p-4 w-full"
                     name="password"
-                    value=""
+                    value="{{ $user->password }}"
                 />
                 @error('password')
                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -183,7 +189,7 @@
                     type="password"
                     class="border border-gray-400 rounded-xl hover:border-orange-500 p-4 w-full"
                     name="password_confirmation"
-                    value=""
+                    value="{{ $user->password }}"
                 />
                 @error('password_confirmation')
                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>

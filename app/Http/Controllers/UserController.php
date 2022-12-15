@@ -110,6 +110,7 @@ class UserController extends Controller
                     return redirect()->route('staffIndex')->with('message','Logged In');
                     break; 
                 case 3:
+                    
                     $request->session()->regenerate();
                     return redirect()->route('staffIndex')->with('message','Logged In');
                     break;

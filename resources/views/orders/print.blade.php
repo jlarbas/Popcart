@@ -7,7 +7,6 @@
         <title>Receipt</title>
     </head>
     <body style="background-image: linear-gradient(to right, #F8DFB9 , #F4C9D7)">
-<a href="{{ route('orders',$dummy) }}">Back</a>
 
     
 
@@ -54,14 +53,14 @@
     <p class="centered">Thank you for your purchase!</p>
     
 
-<button id="btn-confirm" class="hidden-print">Print</button>
+<button id="btnPrint" class="hidden-print">Print</button>
 
 <a href="/">  
                <div class="">
                    <button type="button" 
                    id="btn-reverse"
                    wire:click="cancelCart" 
-                   class="btn btn-danger">Cancel</button></div>     
+                   class="hidden-print">Back</button></div>     
                </div>
                </a>
 <br><br>

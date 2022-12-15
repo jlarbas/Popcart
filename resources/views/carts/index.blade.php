@@ -5,5 +5,4 @@
     <livewire:pos :restaurant="$restaurant" :cart="$cart" :product="$product"/>
     
     <livewire:scripts />
-  
 @endsection

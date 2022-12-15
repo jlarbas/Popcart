@@ -19,7 +19,7 @@
                 </h3> 
                  
         
-                <h3 class="capitalize">..{{ $user->role}} </h3> 
+                <h3 class="capitalize">{{ $user->role}} </h3> 
 </a>
                 
             

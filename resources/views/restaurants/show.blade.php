@@ -39,15 +39,11 @@
 <body style="background-image: linear-gradient(to right, #F8DFB9 , #F4C9D7)">
     <div class="bg-white">
         <nav class="flex justify-between items-center mb-0">
-            @if(auth()->user()->role_id == 1)
+
+    
             <a href="{{ route('home') }}"
-                ><img class="w-20 border-2 border-orange-400 shadow-lg rounded-full mt-2 mb-2 ml-2 mr-2"  src="{{ asset('images/logoCart.png') }}" alt="" class="logo"/>
+                ><img class="w-24" src="{{ asset('images/logoCart.png') }}" alt="" class="logo"/> 
             </a>
-            @else
-            <a href="{{ route('staffIndex') }}"
-                ><img class="w-20 border-2 border-orange-400 shadow-lg rounded-full mt-2 mb-2 ml-2 mr-2"  src="{{ asset('images/logoCart.png') }}" alt="" class="logo"/>
-            </a>
-            @endif
             <ul class="flex space-x-6 mr-6 text-lg">
                 @auth
                 <li>
@@ -87,15 +83,15 @@
         </nav>
     
     <main>
-        @if(auth()->user()->role_id == 1)
-        @include('partials._hero')
-        @else
-        @include('partials._staffhero')
-        @endif
+
+   
+
+    @include('partials._hero')
+
+    <div class="p-10  bg-white mt-10 ml-14 mr-14 
+    border border-white rounded-t-xl shadow-lg ">
     
-    <a href="/" class="inline-block text-black ml-4 mb-8 mt-8"
-    ><i class="fa-solid fa-arrow-left"></i> Back
-    </a>
+
     <a
     href="{{ route('pos',$restaurant->id) }}"
     class="border border-hub bg-white text-hub rounded-xl py-3 px-14 hover:text-white hover:bg-orange-500 text-center"
@@ -112,7 +108,9 @@
     href="{{ route('inventory',$restaurant->id) }}"
     class="border border-hub bg-white text-hub rounded-xl py-3 px-10 hover:text-white hover:bg-orange-500 text-center"
     >Inventory</a>
-    <a href="{{ route('history',$restaurant->id) }}">Purchase History</a>
+
+    </div>
+
     <div class="mx-4">
         
         <x-card class="p-10  bg-white border border-gray-100 rounded  ml-10 mr-10 mb-8 border border-gray-100 rounded-b-2xl shadow-lg ">
@@ -159,9 +157,9 @@
 
         
         @foreach($restaurant->products as $product)
-            <div class="border-2 border-orange-200  inline-block flex bg-white Z py-2 w-48 px-2 mt-2 mb-2 md:block rounded shadow-lg">
+            <div class="border-2 border-orange-200  inline-block flex bg-white Z py-2 w-48 px-2 mt-2 mb-2 md:block rounded-xl shadow-lg">
                 <img
-                                class="hidden w-48 h-48 mr-6 md:block border border-gray-400 rounded"
+                                class="hidden w-48 h-48 mr-6 md:block border border-gray-400 rounded-xl"
                                 src="{{$product->picture ? asset('storage/' . $product->picture) : asset('/images/no-image.png')}}"
                                 alt=""
                             />
