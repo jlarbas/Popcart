@@ -16,7 +16,7 @@ class Pos extends Component
     
     public function render()
     {
-        $this->cart = Cart::latest()->get();
+       $this->cart = Cart::where('user_id',auth()->user()->id)->latest()->get();
        
         return view('livewire.cart',[
             // 'restaurant' => $this->restaurant,
@@ -34,7 +34,7 @@ class Pos extends Component
     }
 
     public function decrementQuantity(int $cartId){
-        $data = Cart::where('id',$cartId);
+        $data = Cart::where('id',$cartId)->where('quantity','>', 1);
         // $quant = $data->decrement('quantity');
         // dd($quant);
         if($data){
@@ -43,7 +43,7 @@ class Pos extends Component
            
         }
         else{
-            return back()->with('message','Failed to perform action!');
+            return back()->with('message','Minimum quantity is 1. Please remove item.');
         }
         
     }

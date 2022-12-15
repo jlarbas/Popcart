@@ -67,19 +67,13 @@ class UserController extends Controller
 
     public function update(Request $request, User $user){
         $form = $request->validate([
-            'name' => ['required','min:3'],
-            'email' => ['required','email'],
-            'role' => 'required',
-            'contact' =>['required','max:11'],
-            'status' =>'required',
-            'address' =>'required',
-            'schedule' =>'required',
-            'password' => 'required|confirmed|min:6'
+            'contact' =>'max:11',
+            'password' => 'required|confirmed|min:6',
         ]);
 
         //Hash Password
         $form['password'] = bcrypt($form['password']);
-
+        $user->restaurant_id = $request->input('restaurant_id');
         if($request->hasFile('picture')){
             $form['picture'] = $request->file('picture')->store('users','public');
         }
