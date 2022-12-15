@@ -26,13 +26,17 @@
                 extend: {
                     colors: {
                         hub: "#ff8400",
+                        gray1: "#f2f2f2", 
+                        pink1: "#f4c9d7"
                     },
                 },
             },
         };
     </script>
     
-    <title>Home Page</title>
+    <title>Pop Cart</title>
+        <link rel="icon" type="image/x-icon" href="{{ asset('images/icon.png') }}">
+        
 </head>
 <body style="background-image: linear-gradient(to right, #F8DFB9 , #F4C9D7)">
     <div class="bg-white">
@@ -42,7 +46,7 @@
             <a href="{{ route('home') }}"
                 ><img class="w-24" src="{{ asset('images/logoCart.png') }}" alt="" class="logo"/> 
             </a>
-            <ul class="flex space-x-6 mr-6 text-lg">
+            <ul class="flex space-x-6 mr-6 text-base">
                 @auth
                 <li>
                     <i class="fa-solid fa-user"></i><span class=""> {{ auth()->user()->name }}</span>
@@ -50,16 +54,11 @@
                 <li>
                     <form class="inline" method="POST" action="/logout">
                         @csrf
-                        <button type="submit" class="hover:text-hub ">
+                        <button type="submit" class="hover:text-hub text-base">
                             <a><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
                     </form>
                 </li>
-                <li>
-                    <a href="/listings/manage" class="hover:text-hub "
-                        ><i class="fa-solid fa-gear"></i>
-                        Dashboard</a
-                    >
-                </li>
+              
 
                     </div>
                 @else
@@ -84,53 +83,77 @@
     @include('partials._hero')
 
     <div class="mx-4">
-        <x-card class="p-10  bg-white border border-gray-100 rounded mt-10 border border-gray-100 rounded-lg shadow-lg mb-8">
+        <x-card class="p-10  bg-gray1 border border-gray-100 rounded mr-10 ml-10 mt-10 border border-gray-100 rounded-lg shadow-lg mb-10">
             
             <a href="{{ route('history',$restaurant->id) }}">Purchase History</a>
 
             <x-listing-showcard :restaurant="$restaurant"/>  
             
           
-          <div class="flex">
-                <div class="text-white rounded py-4 px-4 bg-gradient-to-r from-orange-500 to-orange-400 mr-2 ml-2 mb-2 text-left w-80">
+          <div class="grid grid-cols-3 grid-auto-fit gap-x-3 gap-y-3">
+                <div class="text-hub rounded-xl py-4 px-4 bg-orange-100 border border-hub shadow-lg mr-2 ml-2 mb-2 text-left w-full">
                     <p class="mb-4 text-lg font-semibold">₱{{$data}} </p>
                     <p>Daily Sales </p> 
                 </div>
 
-                <div class="text-white rounded py-4 px-4 bg-gradient-to-r from-orange-500 to-orange-400 mr-2 ml-2 mb-2 text-left w-80">
+                <div class="text-hub rounded-xl py-4 px-4 bg-orange-100 border border-hub shadow-lg mr-2 ml-2 mb-2 text-left w-full">
                     <p class="mb-4 text-lg font-semibold">₱{{$week}} </p>
                     <p>This Week's Sales </p> 
                 </div>
-                <div class="text-white rounded py-4 px-4 bg-gradient-to-r from-orange-500 to-orange-400 mr-2 ml-2 mb-2 text-left w-80">
+                
+                <div class="text-hub rounded-xl py-4 px-4 bg-orange-100 border border-hub shadow-lg mr-2 ml-2 mb-2 text-left w-full">
                     <p class="mb-4 text-lg font-semibold">₱{{$lastweek}} </p>
                     <p>Last Week's Sales </p> 
                 </div>
-            </div>    
-                
+            </div>  
+            
+            
+            <div class="grid grid-cols-2 grid-auto-fit gap-x-3 gap-y-3 ml-2 mt-4 ">
+            
+
+            <div class="border border-gray-300 rounded-xl text-base shadow-lg">
+            <br>
+            <table style="width:80% centered">
+                    
            
-            <div class="flex">
-                @foreach($products as $data)
-                <div class="text-white rounded py-4 px-4 bg-gradient-to-r from-orange-500 to-orange-400 mr-2 ml-2 mb-2 text-left w-80">
-                    <p class="mb-4 text-lg font-semibold">Total Purchases: {{$data->purchases}} </p>
-                    <p class="mb-4 text-lg font-semibold">Total Sales: {{$data->sales}} </p>
-                    <p>Product Name: {{$data->product_name}} </p> 
-                </div>
-                @endforeach
-                
-                <table style="width:100%">
-                    <tr>
-                      <th colspan="3">Daily</th>
-                      
-                    </tr>
+                    <thead>
+                        <th colspan="3">Daily</th>
+                        </tr>
+                      <th width="33%">Product</th>
+                      <th width="33%">Purchase</th>
+                      <th width="33%">Total</th>
+
+                        </tr>               
+                    </thead>
+
+
+
                     @foreach($day as $data)
                     <tr>
-                        <td width="33%">{{$data->product_name}}</td>
+                      <td width="33%">{{$data->product_name}}</td>
                       <td width="33%">{{$data->purchases}}</td>
                       <td width="33%">{{$data->sales}}</td>
                       
                     </tr>
                     @endforeach
                   </table>
+         </div>
+           
+                
+
+
+           
+            <div class="grid grid-cols-2 grid-auto-fit gap-x-2 gap-y-2">
+                @foreach($products as $data)
+                <div class="border border-gray-300 rounded-xl text-black rounded py-4 px-4 bg-white mr-2  text-left  w-100">
+                    <p class="mb-1 text-base font-semibold"> {{$data->product_name}} </p>
+                    <p class="mb-1 text-sm ">Total Purchases: {{$data->purchases}} </p>
+                    <p class="mb-1 text-sm ">Total Sales: {{$data->sales}} </p>
+                     
+                </div>
+                @endforeach
+                
+                </div>     
                   
         </x-card>
         @if(auth()->user()->role_id == 2)
