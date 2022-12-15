@@ -1,13 +1,25 @@
 @extends('layout')
 @section('content')
 @include('partials._hero')
+
+
+<div class="bg-gray1 mt-12 mr-12 ml-12  border border-gray-100 shadow-2xl rounded-2xl"><br>
+
 @include('partials._search_products')
+
+<div class="ml-4">
+
 <a
 href="{{ route('products.create') }}"
-class="ml-4 bg-hub inline-block text-white py-2.5 px-4 rounded-md hover:bg-orange-500 mb-8"
->Add Product</a
->
-<div class="lg:grid lg:grid-cols-2 gap-4 space-y-4 md:space-y-0 mx-4">
+class="ml-4 bg-hub inline-block text-white py-3 px-4 rounded-xl hover:bg-orange-500 mb-2 mt-4"
+>Add Product</a>
+
+</div>
+<br>
+
+
+
+<div class="lg:grid lg:grid-cols-4 gap-4 space-y-4 md:space-y-0 mt-8 mx-40">
 
 @if(count($products) == 0)
 <h1>No products Found. Add your first product </h1>
@@ -20,5 +32,7 @@ class="ml-4 bg-hub inline-block text-white py-2.5 px-4 rounded-md hover:bg-orang
 @endforeach
 </div>
     {{-- Paginate frontend --}}
+    <div class="mt-6 p-4">
     {{ $products->links() }}
+    </div>
 @endsection

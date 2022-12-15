@@ -1,5 +1,5 @@
-
+{{-- Card Background --}
 {{-- Card Background --}}
-<div {{ $attributes->merge(['class' => 'bg-gray-50 border border-gray-200 rounded p-6'])}}>
+<div {{ $attributes->merge(['class' => ''])}}>
 {{$slot}}
 </div>

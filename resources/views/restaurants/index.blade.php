@@ -1,17 +1,29 @@
 @extends('layout')
 @section('content')
 @include('partials._hero')
+
+
+
+
+<div class="bg-gray1 mt-12 mr-12 ml-12  border border-gray-100 shadow-2xl rounded-2xl">
+
+<br>
 @include('partials._search')
 
 
+<div class="ml-4">
+
 <a
             href="{{ route('restaurants.create') }}"
-            class="ml-4 bg-hub inline-block text-white py-2.5 px-4 rounded-md hover:bg-orange-500 mb-8"
+            class="ml-4 bg-hub inline-block text-white py-3 px-4 rounded-xl hover:bg-orange-500 mb-2 mt-4"
             >Add Restaurant</a
         >
 
+        </div>
+<br>
 
-<div class="lg:grid lg:grid-cols-2 gap-4 space-y-4 md:space-y-0 mx-4">
+
+<div class="lg:grid lg:grid-cols-4 gap-4 space-y-4 md:space-y-0 mt-8 mx-40">
     
 @if(count($restaurants) == 0)
 <h1>No Restaurants Found. Add your first restaurant </h1>

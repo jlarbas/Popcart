@@ -20,7 +20,7 @@
     <p class="centered">Receipt No. {{$order->id}}
         
         <br>Address line 2</p><br>
-</div>
+
     <table>
         <thead>
             <tr>
@@ -37,7 +37,8 @@
                 <td class="price">{{$data->price}}</td>
             </tr>
             @endforeach
-            <tr>
+        <table>
+            <tr><br>
                  <td class="description">Cash:{{$order->payment}}</td>
                  <td class="description">Total:{{$order->total}}</td>
                  
@@ -48,10 +49,10 @@
             </tr>
         </tbody>
     </table>
+</table><br>
         
     
-</div>
-</div><br>
+
 
 <form method="POST" action="{{ route('payment',$order->id) }}" enctype="multipart/form-data">
     @csrf
@@ -60,11 +61,12 @@
         <label
             for="payment"
             class="inline-block text-lg mb-2"
-            >Payment Amount</label
+            ></label
         >
         <input
             type="text"
-            class="border border-gray-200 rounded p-2 w-full"
+            placeholder="Payment Amount"
+            id="field-payment"
             name="payment"
             
         />
@@ -74,7 +76,7 @@
     </div>
     <div class="mb-6">
         <button
-            class="bg-hub text-white rounded py-2 px-4 hover:bg-orange-600">
+            id="btn-confirm">
             Confirm
         </button>
     </div>

@@ -90,7 +90,7 @@
 
             <x-listing-showcard :restaurant="$restaurant"/>  
             
-           
+          
           <div class="flex">
                 <div class="text-white rounded py-4 px-4 bg-gradient-to-r from-orange-500 to-orange-400 mr-2 ml-2 mb-2 text-left w-80">
                     <p class="mb-4 text-lg font-semibold">₱{{$data}} </p>

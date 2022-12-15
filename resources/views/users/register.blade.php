@@ -1,10 +1,17 @@
+<div>
 @extends('layout')
 @section('content')
+</div>
 
-<x-card class="p-10 rounded-lg max-w-lg mx-auto mt-24 border border-gray-100 shadow-lg">
+<x-card class="bg-gray1 p-10 rounded-lg max-w-lg mx-auto mt-24 border border-gray-100 shadow-lg">
 
         <header class="text-center">
-            <h2 class="text-2xl font-semibold  mb-8">
+        <a href="{{ route('home') }}"
+                ><img class="w-40  mt-2 mb-2 ml-4 mr-2 ml-28 mt-8"  src="{{ asset('images/logoCart4.png') }}" alt="" class="logo"/>
+        </a><br>
+
+
+            <h2 class="text-xl font-semibold  mb-8">
                 Register
             </h2>
             
@@ -14,11 +21,12 @@
             @csrf
             <div class="mb-6">
                 <label for="name" class="inline-block text-lg mb-2">
-                    Name
+                  
                 </label>
                 <input
                     type="text"
-                    class="border border-gray-400 rounded p-2 w-full"
+                    placeholder="Name"
+                    class="border border-gray-400 rounded-xl hover:border-orange-500 p-4 w-full"
                     name="name"
                 />
                 @error('name')
@@ -28,11 +36,12 @@
 
             <div class="mb-6">
                 <label for="email" class="inline-block text-lg mb-2"
-                    >Email</label
+                    ></label
                 >
                 <input
                     type="email"
-                    class="border border-gray-400 rounded p-2 w-full"
+                    placeholder="Email"
+                    class="border border-gray-400 rounded-xl hover:border-orange-500 p-4 w-full"
                     name="email"
                 />
                 @error('email')
@@ -42,23 +51,26 @@
             </div>
             <div class="mb-6">
                 <label for="contact" class="inline-block text-lg mb-2">
-                    Contact
+                 
                 </label>
                 <input
                     type="text"
-                    class="border border-gray-400 rounded p-2 w-full"
+                    placeholder="Contact"
+                    class="border border-gray-400 rounded-xl hover:border-orange-500 p-4 w-full"
                     name="contact"
                 />
                 @error('contact')
                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                 @enderror
             </div>
+
+
             <div class="mb-6">
-                <label for="role_id" class="inline-block text-lg mb-2">
+                <label for="role_id" class="inline-block text-base mb-2 text-hub">
                     Role
                 </label><br>
-                <select name="role_id" class="border border-gray-400 rounded p-2 px-20 ">
-                    <option value="">--Please choose an option--</option>
+                <select name="role_id" class=" border border-gray-400 rounded-xl hover:border-orange-500 p-4 w-full">
+                    <option class ="text-center" value=""> Please choose an option </option>
                     @foreach($roles as $role)
                     <option 
                         value="{{ $role->id }}" 
@@ -69,77 +81,73 @@
                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                 @enderror
             </div>
+
+
             <div class="mb-6">
-                <label for="status" class="inline-block text-lg mb-2">
+                <label for="status" class="inline-block text-base mb-2 text-hub">
                     Status
                 </label>
-                <br><select name="status" class="border border-gray-400 rounded p-2 px-20 ">
-                        <option value="active" > Active </option>
-                        <option value="inactive" >Inactive </option>
+                <br><select name="status" class=" border border-gray-400 rounded-xl hover:border-orange-500 p-4 w-full">
+                        <option class ="text-center" value="active" > Active </option>
+                        <option class ="text-center" value="inactive" >Inactive </option>
                 </select>
                 @error('status')
                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                 @enderror
             </div>  
+
+        
             <div class="mb-6">
                 <label for="address" class="inline-block text-lg mb-2">
                     Address
                 </label>
                 <input
                     type="text"
-                    class="border border-gray-400 rounded p-2 w-full"
+                    class="border border-gray-400 rounded-xl hover:border-orange-500 p-4 w-full"
                     name="address"
                 />
                 @error('address')
                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                 @enderror
             </div>
+
+        
             <div class="mb-6">
                 <label for="schedule" class="inline-block text-lg mb-2">
                     Schedule
                 </label>
                 <input
                     type="text"
-                    class="border border-gray-400 rounded p-2 w-full"
+                    class="border border-gray-400 rounded-xl hover:border-orange-500 p-4 w-full"
                     name="schedule"
                 />
                 @error('schedule')
                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                 @enderror
             </div>
+
             <div class="mb-6 mt-8 text-lg mb-2">
                 <label>Select Restaurant</label>
                 <br>
-                <select name="restaurant_id" class="border border-gray-400 rounded p-2 px-20 ">
-                    <option value="">--Please choose an option--</option>
+                <select name="restaurant_id" class="border border-gray-400 rounded-xl hover:border-orange-500 p-4 w-full">
+                    <option class="text-center" value="">--Please choose an option--</option>
                     @foreach($restaurants as $restaurant)
                         <option value="{{ $restaurant->id }}" >{{ $restaurant->name }}</option>
                     @endforeach
                 </select>
             </div>
-            <div class="mb-6">
-                <label for="picture" class="inline-block text-lg mb-2">
-                    Picture
-                </label>
-                <input
-                    type="file"
-                    class="border border-gray-200 rounded p-4 w-full"
-                    name="picture"
-                />
-                @error('picture')
-                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                @enderror
-            </div>
+
             <div class="mb-6">
                 <label
                     for="password"
                     class="inline-block text-lg mb-2"
                 >
-                    Password
+                   
                 </label>
                 <input
+                    placeholder="Password"
                     type="password"
-                    class="border border-gray-400 rounded p-2 w-full"
+                    class="border border-gray-400 rounded-xl hover:border-orange-500 p-4 w-full"
                     name="password"
                 />
                 @error('password')
@@ -152,11 +160,12 @@
                     for="password2"
                     class="inline-block text-lg mb-2"
                 >
-                    Confirm Password
+                  
                 </label>
                 <input
+                    placeholder="Confirm Password"
                     type="password"
-                    class="border border-gray-400 rounded p-2 w-full"
+                    class="border border-gray-400 rounded-xl hover:border-orange-500 p-4 w-full"
                     name="password_confirmation"
                 />
                 @error('password_confirmation')
@@ -164,14 +173,28 @@
                 @enderror
             </div>
 
-            <div class="mb-6">
+            <div class="mb-4">
                 <button
                     type="submit"
-                    class="bg-hub text-white rounded py-2 px-14 hover:bg-orange-500"
+                    class="bg-hub text-white rounded-xl py-3 px-14 hover:bg-orange-500 w-full"
                 >
                    Create
                 </button>
             </div>
+               
+            <div class="mb-4">
+             
+            <a href="/">  
+            <div class="border border-hub bg-white text-hub rounded-xl py-3 px-4 hover:text-white hover:bg-orange-500 text-center">
+                <button type="button" 
+                wire:click="cancelCart" 
+                class="btn btn-danger">Cancel</button></div>     
+            </div>
+            </a>
+
+
+
+
         </form>
     </x-card>
 
