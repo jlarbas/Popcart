@@ -78,9 +78,10 @@
     
     <main>
 
-   
 
     @include('partials._hero')
+   
+
 
     <div class="p-10  bg-white mt-10 ml-14 mr-14 
     border border-white rounded-t-xl shadow-lg ">
@@ -92,6 +93,7 @@
     >POS</a
     >
     @if(auth()->user()->role_id == 2)
+    
     <a
     href="{{ route('orders',$restaurant->id) }}"
     class="border border-hub bg-white text-hub rounded-xl py-3 px-12 hover:text-white hover:bg-orange-500 text-center"
@@ -143,7 +145,7 @@
         @if(auth()->user()->role_id == 2)
 
 
-        <div class="grid grid-cols-5 gap-x-0 gap-y-2 mr-10 ml-10 mt-10">
+        <div class="grid grid-cols-5 gap-x-0 gap-y-2 mr-10 ml-10 mt-10 ">
 
 
         

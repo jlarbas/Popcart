@@ -4,14 +4,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link href="{{asset('assets/style.css')}}" rel="stylesheet" type="text/css" >
-        <title>Order Items</title>
+        
+        <title>Pop Cart</title>
+        <link rel="icon" type="image/x-icon" href="{{ asset('images/icon.png') }}">
+
     </head>
     <body style="background-image: linear-gradient(to right, #F8DFB9 , #F4C9D7)">
-<a href="{{ route('history',$order->restaurant_id) }}">Back</a>
 
-    
 
-    <h1>{{$order->id}}</h1>
+
+<div class="ticket">
+
+<div class="content"><br>
+
+    <h1 style="font-size: 25px">Order {{$order->id}}</h1>
 <table>
     <thead>
         <tr>
@@ -40,7 +46,11 @@
              <td class="price">VAT:{{$order->vat}}</td>
         </tr>
     </tbody>
-</table><br>
+</table>
+
+<a id="btn-reverse" href="{{ route('history',$order->restaurant_id) }}">Back</a>
+
+<br>
     
         
     

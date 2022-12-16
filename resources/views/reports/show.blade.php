@@ -128,69 +128,77 @@
                 </div>
                 @endforeach
             </div>
+
+
+
                 
-                </div>     
+              
+        <div class="border border-gray-300 rounded-xl text-black rounded py-4">
+            
+            <select class="pull-left form-control input-lg ml-2 p-1 rounded-xl border border-hub" id="dropsearchselect" name="dropsearch">Select Search</option>
+            <option value="today">Today</option>
+            <option value="week">Last 7 Days</option>
+            <option value="month">Last 30 Days</option>
+            </select>    
+            <div id="today">
+            <table style="width:100%" >
+                <tr>
+                  <th colspan="3">Daily</th>
+                  
+                </tr>
+                @foreach($day as $data)
+                <tr>
+                    <td width="33%">{{$data->product_name}}</td>
+                  <td width="33%">{{$data->purchases}}</td>
+                  <td width="33%">{{$data->sales}}</td>
+                  
+                </tr>
+                @endforeach
+              </table>
+            </div>
+            <div id="week">
+              <table style="width:100%" id="week">
+                <tr>
+                  <th colspan="3">Last 7 days</th>
+                  
+                </tr>
+                @foreach($meddata as $data)
+                <tr>
+                    <td width="33%">{{$data->product_name}}</td>
+                  <td width="33%">{{$data->purchases}}</td>
+                  <td width="33%">{{$data->sales}}</td>
+                  
+                </tr>
+                @endforeach
+              </table>
+            </div>
+              <div id="month">
+              <table style="width:100%" id="month">
+                <tr>
+                  <th colspan="3">Last 30 days</th>
+                  
+                </tr>
+                @foreach($highdata as $data)
+                <tr>
+                    <td width="33%">{{$data->product_name}}</td>
+                  <td width="33%">{{$data->purchases}}</td>
+                  <td width="33%">{{$data->sales}}</td>
+                  
+                </tr>
+                @endforeach
+              </table>
+              </div>  
                   
         </x-card>
         
-        <select class="pull-left form-control input-lg" id="dropsearchselect" name="dropsearch">Select Search</option>
-        <option value="today">Today</option>
-        <option value="week">Last 7 Days</option>
-        <option value="month">Last 30 Days</option>
-        </select>    
-        <div id="today">
-        <table style="width:100%" >
-            <tr>
-              <th colspan="3">Daily</th>
-              
-            </tr>
-            @foreach($day as $data)
-            <tr>
-                <td width="33%">{{$data->product_name}}</td>
-              <td width="33%">{{$data->purchases}}</td>
-              <td width="33%">{{$data->sales}}</td>
-              
-            </tr>
-            @endforeach
-          </table>
-        </div>
-        <div id="week">
-          <table style="width:100%" id="week">
-            <tr>
-              <th colspan="3">Last 7 days</th>
-              
-            </tr>
-            @foreach($meddata as $data)
-            <tr>
-                <td width="33%">{{$data->product_name}}</td>
-              <td width="33%">{{$data->purchases}}</td>
-              <td width="33%">{{$data->sales}}</td>
-              
-            </tr>
-            @endforeach
-          </table>
-        </div>
-          <div id="month">
-          <table style="width:100%" id="month">
-            <tr>
-              <th colspan="3">Last 30 days</th>
-              
-            </tr>
-            @foreach($highdata as $data)
-            <tr>
-                <td width="33%">{{$data->product_name}}</td>
-              <td width="33%">{{$data->purchases}}</td>
-              <td width="33%">{{$data->sales}}</td>
-              
-            </tr>
-            @endforeach
-          </table>
-          </div>
+
     </div>    
        
         </main>
     <x-flash-message />
 </body>
+
+
 <script>
     
     $("#week").hide();

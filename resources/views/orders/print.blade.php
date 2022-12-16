@@ -55,7 +55,12 @@
 
 <button id="btnPrint" class="hidden-print">Print</button>
 
-<a href="{{ route('orders',$order->restaurant_id) }}"> Back</a>
+
+<a id="btn-reverse" href="{{ route('orders',$order->restaurant_id) }}"> Back</a>
+
+
+
+
 </div>     
 </div>
 <script >
