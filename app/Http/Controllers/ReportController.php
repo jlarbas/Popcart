@@ -28,6 +28,8 @@ class ReportController extends Controller
 
     public function show(Restaurant $restaurant)
     {
+        $startm = Carbon::now()->subWeek()->startOfMonth();
+        $endm = Carbon::now()->subWeek()->startOfMonth();
         $start = Carbon::now()->subWeek()->startOfWeek();
         $end = Carbon::now()->subWeek()->endOfWeek();
         $med = Carbon::now()->subDays(7);
@@ -42,9 +44,22 @@ class ReportController extends Controller
         $week = Order::where('restaurant_id',$restaurant->id)
         ->whereBetween('created_at', [Carbon::now()->startOfWeek(Carbon::SUNDAY), Carbon::now()->endOfWeek(Carbon::SATURDAY)])
         ->sum('total');
+
+        $seven = Order::where('restaurant_id',$restaurant->id)
+        ->whereDate('created_at', [Carbon::now()->subDays(7)])
+        ->sum('total');
+
+        $thirty = Order::where('restaurant_id',$restaurant->id)
+        ->whereDate('created_at', [Carbon::now()->subDays(30)])
+        ->sum('total');
+
         //Last Week Sales//
         $lastweek = Order::where('restaurant_id',$restaurant->id)
         ->whereBetween('created_at', [$start, $end])
+        ->sum('total');
+
+        $month = Order::where('restaurant_id',$restaurant->id)
+        ->whereBetween('created_at', [$startm, $endm])
         ->sum('total');
 
         //Total Sales and Count of Product Purchase//
@@ -101,7 +116,10 @@ class ReportController extends Controller
             'day',
             'lastweek',
             'meddata',
-            'highdata'
+            'highdata',
+            'seven',
+            'thirty',
+            'month'
         ));
     }
 
@@ -114,6 +132,7 @@ class ReportController extends Controller
         // })
         // ->whereDate('created_at', $today)
         // ->get();
+        $pass = $restaurant->id;
         $order = Order::when($request->date != null, function($q) use($request){
             return $q->whereDate('created_at',$request->date);
         },function($q) use ($today){
@@ -123,8 +142,55 @@ class ReportController extends Controller
         ->get();
        
         
-        return view('reports.sale',compact('order'));
+        return view('reports.sale',compact('order','pass'));
+    }
+    public function customDate(Request $request, Restaurant $restaurant){
+        
+        $today = Carbon::today()->format('Y-m-d');
+        
+        // $order = Order::when($request->date != null, function($q) use($request){
+        //     return $q->whereDate('created_at',$request->date);
+        // })
+        // ->whereDate('created_at', $today)
+        // ->get();
+        $order = Order::whereBetween('created_at',[$request->dateone,$request->datetwo])
+        ->where('restaurant_id',$restaurant->id)
+        ->where('status','completed')
+        ->get();
+       
+        
+        return view('reports.history',compact('order'));
     }
 
+    public function sales(Request $request, Restaurant $restaurant){
+        
+        $today = Carbon::today()->format('Y-m-d');
+        $pass = $restaurant->id;
+        $data = Order::when($request->date != null, function($q) use($request){
+            return $q->whereDate('created_at',$request->date);
+        },function($q) use ($today){
+            return $q->whereDate('created_at',$today);
+        })->where('restaurant_id',$restaurant->id)
+        ->where('status','completed')
+        ->sum('total');
+        
+        return view('reports.salesHistory',compact('data','pass'));
+    }
+
+    public function customSale(Request $request, Restaurant $restaurant){
+        
+        // $order = Order::when($request->date != null, function($q) use($request){
+        //     return $q->whereDate('created_at',$request->date);
+        // })
+        // ->whereDate('created_at', $today)
+        // ->get();
+        $data = Order::whereBetween('created_at',[$request->dateone,$request->datetwo])
+        ->where('restaurant_id',$restaurant->id)
+        ->where('status','completed')
+        ->sum('total');
+       
+        
+        return view('reports.customSale',compact('data'));
+    }
     
 }

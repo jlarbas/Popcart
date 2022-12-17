@@ -86,20 +86,28 @@
     <div class="m-auto bg-white content-center shadow-xl rounded-xl mt-20 xl:w-3/5">
     
         <div class="p-5">
-            <a class="bg-hub mb-8 text-white rounded-xl py-3 px-14 hover:bg-orange-500 w-full" href="{{ route('custom',$pass) }}">
-                Select Range</a>
-            <br> 
+           
             <form method="GET" action="" >
                 @csrf
             <label
                 for="date"
                 class="inline-block text-lg mb-4"
-                >Select Date</label
-            ><br>
+                >First Date: </label
+            >
             <input
                 type="date"
                 class="border border-gray-400 rounded-xl hover:border-orange-500 p-4 w-2/6"
-                name="date"
+                name="dateone"
+            />
+            <label
+            for="date"
+            class="inline-block text-lg mb-4"
+            >Second Date: </label
+            >
+            <input
+            type="date"
+            class="mr-5 border border-gray-400 rounded-xl hover:border-orange-500 p-4 w-2/6"
+            name="datetwo"
             /><br>
             @error('date')
             <p class="text-orange-500 text-xs mt-1">{{ $message }}</p>
@@ -114,48 +122,12 @@
             </form>
 
             <h1 class="text-xl font-semibold">Sales</h1> <br>
-            <table id="myTable">
-                <thead>
-                    <tr>
-                        <th>
-                            Order Number
-                        </th>  
-                        <th>
-                            Total
-                        </th> 
-                        <th>
-                            Date
-                        </th> 
-                    </tr>  
-                </thead>
-                <tbody>
-                    @foreach($order as $data)
-                    <tr>    
-                    <a href="{{ route('displayPurchases',$data->id) }}">
-                    <td>
-                    Order #: {{ $data->id }}
-                    </td>
-                    <td>
-                Total: {{ $data->total }}
-                    </td>
-                    <td>
-                    Date & Time: {{ $data->created_at }}
-                    </td>
-                
-                </a>
-                    </tr>
-                    @endforeach
-                </tbody>
-                </table>    
+            <p>{{ $data }}</p>
         </div>
     </div>
     </div>      
     </main>
     <x-flash-message />
 </body>
-<script>
-    $(document).ready( function () {
-    $('#myTable').DataTable();
-} );
-</script>
+
 </html>      

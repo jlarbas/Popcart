@@ -41,8 +41,10 @@
          @endif
         @endforeach
     </div>
-    </div>
+   
     
-
+    <script>
+        
+    </script>
     
 @endsection

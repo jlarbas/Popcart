@@ -63,7 +63,9 @@ Route::get('/reports/index', [ReportController::class,'index'])->name('reports')
 Route::get('/orders/{order}/display',[ReportController::class,'display'])->name('displayPurchases')->middleware('auth');
 Route::get('/restaurants/{restaurant:id}/reports', [ReportController::class,'show'])->name('showReport')->middleware('auth');
 Route::get('/restaurants/{restaurant}/orders-history', [ReportController::class,'purchaseHistory'])->name('history')->middleware('auth');
-
+Route::get('/restaurants/{restaurant}/orders-custom', [ReportController::class,'customDate'])->name('custom')->middleware('auth');
+Route::get('/restaurants/{restaurant}/sales-history', [ReportController::class,'sales'])->name('saleshistory')->middleware('auth');
+Route::get('/restaurants/{restaurant}/sales-custom', [ReportController::class,'customSale'])->name('customsales')->middleware('auth');
 
 //Authentication
 Route::get('/login',[UserController::class,'login'])->name('login')->middleware('guest');;

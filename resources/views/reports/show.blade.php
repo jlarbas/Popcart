@@ -91,7 +91,10 @@
         <x-card class="p-10  bg-gray1 border border-gray-100 rounded mr-10 ml-10 mt-10 border border-gray-100 rounded-lg shadow-lg mb-10">
             
         <a class="bg-hub mb-8 text-white rounded-xl py-3 px-14 hover:bg-orange-500 w-full" href="{{ route('history',$restaurant->id) }}">
-                Purchase History</a> <br> <br> <br>
+            Purchase History</a> 
+        <a class="bg-hub mb-8 text-white rounded-xl py-3 px-14 hover:bg-orange-500 w-full" href="{{ route('saleshistory',$restaurant->id) }}">
+            Sales History</a> <br>
+        
 
             <x-listing-showcard :restaurant="$restaurant"/>  <br>  
                 
@@ -111,40 +114,49 @@
                     <p class="mb-4 text-lg font-semibold">₱{{$lastweek}} </p>
                     <p>Last Week's Sales </p> 
                 </div>
-            </div>  
-            
-            
-            <div class="grid grid-cols-2 grid-auto-fit gap-x-3 gap-y-3 ml-2 mt-4 ">
-            
-
-            
-            <div class="grid grid-cols-2 grid-auto-fit gap-x-2 gap-y-2">
-                @foreach($products as $data)
-                <div class="border border-gray-300 rounded-xl text-black rounded py-4 px-4 bg-white mr-2  text-left  w-100">
-                    <p class="mb-1 text-base font-semibold"> {{$data->product_name}} </p>
-                    <p class="mb-1 text-sm ">Total Purchases: {{$data->purchases}} </p>
-                    <p class="mb-1 text-sm ">Total Sales: {{$data->sales}} </p>
-                     
+                <div class="text-hub rounded-xl py-4 px-4 bg-orange-100 border border-hub shadow-lg mr-2 ml-2 mb-2 text-left w-full">
+                    <p class="mb-4 text-lg font-semibold">₱{{$seven}} </p>
+                    <p>Sales of the Last 7 Days</p> 
                 </div>
-                @endforeach
-            </div>
-
-
-
-                
-              
-        <div class="border border-gray-300 rounded-xl text-black rounded py-4">
+                <div class="text-hub rounded-xl py-4 px-4 bg-orange-100 border border-hub shadow-lg mr-2 ml-2 mb-2 text-left w-full">
+                    <p class="mb-4 text-lg font-semibold">₱{{$thirty}} </p>
+                    <p>Sales of the Last 30 Days</p> 
+                </div>
+                <div class="text-hub rounded-xl py-4 px-4 bg-orange-100 border border-hub shadow-lg mr-2 ml-2 mb-2 text-left w-full">
+                    <p class="mb-4 text-lg font-semibold">₱{{$month}} </p>
+                    <p>Last Month's Sales</p> 
+                </div>
+            </div>  
+        
             
             <select class="pull-left form-control input-lg ml-2 p-1 rounded-xl border border-hub" id="dropsearchselect" name="dropsearch">Select Search</option>
-            <option value="today">Today</option>
+            <option value="overall">Overall</option>
+            <option value="today">Daily</option>
             <option value="week">Last 7 Days</option>
             <option value="month">Last 30 Days</option>
-            </select>    
+            </select> 
+            <div id="load">
+            </div>
+            <div id="overall">
+                <table style="width:100%" >
+                    <tr>
+                      <th colspan="3">Overall</th>
+                      
+                    </tr>
+                    @foreach($products as $data)
+                    <tr>
+                        <td width="33%">{{$data->product_name}}</td>
+                      <td width="33%">{{$data->purchases}}</td>
+                      <td width="33%">{{$data->sales}}</td>
+                      
+                    </tr>
+                    @endforeach
+                  </table>
+            </div>   
             <div id="today">
-            <table style="width:100%" >
+            <table style="width:100%">
                 <tr>
                   <th colspan="3">Daily</th>
-                  
                 </tr>
                 @foreach($day as $data)
                 <tr>
@@ -188,7 +200,7 @@
                 @endforeach
               </table>
               </div>  
-                  
+                
         </x-card>
         
 
@@ -200,7 +212,8 @@
 
 
 <script>
-    
+
+    $("#today").hide();
     $("#week").hide();
     $("#month").hide();
     $(function () {
@@ -210,15 +223,24 @@
         $("#today").show();
         $("#week").hide();
         $("#month").hide();
+        $("#overall").hide();
     }
     else if ($(this).val() == "week") {
         $("#week").show();
         $("#today").hide();
         $("#month").hide();
+        $("#overall").hide();
     }else if ($(this).val() == "month") {
         $("#month").show();
         $("#week").hide();
         $("#today").hide();
+        $("#overall").hide();
+    }
+    else if ($(this).val() == "overall") {
+        $("#month").hide();
+        $("#week").hide();
+        $("#today").hide();
+        $("#overall").show();
     }
 
 });
