@@ -45,7 +45,7 @@
 
     
             <a href="{{ route('home') }}"
-                ><img class="w-24" src="{{ asset('images/logoCart.png') }}" alt="" class="logo"/> 
+                ><img class="w-16 border-2 border-orange-400 shadow-lg rounded-full mt-2 mb-2 ml-2 mr-2"  src="{{ asset('images/logoCart.png') }}" alt="" class="logo"/>
             </a>
             <ul class="flex space-x-6 mr-6 text-base">
                 @auth
@@ -85,15 +85,17 @@
 
     @include('partials._hero')
 
-    <div class="mx-4">
+
+
+    <div class="m-auto bg-gray1 content-center shadow-xl rounded-xl mt-20  xl:w-10/12">
 
     
-        <x-card class="p-10  bg-gray1 border border-gray-100 rounded mr-10 ml-10 mt-10 border border-gray-100 rounded-lg shadow-lg mb-10">
+        <x-card class="p-10  mb-10 mr-10 ml-10 mt-10 ">
             
         <a class="bg-hub mb-8 text-white rounded-xl py-3 px-14 hover:bg-orange-500 w-full" href="{{ route('history',$restaurant->id) }}">
             Purchase History</a> 
         <a class="bg-hub mb-8 text-white rounded-xl py-3 px-14 hover:bg-orange-500 w-full" href="{{ route('saleshistory',$restaurant->id) }}">
-            Sales History</a> <br>
+            Sales History</a> <br><br> 
         
 
             <x-listing-showcard :restaurant="$restaurant"/>  <br>  
@@ -128,6 +130,7 @@
                 </div>
             </div>  
         
+            <br> 
             
             <select class="pull-left form-control input-lg ml-2 p-1 rounded-xl border border-hub" id="dropsearchselect" name="dropsearch">Select Search</option>
             <option value="overall">Overall</option>
@@ -135,10 +138,14 @@
             <option value="week">Last 7 Days</option>
             <option value="month">Last 30 Days</option>
             </select> 
+            
             <div id="load">
             </div>
+
+            
             <div id="overall">
-                <table style="width:100%" >
+                
+                <table class="styled-table" style="width:100%">
                     <tr>
                       <th colspan="3">Overall</th>
                       
@@ -153,8 +160,10 @@
                     @endforeach
                   </table>
             </div>   
+
+
             <div id="today">
-            <table style="width:100%">
+            <table class="styled-table" style="width:100%">
                 <tr>
                   <th colspan="3">Daily</th>
                 </tr>
@@ -168,8 +177,10 @@
                 @endforeach
               </table>
             </div>
+
+
             <div id="week">
-              <table style="width:100%" id="week">
+              <table class="styled-table" style="width:100%">
                 <tr>
                   <th colspan="3">Last 7 days</th>
                   
@@ -184,8 +195,9 @@
                 @endforeach
               </table>
             </div>
+            
               <div id="month">
-              <table style="width:100%" id="month">
+              <table class="styled-table" style="width:100%"id="month">
                 <tr>
                   <th colspan="3">Last 30 days</th>
                   

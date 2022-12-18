@@ -1,8 +1,9 @@
 @props(['product'])
 
-<div class="rounded-lg shadow-lg p-6  border border-orange-200 ml-4 grid grid-auto-fit hover:bg-orange-200">
+<div class="rounded-lg shadow-lg p-4  border border-orange-200 ml-4 grid grid-auto-fit hover:bg-orange-200">
 
 <a href="{{route('products.edit', $product->id)}}">
+
 
     <div class="grid grid-auto-fit">
         {{-- Shows the Picture in the database if not then default picture --}}

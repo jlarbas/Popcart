@@ -2,10 +2,17 @@
 @section('content')
 @include('partials._hero')
 
-<div class="flex h-screen">
-<div class="m-auto bg-white content-center shadow-xl rounded-xl mt-20 xl:w-3/5">
 
-    <div class="p-5">
+<!DOCTYPE html>
+<html lang="en">
+<link href="{{asset('assets/style.css')}}" rel="stylesheet" type="text/css">  
+</html>
+
+
+<div class="flex h-screen">
+<div class="m-auto bg-gray1 content-center shadow-xl rounded-xl mt-20 md:w-2/5 lg:w-2/5  xl:w-10/12 text-base ">
+
+    <div class="p-10 mt-4 ">
         <a class="bg-hub mb-8 text-white rounded-xl py-3 px-14 hover:bg-orange-500 w-full" href="{{ route('customsales',$pass) }}">
             Select Range</a>
         <br> 
@@ -13,7 +20,7 @@
             @csrf
         <label
             for="date"
-            class="inline-block text-lg mb-4"
+            class="inline-block mt-8 mb-2"
             >Select Date</label
         ><br>
         <input
@@ -24,7 +31,10 @@
         @error('date')
         <p class="text-orange-500 text-xs mt-1">{{ $message }}</p>
         @enderror
-        <div class="mt-2 mb-6">
+
+
+        
+        <div class="mt-2 mb-8">
             <button
                 class="bg-hub text-white rounded-xl py-3 px-3 hover:bg-orange-500 w-2/6"
             >
@@ -33,8 +43,37 @@
         </div>
         </form>
 
-        <h1 class="text-xl font-semibold">Sales</h1> <br>
-        <p>Total Sales for Today {{ $data }}</p>
+
+        <table class="styled-table" style="width:100%">
+
+        <thead>                   
+                <tr>
+                <th colspan="2">Sales</th>
+                </tr> 
+        </thead>
+
+
+        <tbody>
+                     <td>
+                     Sales for this day
+                    </td>
+
+                     <td>
+                     <p class="font-semibold">₱{{ $data }}</p>
+                    </td>
+        </table>
+
+
+
+
+        
+
+
+
+      
+
+
+
     </div>
 </div>
 </div>      

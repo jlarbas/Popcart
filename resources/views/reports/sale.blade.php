@@ -43,7 +43,7 @@
     <div class="bg-white">
         <nav class="flex justify-between items-center mb-0">
 
-        <img class="w-24" src="{{ asset('images/logoCart.png') }}" alt="" class="logo"/>
+        <img class="w-16 border-2 border-orange-400 shadow-lg rounded-full mt-2 mb-2 ml-2 mr-2" src="{{ asset('images/logoCart.png') }}" alt="" class="logo"/>
             
             <ul class="flex space-x-6 mr-6 text-base">
                 @auth
@@ -79,13 +79,16 @@
         </nav>
     
     <main>
+
+    <div class="grid grid-auto-fit static">
     @include('partials._hero')
+    </div>
 
     
     <div class="flex h-screen">
-    <div class="m-auto bg-white content-center shadow-xl rounded-xl mt-20 xl:w-3/5">
+    <div class="p-10 m-auto bg-gray1 content-center shadow-xl rounded-xl mt-20 xl:w-10/12 text-base">
     
-        <div class="p-5">
+        <div class="p-5 mt-4">
             <a class="bg-hub mb-8 text-white rounded-xl py-3 px-14 hover:bg-orange-500 w-full" href="{{ route('custom',$pass) }}">
                 Select Range</a>
             <br> 
@@ -93,7 +96,7 @@
                 @csrf
             <label
                 for="date"
-                class="inline-block text-lg mb-4"
+                class="inline-block  mt-8 mb-2"
                 >Select Date</label
             ><br>
             <input
@@ -126,6 +129,9 @@
                         <th>
                             Date
                         </th> 
+                        <th>
+                            Action
+                        </th>
                     </tr>  
                 </thead>
                 <tbody>
@@ -133,13 +139,16 @@
                     <tr>    
                     <a href="{{ route('displayPurchases',$data->id) }}">
                     <td>
-                    Order #: {{ $data->id }}
+                    Order: #{{ $data->id }}
                     </td>
                     <td>
                 Total: {{ $data->total }}
                     </td>
                     <td>
                     Date & Time: {{ $data->created_at }}
+                    </td>
+                    <td>
+                        <a href="{{ route('displayPurchases',$data->id) }}">View</a>
                     </td>
                 
                 </a>

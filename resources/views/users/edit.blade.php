@@ -3,17 +3,18 @@
 
 <x-card class="bg-gray1 p-10 rounded-lg max-w-lg mx-auto mt-24 border border-gray-100 shadow-lg">
 
-<header class="text-center">
-<a href="{{ route('home') }}"
-        ><img class="w-40  mt-2 mb-2 ml-4 mr-2 ml-28 mt-8"  src="{{ asset('images/logoCart4.png') }}" alt="" class="logo"/>
-</a><br>
+<header class="flex justify-center">
+        <a href="{{ route('home') }}"
+                ><img class="w-40  mt-8"  src="{{ asset('images/logoCart4.png') }}" alt="" class="logo"/>
+        </a><br>
 
+        </header>
 
-    <h2 class="text-xl font-semibold  mb-8">
-        Edit User
-    </h2>
-    
-</header>
+        <h2 class="text-center text-xl font-semibold  mt-8 mb-8">
+                Edit User
+            </h2>
+            
+        </header>
 
         <form action="{{ route('updateuser',$user->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
@@ -170,7 +171,7 @@
                     type="password"
                     class="border border-gray-400 rounded-xl hover:border-orange-500 p-4 w-full"
                     name="password"
-                    value="{{ $user->password }}"
+                    value=""
                 />
                 @error('password')
                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -189,7 +190,7 @@
                     type="password"
                     class="border border-gray-400 rounded-xl hover:border-orange-500 p-4 w-full"
                     name="password_confirmation"
-                    value="{{ $user->password }}"
+                    value=""
                 />
                 @error('password_confirmation')
                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>

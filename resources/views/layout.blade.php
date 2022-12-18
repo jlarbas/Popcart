@@ -44,7 +44,7 @@
 
     </head>
     <body style="background-image: linear-gradient(to right, #F8DFB9 , #F4C9D7)">
-    <body class="mb-48">
+    <body class="">
         
     <div class="bg-white">
         <nav class="flex justify-between items-center mb-0">

@@ -1,6 +1,6 @@
 @props(['user'])
 
-<div class=" rounded-lg shadow-lg p-6 border border-orange-200  ml-4 grid grid-auto-fit hover:bg-orange-200">
+<div class=" rounded-lg bg-white shadow-lg p-6 border border-orange-200  ml-4 grid grid-auto-fit hover:bg-orange-200">
  
 
 <a href="{{route('showuser', $user->id)}}">

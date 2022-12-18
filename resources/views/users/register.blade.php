@@ -4,14 +4,16 @@
 </div>
 
 <x-card class="bg-gray1 p-10 rounded-lg max-w-lg mx-auto mt-24 border border-gray-100 shadow-lg">
+    
 
-        <header class="text-center">
+<header class="flex justify-center">
         <a href="{{ route('home') }}"
-                ><img class="w-40  mt-2 mb-2 ml-4 mr-2 ml-28 mt-8"  src="{{ asset('images/logoCart4.png') }}" alt="" class="logo"/>
+                ><img class="w-40  mt-8"  src="{{ asset('images/logoCart4.png') }}" alt="" class="logo"/>
         </a><br>
 
+        </header>
 
-            <h2 class="text-xl font-semibold  mb-8">
+        <h2 class="text-center text-xl font-semibold  mt-8 mb-8">
                 Register
             </h2>
             

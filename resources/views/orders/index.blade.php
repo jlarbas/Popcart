@@ -1,10 +1,10 @@
 @extends('layout')
-
 @section('content')
 @include('partials._hero')
     
 
-<div class="bg-gray1 p-10 rounded-lg max-w-6xl mx-auto mt-24 border border-gray-100 shadow-lg"> 
+
+<div class="bg-gray1 p-10 rounded-lg max-w-6xl mx-auto mb-24 mt-24 border border-gray-100 shadow-lg"> 
 <header class="text-center">
 
 <a href="{{ route('home') }}"

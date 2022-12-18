@@ -26,6 +26,8 @@
                 extend: {
                     colors: {
                         hub: "#ff8400",
+                        gray1: "#f2f2f2", 
+                        pink1: "#f4c9d7"
                     },
                 },
             },
@@ -41,7 +43,7 @@
         <nav class="flex justify-between items-center mb-0">
 
     
-            <img class="w-24" src="{{ asset('images/logoCart.png') }}" alt="" class="logo"/> 
+            <img class="w-16 border-2 border-orange-400 shadow-lg rounded-full mt-2 mb-2 ml-2 mr-2" src="{{ asset('images/logoCart.png') }}" alt="" class="logo"/> 
             
             <ul class="flex space-x-6 mr-6 text-base">
                 @auth
@@ -93,6 +95,8 @@
     >POS</a
     >
     @if(auth()->user()->role_id == 2)
+   
+
     
     <a
     href="{{ route('orders',$restaurant->id) }}"

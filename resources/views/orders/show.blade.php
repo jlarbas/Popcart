@@ -4,7 +4,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link href="{{asset('assets/style.css')}}" rel="stylesheet" type="text/css" >
-        <title>Receipt</title>
+        <title>POP Cart</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/icon.png') }}">
     </head>
     <body style="background-image: linear-gradient(to right, #F8DFB9 , #F4C9D7)">
 

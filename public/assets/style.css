@@ -229,3 +229,61 @@ table th {
   margin-top: 2px;
   margin-bottom: 2px;
 }
+
+
+
+
+
+
+.styled-table {
+
+  margin: 15px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  overflow: hidden;
+}
+
+.styled-table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+  
+}
+
+.styled-table th{
+  
+    padding: 12px 15px;
+    color: #000000;
+    background-color: #ffffff;
+    font-size: 1rem; /* 16px */
+    line-height: 1.5rem; /* 24px */
+   
+    text-transform: capitalize;
+    
+ 
+    
+}
+
+
+.styled-table td {
+    padding: 12px 15px;
+    font-size: 1rem; /* 16px */
+    font-size: 1rem; /* 16px */
+    line-height: 1.5rem; /* 24px */
+    
+ 
+    
+}
+
+.styled-table tbody tr {
+  border-bottom: 1px solid #a8a8a8;
+  border-top: 1px solid #a8a8a8;
+
+}
+
+.styled-table tbody tr:nth-of-type(odd) {
+  background-color: #ffffff;
+}
+
+

@@ -3,9 +3,12 @@
 @include('partials._hero')
 
 
-<div class="bg-gray1 mt-12 mr-12 ml-12  border border-gray-100 shadow-2xl rounded-2xl"><br>
+
+<div class="flex h-screen">
+<div class="m-auto bg-gray1 content-center shadow-xl rounded-xl  mt-20  xl:w-10/12">
 
 @include('partials._search_products')
+
 
 <div class="ml-4">
 

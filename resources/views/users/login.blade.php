@@ -1,10 +1,10 @@
-<div>
+<div class="grid grid-auto-fit static">
 @extends('layout')
 @section('content')
 </div>
 <div class="bg-cover bg-no-repeat bg-center bg-[url('images/Wallpaper3.jpg')]">
 <div class="flex h-screen">
-<div class="m-auto bg-white content-center shadow-xl rounded-xl mt-20 xl:w-3/5">
+<div class="m-auto bg-white content-center shadow-xl rounded-xl mt-20 xl:w-4/12">
 
 
     
@@ -24,7 +24,7 @@
 {{-- Right Side --}}
 
 
- <div class="flex justify-center pt-5">     
+ <div class="flex justify-center mt-12">     
  <img class="w-28 border border-orange-400 shadow-lg rounded-full mb-4 "  
     src="{{ asset('images/logoCart.png') }}" alt="" class="logo"/>
  </div>   
@@ -89,4 +89,3 @@
 </div>
 
 @endsection
-
