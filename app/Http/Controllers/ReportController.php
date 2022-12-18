@@ -9,10 +9,11 @@ use App\Models\OrderList;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
 class ReportController extends Controller
 {
-    
+
     //
     public function index(Restaurant $restaurant){
         return view('reports.index', [
@@ -107,7 +108,7 @@ class ReportController extends Controller
         ])
         ->get();
        
-
+            
         return view('reports.show', compact(
             'restaurant',
             'data',
@@ -119,7 +120,7 @@ class ReportController extends Controller
             'highdata',
             'seven',
             'thirty',
-            'month'
+            'month',
         ));
     }
 

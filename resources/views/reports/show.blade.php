@@ -20,6 +20,7 @@
     <script src="//unpkg.com/alpinejs" defer></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://unpkg.com/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
+
     <script>
         tailwind.config = {
             theme: {
@@ -99,7 +100,6 @@
         
 
             <x-listing-showcard :restaurant="$restaurant"/>  <br>  
-                
           
           <div class="grid grid-cols-3 grid-auto-fit gap-x-3 gap-y-3">
                 <div class="text-hub rounded-xl py-4 px-4 bg-orange-100 border border-hub shadow-lg mr-2 ml-2 mb-2 text-left w-full">
@@ -221,10 +221,7 @@
         </main>
     <x-flash-message />
 </body>
-
-
 <script>
-
     $("#today").hide();
     $("#week").hide();
     $("#month").hide();

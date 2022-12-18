@@ -98,7 +98,9 @@ class RestaurantController extends Controller
         DB::raw('(sum(order_lists.price)) AS sales'),
         ])
         ->get();
-
+        if(auth()->user()->role != 1 && auth()->user()->restaurant_id != $restaurant->id){
+        abort(404);    
+        }
         return view('restaurants.show', compact(
             'restaurant',
             'data',
