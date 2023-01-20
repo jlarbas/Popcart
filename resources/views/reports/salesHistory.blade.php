@@ -62,6 +62,30 @@
                      <p class="font-semibold">₱{{ $data }}</p>
                     </td>
         </table>
+        <table id="myTable">
+            <thead>
+                <tr>
+                    <th>
+                        Product
+                    </th>  
+                    <th>
+                        Total Purchases
+                    </th> 
+                    <th>
+                        Total Sales
+                    </th> 
+                </tr>  
+            </thead>
+            <tbody>
+                @foreach($products as $data)
+                <tr>
+                    <td width="33%">{{$data->product_name}}</td>
+                  <td width="33%">{{$data->purchases}}</td>
+                  <td width="33%">{{$data->sales}}</td>
+                </tr>
+                @endforeach
+            </tbody>
+            </table>    
 
 
 
@@ -77,4 +101,9 @@
     </div>
 </div>
 </div>      
+<script>
+    $(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+</script>
 @endsection

@@ -150,6 +150,11 @@
                       <th colspan="3">Overall</th>
                       
                     </tr>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Total Purchases</th>
+                        <th>Total Sales</th>
+                    </tr>
                     @foreach($products as $data)
                     <tr>
                         <td width="33%">{{$data->product_name}}</td>

@@ -16,6 +16,9 @@ class ProductController extends Controller
     public function index()
     {
         //
+        if(auth()->user()->role_id != 1){
+            abort(404);
+        }   
          return view('products.index', [
             'products' => Product::latest()->filter(request(['search_product']))->paginate(4)
         ]);
@@ -31,6 +34,9 @@ class ProductController extends Controller
         //
         
         $restaurants = Restaurant::all();
+        if(auth()->user()->role_id != 1){
+            abort(404);
+        }
         return view('products.create',['restaurants'=>$restaurants]);
     }
 
@@ -91,6 +97,10 @@ class ProductController extends Controller
     {
         //
         $restaurants = Restaurant::all();
+
+        if(auth()->user()->role_id != 1){
+            abort(404);
+        }
         return view('products.edit',compact('product','restaurants'));
     }
 
@@ -140,3 +150,4 @@ class ProductController extends Controller
         return response()->json(['success'=>'Status change successfully.']);
     }
 }
+

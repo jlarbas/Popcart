@@ -16,6 +16,9 @@ class ReportController extends Controller
 
     //
     public function index(Restaurant $restaurant){
+        if(auth()->user()->role_id != 1){
+            abort(404);
+        }
         return view('reports.index', [
             
             'restaurants' => Restaurant::latest()->filter(request(['search']))->paginate(4)
@@ -24,6 +27,9 @@ class ReportController extends Controller
     }
 
     public function display(Order $order){
+        if(auth()->user()->role_id != 1){
+            abort(404);
+        }
         return view ('reports.display',compact('order'));
     }
 
@@ -62,6 +68,13 @@ class ReportController extends Controller
         $month = Order::where('restaurant_id',$restaurant->id)
         ->whereBetween('created_at', [$startm, $endm])
         ->sum('total');
+
+        // $chart= Order::select(DB:raw("SUM(total) as sum"),DB::raw("MONTHNAME(created_at) as month_name"))
+        // ->where('restaurant_id',$restaurant->id)
+        // ->whereYear('created_at',date('Y'))
+        // ->groupBy(DB::raw("Month(created_at")) 
+        // ->pluck('sum','month');
+
 
         //Total Sales and Count of Product Purchase//
         $products = OrderList::where('restaurant_id', $restaurant->id)
@@ -108,7 +121,9 @@ class ReportController extends Controller
         ])
         ->get();
        
-            
+        if(auth()->user()->role_id != 1){
+            abort(404);
+        }    
         return view('reports.show', compact(
             'restaurant',
             'data',
@@ -128,11 +143,6 @@ class ReportController extends Controller
         
         $today = Carbon::today()->format('Y-m-d');
         
-        // $order = Order::when($request->date != null, function($q) use($request){
-        //     return $q->whereDate('created_at',$request->date);
-        // })
-        // ->whereDate('created_at', $today)
-        // ->get();
         $pass = $restaurant->id;
         $order = Order::when($request->date != null, function($q) use($request){
             return $q->whereDate('created_at',$request->date);
@@ -142,24 +152,24 @@ class ReportController extends Controller
         ->where('status','completed')
         ->get();
        
-        
+        if(auth()->user()->role_id != 1){
+            abort(404);
+        }
         return view('reports.sale',compact('order','pass'));
     }
+
     public function customDate(Request $request, Restaurant $restaurant){
         
         $today = Carbon::today()->format('Y-m-d');
-        
-        // $order = Order::when($request->date != null, function($q) use($request){
-        //     return $q->whereDate('created_at',$request->date);
-        // })
-        // ->whereDate('created_at', $today)
-        // ->get();
+    
         $order = Order::whereBetween('created_at',[$request->dateone,$request->datetwo])
         ->where('restaurant_id',$restaurant->id)
         ->where('status','completed')
         ->get();
        
-        
+        if(auth()->user()->role_id != 1){
+            abort(404);
+        }
         return view('reports.history',compact('order'));
     }
 
@@ -174,24 +184,51 @@ class ReportController extends Controller
         })->where('restaurant_id',$restaurant->id)
         ->where('status','completed')
         ->sum('total');
-        
-        return view('reports.salesHistory',compact('data','pass'));
+
+        $products = OrderList::when($request->date != null, function($q) use($request){
+            return $q->whereDate('created_at',$request->date);
+        },function($q) use ($today){
+            return $q->whereDate('created_at',$today);
+        })
+        ->where('restaurant_id', $restaurant->id)
+        ->groupBy('product_name')
+        ->select([
+        'order_lists.id',
+        'order_lists.product_name',
+        DB::raw('sum(order_lists.quantity) AS purchases'),
+        DB::raw('(sum(order_lists.price)) AS sales'),
+        ])
+        ->get();
+
+        if(auth()->user()->role_id != 1){
+            abort(404);
+        }
+        return view('reports.salesHistory',compact('data','pass','products'));
     }
 
     public function customSale(Request $request, Restaurant $restaurant){
         
-        // $order = Order::when($request->date != null, function($q) use($request){
-        //     return $q->whereDate('created_at',$request->date);
-        // })
-        // ->whereDate('created_at', $today)
-        // ->get();
+        $products = OrderList::whereBetween('created_at',[$request->dateone,$request->datetwo])
+        ->where('restaurant_id', $restaurant->id)
+        ->groupBy('product_name')
+        ->select([
+        'order_lists.id',
+        'order_lists.product_name',
+        DB::raw('sum(order_lists.quantity) AS purchases'),
+        DB::raw('(sum(order_lists.price)) AS sales'),
+        ])
+        ->get();
+
         $data = Order::whereBetween('created_at',[$request->dateone,$request->datetwo])
         ->where('restaurant_id',$restaurant->id)
         ->where('status','completed')
         ->sum('total');
        
-        
-        return view('reports.customSale',compact('data'));
+        if(auth()->user()->role_id != 1){
+            abort(404);
+        }
+        return view('reports.customSale',compact('data','products'));
     }
     
 }
+

@@ -12,12 +12,18 @@ class UserController extends Controller
 {
     public function index()
     {
+        if(auth()->user()->role_id != 1){
+            abort(404);
+        }
         return view('users.index', [
             'users' => User::latest()->filter(request(['search_user']))->paginate(4)
         ]);
     }
 
     public function show(User $user){
+        if(auth()->user()->role_id != 1){
+            abort(404);
+        }
         return view('users.show', compact('user'));
     }
 
@@ -25,6 +31,9 @@ class UserController extends Controller
     public function create(){
         $roles = Role::all();
         $restaurants = Restaurant::all();
+        if(auth()->user()->role_id != 1){
+            abort(404);
+        }
         return view('users.register',['restaurants'=>$restaurants,'roles'=>$roles]);
     }
 
@@ -60,6 +69,9 @@ class UserController extends Controller
 
     public function edit(User $user){
         $restaurants = Restaurant::all();
+        if(auth()->user()->role_id != 1){
+            abort(404);
+        }
         return view('users.edit', ['user' => $user,'restaurants' => $restaurants]);
     }
 
@@ -135,3 +147,4 @@ class UserController extends Controller
     
    
 }
+

@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
     <link rel="icon" href="images/favicon.ico" />
     <link
         rel="stylesheet"
@@ -14,6 +15,8 @@
     />
     <link href-"https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" >
+    <link href="{{asset('assets/style.css')}}" rel="stylesheet" type="text/css" >
+    @livewireStyles
     <script src="https://code.jquery.com/jquery-3.6.2.min.js" integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
     <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -125,14 +128,14 @@
 
             <table class="styled-table" style="width:100%">
 
-<thead>                   
-        <tr>
-        <th colspan="2">Sales</th>
-        </tr> 
-</thead>
+            <thead>                   
+            <tr>
+            <th colspan="2">Sales</th>
+            </tr> 
+            </thead>
 
 
-<tbody>
+            <tbody>
              <td>
              Sales within the range
             </td>
@@ -140,22 +143,42 @@
              <td>
              <p class="font-semibold">₱{{ $data }}</p>
             </td>
-</table>
+            </table>
 
-
-
-
-
-
-
-
-
-
+            <table id="myTable">
+                <thead>
+                    <tr>
+                        <th>
+                            Product
+                        </th>  
+                        <th>
+                            Total Purchases
+                        </th> 
+                        <th>
+                            Total Sales
+                        </th> 
+                    </tr>  
+                </thead>
+                <tbody>
+                    @foreach($products as $data)
+                    <tr>
+                        <td width="33%">{{$data->product_name}}</td>
+                      <td width="33%">{{$data->purchases}}</td>
+                      <td width="33%">{{$data->sales}}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+                </table>    
         </div>
     </div>
     </div>      
     </main>
     <x-flash-message />
 </body>
+<script>
+    $(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+</script>
 
 </html>      
